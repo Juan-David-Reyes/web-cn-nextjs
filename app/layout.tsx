@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/ui/Navbar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -8,6 +9,8 @@ const inter = Inter({
   display: 'swap',
 });
 
+// ... (metadata config continues) ...
+// (Retaining all the constants from before down to metadata)
 const SITE_URL = process.env.SITE_URL || 'https://codigonativo.com';
 
 export const metadata: Metadata = {
@@ -54,6 +57,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${inter.variable} antialiased font-sans`}>
+        <Navbar />
         {children}
       </body>
     </html>

@@ -2,15 +2,18 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-8 bg-zinc-950 text-zinc-50 selection:bg-blue-500/30">
+    <main className="min-h-screen flex flex-col items-center justify-center p-8 pt-28 bg-zinc-950 text-zinc-50 selection:bg-blue-500/30">
       <header className="max-w-4xl text-center space-y-6">
-        <div className="mx-auto w-24 h-24 relative mb-8">
-          {/* Logo placeholder - using Next.js concepts for optimized markup */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-[2rem] shadow-2xl flex items-center justify-center transform hover:rotate-6 hover:scale-105 transition-all duration-300">
-            <span className="text-3xl font-bold tracking-tighter text-white">CN</span>
-          </div>
+        <div className="mx-auto block w-[200px] h-[50px] relative mb-8 hover:saturate-150 transition-all duration-300">
+          <Image
+            src="/images/logoDarkMode.svg"
+            alt="Código Nativo - Desarrollo de Software"
+            width={200}
+            height={50}
+            priority={true}
+            className="object-contain"
+          />
         </div>
-        
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6">
           Construyendo el <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">futuro digital</span>.
         </h1>
