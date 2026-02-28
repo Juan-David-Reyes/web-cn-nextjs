@@ -10,7 +10,7 @@ export function Navbar() {
           <Link href="/">
             <div className="w-[160px] h-[40px] relative hover:saturate-150 transition-all duration-300">
               <Image
-                src="/images/logoLightMode.svg"
+                src="/images/logoDarkMode.svg"
                 alt="Código Nativo"
                 fill
                 priority

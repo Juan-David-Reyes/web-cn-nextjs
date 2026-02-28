@@ -57,7 +57,6 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${inter.variable} antialiased font-sans`}>
-        <Navbar />
         {children}
       </body>
     </html>
