@@ -4,8 +4,8 @@ export function CtaBanner() {
   return (
     <section className="w-full bg-[#0f172a] rounded-b-[24px] py-[140px] px-4 relative overflow-hidden">
       {/* Decorative SVG Circles */}
-      <img src="/images/circle.svg" alt="" aria-hidden="true" className="absolute bottom-0 left-0 w-full max-w-[350px] h-full object-contain pointer-events-none" />
-      <img src="/images/circle.svg" alt="" aria-hidden="true" className="absolute top-0 right-0 w-full max-w-[350px] h-full object-contain pointer-events-none rotate-180" />
+      <img src="/images/circle.svg" alt="" aria-hidden="true" className="absolute bottom-0 -left-[5%] w-full max-w-[350px] h-full object-contain pointer-events-none" />
+      <img src="/images/circle.svg" alt="" aria-hidden="true" className="absolute top-0 -right-[5%] w-full max-w-[350px] h-full object-contain pointer-events-none rotate-180" />
 
 
 
