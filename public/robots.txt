@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://codigonativo.com
+
+# Sitemaps
+Sitemap: https://codigonativo.com/sitemap.xml

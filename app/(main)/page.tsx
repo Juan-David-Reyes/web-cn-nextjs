@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { Testimonials } from "@/components/ui/sections/Testimonials";
+import { CtaBanner } from "@/components/ui/sections/CtaBanner";
 
 export default function Home() {
   return (
@@ -54,6 +56,12 @@ export default function Home() {
           <p className="text-zinc-400 leading-relaxed font-light">Arquitectura mantenible y fuertemente tipada empleando TypeScript estricto.</p>
         </div>
       </section>
+
+      {/* Testimonios */}
+      <Testimonials />
+
+      {/* Llamado a la Acción (CTA) */}
+      <CtaBanner />
     </main>
   );
 }

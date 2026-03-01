@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/ui/Navbar";
+import { Footer } from "@/components/ui/sections/Footer";
 
 export default function MainLayout({
   children,
@@ -7,8 +8,13 @@ export default function MainLayout({
 }) {
   return (
     <>
-      <Navbar />
-      {children}
+      <div className="relative z-10 bg-[var(--background)] shadow-2xl shadow-black/10">
+        <Navbar />
+        <main className="min-h-screen">
+          {children}
+        </main>
+      </div>
+      <Footer />
     </>
   )
 }
