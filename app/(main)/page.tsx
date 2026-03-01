@@ -4,8 +4,8 @@ import { CtaBanner } from "@/components/ui/sections/CtaBanner";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-8 pt-28 bg-zinc-950 text-zinc-50 selection:bg-blue-500/30">
-      <header className="max-w-4xl text-center space-y-6">
+    <main className="min-h-screen flex flex-col items-center justify-center pt-28 bg-white text-neutral-900 selection:bg-blue-500/30">
+      <header className="max-w-4xl text-center space-y-6 px-4">
         <div className="mx-auto block w-[200px] h-[50px] relative mb-8 hover:saturate-150 transition-all duration-300">
           <Image
             src="/images/logoDarkMode.svg"
@@ -16,10 +16,10 @@ export default function Home() {
             className="object-contain"
           />
         </div>
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-neutral-900 mb-6">
           Construyendo el <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">futuro digital</span>.
         </h1>
-        <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed">
+        <p className="text-lg md:text-xl text-neutral-600 max-w-2xl mx-auto font-light leading-relaxed">
           Código Nativo desarrolla soluciones de software escalables, rápidas y diseñadas con foco absoluto en el rendimiento y la experiencia del usuario.
         </p>
       </header>
