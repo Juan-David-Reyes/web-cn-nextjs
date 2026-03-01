@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/ui/Navbar";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -65,6 +66,7 @@ export default function RootLayout({
     <html lang="es">
       <body className={`${inter.variable} ${poppins.variable} antialiased font-sans`}>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
