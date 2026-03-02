@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Poppins, Playfair_Display } from "next/font/google";
+import { Poppins, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/ui/Navbar";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: 'swap',
-});
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -62,6 +56,18 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: [
+      { url: '/images/favicon/favicon.ico' },
+      { url: '/images/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/images/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/favicon/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/images/favicon/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/images/favicon/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -71,7 +77,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${inter.variable} ${poppins.variable} ${playfair.variable} antialiased font-sans`}>
+      <body className={`${poppins.variable} ${playfair.variable} antialiased font-sans`}>
         {children}
       </body>
     </html>

@@ -2,8 +2,8 @@ import Image from 'next/image'
 
 export function Testimonials() {
   return (
-    <section className="bg-white dark:bg-neutral-950 py-24">
-      <div className="container mx-auto px-4">
+    <section className="relative w-full py-24 px-4 bg-[#0f172a]">
+      <div className="max-w-6xl mx-auto px-4">
         {/* Header Section */}
         <div className="text-center mb-16">
           <span className="text-sm font-bold tracking-widest uppercase bg-gradient-to-r from-[#CAE414] to-[#3DBF15] text-transparent bg-clip-text mb-4 inline-block">

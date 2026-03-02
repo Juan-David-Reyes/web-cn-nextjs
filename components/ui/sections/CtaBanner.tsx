@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export function CtaBanner() {
   return (
-    <section className="w-full bg-[#0f172a] rounded-b-[24px] py-[140px] px-4 relative overflow-hidden">
+    <section className="relative w-full py-20 px-4 bg-[#0f172a] rounded-b-[24px] overflow-hidden">
       {/* Decorative SVG Circles */}
       <img src="/images/circle.svg" alt="" aria-hidden="true" className="absolute bottom-0 -left-[5%] w-full max-w-[350px] h-full object-contain pointer-events-none" />
       <img src="/images/circle.svg" alt="" aria-hidden="true" className="absolute top-0 -right-[5%] w-full max-w-[350px] h-full object-contain pointer-events-none rotate-180" />
