@@ -32,7 +32,7 @@ export function HeroSection({ data }: HeroProps) {
         </div>
 
         {/* Main Headline */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
+        <h1 className="text-5xl md:text-[65px] lg:text-[80px] font-bold tracking-tight text-white mb-6 leading-[1.1]">
           {titleText} <br className="hidden md:block" />
           para <span className="font-serif italic font-medium text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-400">{highlightText}</span>
           <span className="text-purple-400">.</span>

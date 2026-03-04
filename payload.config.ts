@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url'
 import { Media } from './src/collections/Media'
 import { HomePage } from './src/globals/HomePage'
 import { Users } from './src/collections/Users'
+import { Testimonials } from './src/collections/Testimonials'
 import { es } from '@payloadcms/translations/languages/es'
 
 const filename = fileURLToPath(import.meta.url)
@@ -15,7 +16,7 @@ export default buildConfig({
   admin: {
     user: Users.slug,
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Testimonials],
   globals: [HomePage],
   editor: lexicalEditor(),
   i18n: {
