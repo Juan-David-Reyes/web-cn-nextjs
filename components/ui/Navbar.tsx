@@ -1,17 +1,22 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <>
       {/* Background layer: Normal blending, captures the page behind it */}
       <div 
-        className="fixed top-4 left-0 right-0 mx-auto w-full max-w-[1440px] h-16 z-40 backdrop-blur-md border border-zinc-800/50 rounded-[100px] pointer-events-none"
+        className="fixed top-0 md:top-4 left-0 right-0 mx-auto w-full max-w-[1440px] h-16 z-40 backdrop-blur-md border border-zinc-800/50 rounded-none md:rounded-[100px] pointer-events-none transition-all duration-300"
         style={{ backgroundColor: '#0f172af2' }}
       />
       
       {/* Content layer: Difference blending removed since background is now dark solid */}
-      <nav className="fixed top-4 left-0 right-0 mx-auto w-full max-w-[1440px] h-16 z-50">
+      <nav className="fixed top-0 md:top-4 left-0 right-0 mx-auto w-full max-w-[1440px] h-16 z-50 transition-all duration-300">
         <div className="mx-auto px-6 h-full flex items-center justify-between">
           {/* Brand Logo */}
           <div className="flex-shrink-0 text-white">
@@ -163,14 +168,70 @@ export function Navbar() {
           
           {/* Mobile Menu Button  */}
           <div className="md:hidden flex items-center text-white">
-          <button className="hover:text-white/70 p-2 transition-colors duration-200" aria-label="Abrir menú">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
-          </button>
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="hover:text-white/70 p-2 transition-colors duration-200" 
+              aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-expanded={isMobileMenuOpen}
+            >
+              {isMobileMenuOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      <div 
+        className={`fixed inset-0 z-40 bg-[#0f172a] backdrop-blur-lg pt-24 px-6 transition-all duration-300 md:hidden flex flex-col ${
+          isMobileMenuOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"
+        }`}
+      >
+        <div className="flex flex-col gap-6 text-lg font-medium text-white">
+          <Link 
+            href="/" 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="border-b border-white/10 pb-4 hover:text-[#00ff8c] transition-colors"
+          >
+            Inicio
+          </Link>
+          <Link 
+            href="/servicios" 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="border-b border-white/10 pb-4 hover:text-[#00ff8c] transition-colors"
+          >
+            Servicios
+          </Link>
+          <Link 
+            href="/nosotros" 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="border-b border-white/10 pb-4 hover:text-[#00ff8c] transition-colors"
+          >
+            Nosotros
+          </Link>
+          <Link 
+            href="/blog" 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="border-b border-white/10 pb-4 hover:text-[#00ff8c] transition-colors"
+          >
+            Blog
+          </Link>
+          <Link 
+            href="/contacto" 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="mt-4 text-center text-sm text-black bg-white hover:bg-neutral-200 px-6 py-3 rounded-full font-bold transition-all duration-300"
+          >
+            Contacto
+          </Link>
         </div>
       </div>
-    </nav>
     </>
   );
 }

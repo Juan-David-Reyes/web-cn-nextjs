@@ -1,5 +1,5 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { lexicalEditor, FixedToolbarFeature, HeadingFeature } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
@@ -7,7 +7,10 @@ import { Media } from './src/collections/Media'
 import { HomePage } from './src/globals/HomePage'
 import { Users } from './src/collections/Users'
 import { Testimonials } from './src/collections/Testimonials'
+import { Posts } from './src/collections/Posts'
 import { es } from '@payloadcms/translations/languages/es'
+
+import { seoPlugin } from '@payloadcms/plugin-seo'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -16,9 +19,23 @@ export default buildConfig({
   admin: {
     user: Users.slug,
   },
-  collections: [Users, Media, Testimonials],
+  collections: [Users, Media, Testimonials, Posts],
   globals: [HomePage],
-  editor: lexicalEditor(),
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [
+      ...defaultFeatures,
+      FixedToolbarFeature(),
+      HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+    ],
+  }),
+  plugins: [
+    seoPlugin({
+      collections: ['posts'],
+      uploadsCollection: 'media',
+      generateTitle: ({ doc }) => `Código Nativo | ${doc.title}`,
+      generateDescription: ({ doc }) => doc.excerpt || 'Artículo técnico sobre desarrollo de software, diseño web, o tendencias digitales por Código Nativo.',
+    })
+  ],
   i18n: {
     supportedLanguages: { es },
     fallbackLanguage: 'es',

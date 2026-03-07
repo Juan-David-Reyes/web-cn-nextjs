@@ -12,7 +12,7 @@ export default async function Home() {
   const homeData = await payload.findGlobal({ slug: "home-page" });
   
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-[#FFF] text-zinc-100 selection:bg-purple-500/30 overflow-hidden">
+    <main className="min-h-screen flex flex-col items-center justify-center bg-[#FFF] text-zinc-100 selection:bg-purple-500/30 overflow-hidden relative z-10 w-full">
       
       {/* Nuevo Hero Section estilo Glassmorphism/Dark */}
       <HeroSection data={homeData.hero} />

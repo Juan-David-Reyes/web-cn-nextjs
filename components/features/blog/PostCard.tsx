@@ -2,12 +2,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 interface Post {
-  id: number;
-  category: string;
-  date: string;
+  id: string | number;
+  category?: string | null;
+  publishedDate?: string | null;
   title: string;
-  excerpt: string;
+  excerpt?: string | null;
   slug: string;
+  featuredImage?: any;
 }
 
 export function PostCard({ post }: { post: Post }) {
@@ -16,16 +17,26 @@ export function PostCard({ post }: { post: Post }) {
       {/* Image Container Dummy */}
       <div className="relative w-full aspect-[4/3] bg-zinc-100 overflow-hidden flex items-center justify-center border-b border-zinc-100">
         
-        {/* Placeholder styling instead of external images ensuring no Next.js config breaks */}
-        <div className="w-full h-full bg-zinc-200/50 group-hover:scale-105 transition-transform duration-700 ease-out flex items-center justify-center relative">
-          <Image 
-            src="/images/logoDarkMode.svg" 
-            alt="Código Nativo Placeholder"
-            width={120}
-            height={40}
-            className="opacity-20 grayscale brightness-0"
-          />
-        </div>
+        {post.featuredImage && typeof post.featuredImage === 'object' && post.featuredImage.url ? (
+          <div className="w-full h-full relative group-hover:scale-105 transition-transform duration-700 ease-out">
+            <Image 
+              src={post.featuredImage.url}
+              alt={post.featuredImage.alt || post.title}
+              fill
+              className="object-cover"
+            />
+          </div>
+        ) : (
+          <div className="w-full h-full bg-zinc-200/50 group-hover:scale-105 transition-transform duration-700 ease-out flex items-center justify-center relative">
+            <Image 
+              src="/images/logoDarkMode.svg" 
+              alt="Código Nativo Placeholder"
+              width={120}
+              height={40}
+              className="opacity-20 grayscale brightness-0"
+            />
+          </div>
+        )}
         
         <div className="absolute top-5 left-5 z-20">
           <span className="px-3.5 py-1.5 text-[11px] font-bold text-white bg-zinc-900/90 backdrop-blur-md rounded-full border border-white/10 uppercase tracking-widest shadow-md">
@@ -36,7 +47,15 @@ export function PostCard({ post }: { post: Post }) {
 
       <div className="p-8 flex flex-col flex-grow">
         <div className="flex items-center text-xs text-zinc-500 mb-4 font-semibold uppercase tracking-widest">
-          <span>{post.date}</span>
+          <span>
+            {post.publishedDate
+              ? new Date(post.publishedDate).toLocaleDateString('es-ES', {
+                  day: '2-digit',
+                  month: 'short',
+                  year: 'numeric',
+                })
+              : 'Sin fecha'}
+          </span>
         </div>
         
         <h3 className="text-xl font-bold text-zinc-900 mb-4 leading-snug group-hover:text-[#3DBF15] transition-colors duration-300">
@@ -44,7 +63,7 @@ export function PostCard({ post }: { post: Post }) {
         </h3>
         
         <p className="text-sm text-zinc-600 leading-relaxed font-normal mb-8 flex-grow">
-          {post.excerpt}
+          {post.excerpt || 'Sin resumen disponible'}
         </p>
 
         <div className="mt-auto flex items-center gap-2 text-sm font-bold text-[#3DBF15] group/btn">

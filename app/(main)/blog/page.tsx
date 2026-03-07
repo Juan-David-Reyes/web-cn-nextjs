@@ -1,64 +1,37 @@
 import type { Metadata } from 'next';
 import { PostCard } from '@/components/features/blog/PostCard';
 import { CtaBanner } from '@/components/ui/sections/CtaBanner';
+import { getPayload } from 'payload';
+import configPromise from '@payload-config';
 
 export const metadata: Metadata = {
   title: 'Blog y Recursos | Código Nativo',
   description: 'Artículos y Novedades sobre Diseño Web, SEO y Marketing Digital.',
 };
 
-const POSTS = [
-  {
-    id: 1,
-    category: 'Diseño Web',
-    date: '15 Oct, 2024',
-    title: 'Fases del diseño web: Paso a paso para crear tu sitio web',
-    excerpt: 'En el mundo del diseño web, seguir un proceso bien definido facilita la creación de un sitio atractivo y funcional, pero además garantiza que cada...',
-    slug: 'fases-del-diseno-web',
-  },
-  {
-    id: 2,
-    category: 'Diseño Web',
-    date: '03 Oct, 2024',
-    title: 'Beneficios de Tener un Sitio Web en 2024',
-    excerpt: 'En 2024, tener un sitio web ya no es una opción, sino una necesidad para cualquier negocio o freelancer que quiera mantenerse relevante. Un...',
-    slug: 'beneficios-de-un-sitio-web',
-  },
-  {
-    id: 3,
-    category: 'Diseño Web',
-    date: '30 Sep, 2024',
-    title: 'Tendencias en Diseño Web para 2024: Innovaciones y Prácticas Actuales',
-    excerpt: '¿Cómo ha cambiado el diseño web en 2024? El diseño web en 2024 ha evolucionado con nuevas tecnologías y cambios en las expectativas de los usuarios.',
-    slug: 'tendencias-diseno-web-2024',
-  },
-  {
-    id: 4,
-    category: 'Emprendimiento',
-    date: '02 Jun, 2021',
-    title: 'Las claves del éxito para ser freelancer',
-    excerpt: 'Es una gran época para ser freelancer, existen muchas herramientas gratuitas que nos permiten mostrar nuestro trabajo y conectar con potenciales clientes...',
-    slug: 'freelancer',
-  },
-  {
-    id: 5,
-    category: 'Emprendimiento',
-    date: '19 May, 2021',
-    title: '¿Qué son los servicios de alto valor agregado?',
-    excerpt: 'Los servicios de alto valor agregado se desarrollan sobre habilidades específicas que tienen muy pocas personas, pero son demandadas y necesarias...',
-    slug: 'servicios-de-alto-valor-agregado',
-  },
-  {
-    id: 6,
-    category: 'Diseño Web',
-    date: '10 May, 2021',
-    title: 'Tipos de páginas web: ¿Cuál es la mejor opción para tu negocio?',
-    excerpt: 'Existen múltiples tipos de sitios web, cada uno diseñado para cumplir funciones específicas que van desde informar a los usuarios hasta realizar ventas.',
-    slug: 'tipos-de-paginas-web',
-  }
-];
+export default async function BlogPage() {
+  const payload = await getPayload({ config: configPromise });
+  const postsData = await payload.find({
+    collection: 'posts',
+    where: {
+      status: {
+        equals: 'publish',
+      },
+    },
+    sort: '-publishedDate',
+    limit: 100, // Show all published posts for now, can implement pagination later
+  });
 
-export default function BlogPage() {
+  const POSTS = postsData.docs.map((doc: any) => ({
+    id: doc.id,
+    title: doc.title,
+    slug: doc.slug,
+    category: doc.category,
+    publishedDate: doc.publishedDate,
+    excerpt: doc.excerpt,
+    featuredImage: doc.featuredImage,
+  }));
+
   return (
     <main className="min-h-screen bg-[#f5f7fa] pt-32 relative z-10 w-full mx-auto overflow-hidden">
       {/* Container aligned with max-width */}
@@ -84,7 +57,7 @@ export default function BlogPage() {
             Ver todos
           </button>
           
-          <button className="flex items-center gap-2 bg-white text-slate-700 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:bg-[#3DBF15]/10 hover:text-[#3DBF15] hover:shadow-[0_11px_16px_-10px_#d4afff]">
+          <button className="flex items-center gap-2 bg-white text-slate-700 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:shadow-[0_11px_16px_-10px_#d4afff]">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="w-4 h-4 flex-shrink-0">
               <defs>
                 <linearGradient id="SVGpFOXGdpp" x1="62.102%" x2="108.197%" y1="0%" y2="37.864%"><stop offset="0%" stopColor="#4285eb"></stop><stop offset="100%" stopColor="#2ec7ff"></stop></linearGradient>
@@ -102,7 +75,7 @@ export default function BlogPage() {
             Diseño Web
           </button>
           
-          <button className="flex items-center gap-2 bg-white text-slate-700 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:bg-[#3DBF15]/10 hover:text-[#3DBF15] hover:shadow-[0_11px_16px_-10px_#d4afff]">
+          <button className="flex items-center gap-2 bg-white text-slate-700 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:shadow-[0_11px_16px_-10px_#d4afff]">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" className="w-4 h-4 flex-shrink-0">
               <g fill="none">
                 <path fill="#fff" d="M5.5 3.312a3.25 3.25 0 0 0-1.436 3.9c.12.335.48.503.824.412c1.737-.46 3.505-1.705 4.58-2.675c.284-.257.343-.687.09-.975A3.25 3.25 0 0 0 5.5 3.312"></path>
@@ -114,7 +87,7 @@ export default function BlogPage() {
             Emprendimiento
           </button>
           
-          <button className="flex items-center gap-2 bg-white text-slate-700 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:bg-[#3DBF15]/10 hover:text-[#3DBF15] hover:shadow-[0_11px_16px_-10px_#d4afff]">
+          <button className="flex items-center gap-2 bg-white text-slate-700 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:shadow-[0_11px_16px_-10px_#d4afff]">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="w-4 h-4 flex-shrink-0">
               <defs>
                 <linearGradient id="SVGCmOW1cKl" x1="0%" x2="99.999%" y1="50%" y2="50%">
@@ -134,7 +107,7 @@ export default function BlogPage() {
             Marketing Digital
           </button>
           
-          <button className="flex items-center gap-2 bg-white text-slate-700 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:bg-[#3DBF15]/10 hover:text-[#3DBF15] hover:shadow-[0_11px_16px_-10px_#d4afff]">
+          <button className="flex items-center gap-2 bg-white text-slate-700 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:shadow-[0_11px_16px_-10px_#d4afff]">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 284" className="w-4 h-4 flex-shrink-0">
               <path fill="#f9ab00" d="M256.003 247.933a35.224 35.224 0 0 1-39.376 35.161c-18.044-2.67-31.266-18.371-30.826-36.606V36.845C185.365 18.591 198.62 2.881 216.687.24a35.22 35.22 0 0 1 39.316 35.16z"></path>
               <path fill="#e37400" d="M35.101 213.193c19.386 0 35.101 15.716 35.101 35.101c0 19.386-15.715 35.101-35.101 35.101S0 267.68 0 248.295s15.715-35.102 35.101-35.102m92.358-106.387c-19.477 1.068-34.59 17.406-34.137 36.908v94.285c0 25.588 11.259 41.122 27.755 44.433a35.16 35.16 0 0 0 42.146-34.56V142.089a35.22 35.22 0 0 0-35.764-35.282"></path>
@@ -142,7 +115,7 @@ export default function BlogPage() {
             SEO
           </button>
           
-          <button className="flex items-center gap-2 bg-white text-slate-700 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:bg-[#3DBF15]/10 hover:text-[#3DBF15] hover:shadow-[0_11px_16px_-10px_#d4afff]">
+          <button className="flex items-center gap-2 bg-white text-slate-700 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:shadow-[0_11px_16px_-10px_#d4afff]">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" className="w-4 h-4 flex-shrink-0">
               <g fill="none">
                 <path fill="#d7e0ff" d="M10.5 2.5h-7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1"></path>

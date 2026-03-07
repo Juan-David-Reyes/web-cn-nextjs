@@ -38,3 +38,83 @@ h5,
 h6 {
   font-family: var(--font-poppins), sans-serif;
 }
+
+/* Payload CMS Lexical Rich Text Styles */
+.rich-text p {
+  margin-bottom: 1.5em;
+}
+
+.rich-text h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  color: #18181b; /* zinc-900 */
+}
+
+.rich-text h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  color: #18181b;
+}
+
+.rich-text h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  color: #18181b;
+}
+
+.rich-text a {
+  color: #3dbf15;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.rich-text a:hover {
+  color: #2f9c0e;
+}
+
+.rich-text ul {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.rich-text ol {
+  list-style-type: decimal;
+  padding-left: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.rich-text li {
+  margin-bottom: 0.5em;
+}
+
+.rich-text blockquote {
+  border-left: 4px solid #3dbf15;
+  padding-left: 1em;
+  font-style: italic;
+  color: #52525b; /* zinc-600 */
+  margin-bottom: 1.5em;
+  background-color: #f4f4f5; /* zinc-100 */
+  padding: 1rem 1.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.rich-text img {
+  border-radius: 1rem;
+  margin: 2em auto;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.rich-text strong {
+  font-weight: 600;
+  color: #18181b;
+}
