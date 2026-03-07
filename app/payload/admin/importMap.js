@@ -1,1 +1,1 @@
-/Users/juandavid/Sites/web-codigonativo-nextjs/app/(payload)/admin/importMap.js
+../../(payload)/admin/importMap.js
