@@ -25,7 +25,7 @@ export function PostCard({ post }: { post: Post }) {
         {post.featuredImage && typeof post.featuredImage === 'object' && post.featuredImage.url ? (
           <div className="w-full h-full relative group-hover:scale-105 transition-transform duration-700 ease-in-out">
             <Image 
-              src={post.featuredImage.url}
+              src={post.featuredImage.url.replace(/^http:\/\/localhost:300[0-9]/, '').replace(/^http:\/\/127\.0\.0\.1:300[0-9]/, '')}
               alt={post.featuredImage.alt || post.title}
               fill
               className="object-cover opacity-80 group-hover:opacity-60 transition-opacity duration-500"

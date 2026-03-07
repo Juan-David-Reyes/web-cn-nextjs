@@ -3,6 +3,7 @@ import { lexicalEditor, FixedToolbarFeature, HeadingFeature } from '@payloadcms/
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
+import sharp from 'sharp'
 import { Media } from './src/collections/Media.ts'
 import { HomePage } from './src/globals/HomePage.ts'
 import { Users } from './src/collections/Users.ts'
@@ -20,6 +21,7 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
+  sharp,
   admin: {
     user: Users.slug,
   },

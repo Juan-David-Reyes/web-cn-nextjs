@@ -109,7 +109,7 @@ export default async function BlogPostPage({ params }: PageParams) {
         {post.featuredImage && typeof post.featuredImage === 'object' && post.featuredImage.url && (
           <div className="relative w-full aspect-[16/9] mb-12 rounded-3xl overflow-hidden shadow-sm border border-zinc-200">
             <Image 
-              src={post.featuredImage.url}
+              src={post.featuredImage.url.replace(/^http:\/\/localhost:300[0-9]/, '').replace(/^http:\/\/127\.0\.0\.1:300[0-9]/, '')}
               alt={post.featuredImage.alt || post.title}
               fill
               className="object-cover"
