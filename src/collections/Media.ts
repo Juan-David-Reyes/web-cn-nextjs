@@ -9,12 +9,24 @@ export const Media: CollectionConfig = {
     // Media files will be stored in public/media directory by default
     staticDir: 'public/media',
     adminThumbnail: 'thumbnail',
+    formatOptions: {
+      format: 'webp',
+      options: {
+        quality: 80,
+      },
+    },
     imageSizes: [
       {
         name: 'thumbnail',
         width: 400,
         height: 300,
         position: 'centre',
+        formatOptions: {
+          format: 'webp',
+          options: {
+            quality: 80,
+          },
+        },
       },
     ],
     mimeTypes: ['image/*'],
