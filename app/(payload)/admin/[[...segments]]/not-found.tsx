@@ -2,7 +2,7 @@
 /* DO NOT MODIFY IT BECAUSE IT COULD BE REWRITTEN AT ANY TIME. */
 import config from '@payload-config'
 import { NotFoundPage, generatePageMetadata } from '@payloadcms/next/views'
-import { importMap } from '@/app/payload/admin/importMap'
+import { importMap } from '@/app/(payload)/admin/importMap'
 
 type Args = {
   params: Promise<{
