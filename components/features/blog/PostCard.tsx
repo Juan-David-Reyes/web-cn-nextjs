@@ -12,66 +12,74 @@ interface Post {
 }
 
 export function PostCard({ post }: { post: Post }) {
+  // Calculte reading time roughly based on excerpt length or default to 4 min
+  const readingTime = post.excerpt ? Math.max(1, Math.ceil(post.excerpt.split(' ').length / 50)) : 4;
+
   return (
-    <Link href={`/blog/${post.slug}`} className="group relative flex flex-col h-full bg-white border border-zinc-200 rounded-3xl overflow-hidden hover:border-[#3DBF15]/50 transition-all duration-500 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(61,191,21,0.15)] hover:-translate-y-1">
-      {/* Image Container Dummy */}
-      <div className="relative w-full aspect-[4/3] bg-zinc-100 overflow-hidden flex items-center justify-center border-b border-zinc-100">
-        
+    <Link 
+      href={`/blog/${post.slug}`} 
+      className="group flex flex-col w-full h-full overflow-hidden transition-all duration-300 relative rounded-2xl"
+    >
+      {/* Background Image Container */}
+      <div className="absolute inset-0 w-full h-full bg-zinc-900 overflow-hidden z-0">
         {post.featuredImage && typeof post.featuredImage === 'object' && post.featuredImage.url ? (
-          <div className="w-full h-full relative group-hover:scale-105 transition-transform duration-700 ease-out">
+          <div className="w-full h-full relative group-hover:scale-105 transition-transform duration-700 ease-in-out">
             <Image 
               src={post.featuredImage.url}
               alt={post.featuredImage.alt || post.title}
               fill
-              className="object-cover"
+              className="object-cover opacity-80 group-hover:opacity-60 transition-opacity duration-500"
             />
           </div>
         ) : (
-          <div className="w-full h-full bg-zinc-200/50 group-hover:scale-105 transition-transform duration-700 ease-out flex items-center justify-center relative">
+          <div className="w-full h-full bg-zinc-800 group-hover:scale-105 transition-transform duration-700 ease-in-out flex items-center justify-center relative">
             <Image 
               src="/images/logoDarkMode.svg" 
               alt="Código Nativo Placeholder"
               width={120}
               height={40}
-              className="opacity-20 grayscale brightness-0"
+              className="opacity-10 grayscale brightness-0"
             />
           </div>
         )}
-        
-        <div className="absolute top-5 left-5 z-20">
-          <span className="px-3.5 py-1.5 text-[11px] font-bold text-white bg-zinc-900/90 backdrop-blur-md rounded-full border border-white/10 uppercase tracking-widest shadow-md">
-            {post.category}
-          </span>
-        </div>
+        {/* Dark Gradient Overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
       </div>
 
-      <div className="p-8 flex flex-col flex-grow">
-        <div className="flex items-center text-xs text-zinc-500 mb-4 font-semibold uppercase tracking-widest">
-          <span>
-            {post.publishedDate
-              ? new Date(post.publishedDate).toLocaleDateString('es-ES', {
-                  day: '2-digit',
-                  month: 'short',
-                  year: 'numeric',
-                })
-              : 'Sin fecha'}
-          </span>
+      {/* Content Container (Overlay) */}
+      <div className="relative z-10 flex flex-col justify-end h-full p-6 md:p-8">
+        
+        <div className="mt-auto w-full">
+          {/* Meta Info: Date & Reading Time */}
+          <div className="flex items-center gap-3 text-xs text-zinc-300 mb-4 font-medium tracking-wide">
+            <span>
+              {post.publishedDate
+                ? new Date(post.publishedDate).toLocaleDateString('en-US', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric',
+                  })
+                : 'August 5, 2024'}
+            </span>
+            <span className="w-1 h-1 rounded-full bg-zinc-500"></span>
+            <span>
+               {readingTime} min read
+            </span>
+          </div>
+          
+          {/* Title */}
+          <h3 className="text-[24px] font-bold text-white mb-6 leading-tight transition-colors duration-300 line-clamp-3">
+            {post.title}
+          </h3>
+          
+          {/* Tags / Categories (Badges - Glassmorphic) */}
+          <div className="flex flex-wrap gap-2">
+            <span className="text-white font-normal bg-white/20 backdrop-blur-md px-[14px] py-[4px] rounded-full text-[14px] capitalize tracking-normal">
+               {post.category || 'Recursos'}
+            </span>
+          </div>
         </div>
-        
-        <h3 className="text-xl font-bold text-zinc-900 mb-4 leading-snug group-hover:text-[#3DBF15] transition-colors duration-300">
-          {post.title}
-        </h3>
-        
-        <p className="text-sm text-zinc-600 leading-relaxed font-normal mb-8 flex-grow">
-          {post.excerpt || 'Sin resumen disponible'}
-        </p>
 
-        <div className="mt-auto flex items-center gap-2 text-sm font-bold text-[#3DBF15] group/btn">
-          Leer artículo
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover/btn:translate-x-1.5 transition-transform duration-300">
-            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-          </svg>
-        </div>
       </div>
     </Link>
   );

@@ -8,6 +8,9 @@ import { HomePage } from './src/globals/HomePage.ts'
 import { Users } from './src/collections/Users.ts'
 import { Testimonials } from './src/collections/Testimonials.ts'
 import { Posts } from './src/collections/Posts.ts'
+import { PrivacyPolicy } from './src/globals/PrivacyPolicy.ts'
+import { TermsAndConditions } from './src/globals/TermsAndConditions.ts'
+import { CookiesPolicy } from './src/globals/CookiesPolicy.ts'
 import { es } from '@payloadcms/translations/languages/es'
 
 import { seoPlugin } from '@payloadcms/plugin-seo'
@@ -20,7 +23,7 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [Users, Media, Testimonials, Posts],
-  globals: [HomePage],
+  globals: [HomePage, PrivacyPolicy, TermsAndConditions, CookiesPolicy],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
       ...defaultFeatures,

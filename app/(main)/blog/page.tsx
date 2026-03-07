@@ -1,15 +1,26 @@
 import type { Metadata } from 'next';
 import { PostCard } from '@/components/features/blog/PostCard';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { CtaBanner } from '@/components/ui/sections/CtaBanner';
 import { getPayload } from 'payload';
 import configPromise from '@payload-config';
+import { BlogPagination } from '@/components/features/blog/BlogPagination';
 
 export const metadata: Metadata = {
   title: 'Blog y Recursos | Código Nativo',
   description: 'Artículos y Novedades sobre Diseño Web, SEO y Marketing Digital.',
 };
 
-export default async function BlogPage() {
+export default async function BlogPage({ 
+  searchParams 
+}: { 
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }> 
+}) {
+  const resolvedSearchParams = await searchParams;
+  const pageParam = typeof resolvedSearchParams.page === 'string' ? resolvedSearchParams.page : '1';
+  const currentPage = parseInt(pageParam, 10) || 1;
+  const limit = 18;
+
   const payload = await getPayload({ config: configPromise });
   const postsData = await payload.find({
     collection: 'posts',
@@ -19,8 +30,11 @@ export default async function BlogPage() {
       },
     },
     sort: '-publishedDate',
-    limit: 100, // Show all published posts for now, can implement pagination later
+    limit,
+    page: currentPage,
   });
+
+  const { totalPages, hasNextPage, hasPrevPage } = postsData;
 
   const POSTS = postsData.docs.map((doc: any) => ({
     id: doc.id,
@@ -37,7 +51,13 @@ export default async function BlogPage() {
       {/* Container aligned with max-width */}
       <div className="max-w-[1440px] mx-auto w-full px-6 pb-24">
         {/* Header Section */}
-        <div className="text-center mb-12 max-w-3xl mx-auto mt-12">
+        <div className="text-center mb-12 max-w-3xl mx-auto mt-12 flex flex-col items-center">
+          
+          {/* Breadcrumb Global */}
+          <div className="w-full flex justify-center mb-6">
+            <Breadcrumbs items={[{ label: 'Blog y Recursos' }]} />
+          </div>
+
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-zinc-200 text-xs font-semibold text-zinc-600 uppercase tracking-widest mb-6 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#3DBF15] animate-pulse" />
             Novedades y guías
@@ -130,12 +150,56 @@ export default async function BlogPage() {
 
         {/* Grid of Posts */}
         <section aria-label="Artículos del blog" className="pb-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {POSTS.map((post) => (
-              <PostCard key={post.id} post={post} />
+          
+          {/* Mobile Grid (1 column) */}
+          <div className="flex flex-col gap-8 md:hidden">
+            {POSTS.map((post, index) => (
+               <div key={post.id} className={`w-full ${index % 2 === 0 ? "h-[470px]" : "h-[300px]"}`}>
+                 <PostCard post={post} />
+               </div>
             ))}
           </div>
+
+          {/* Tablet Grid (2 columns) */}
+          <div className="hidden md:grid lg:hidden grid-cols-2 gap-8 items-start">
+            {[0, 1].map((colIndex: number) => (
+              <div key={colIndex} className="flex flex-col gap-8">
+                {POSTS.filter((_: any, i: number) => i % 2 === colIndex).map((post: any) => {
+                  const originalIndex = POSTS.indexOf(post);
+                  return (
+                    <div key={post.id} className={`w-full ${originalIndex % 2 === 0 ? "h-[470px]" : "h-[300px]"}`}>
+                      <PostCard post={post} />
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop Grid (3 columns) */}
+          <div className="hidden lg:grid grid-cols-3 gap-8 items-start">
+            {[0, 1, 2].map((colIndex: number) => (
+              <div key={colIndex} className="flex flex-col gap-8">
+                {POSTS.filter((_: any, i: number) => i % 3 === colIndex).map((post: any) => {
+                  const originalIndex = POSTS.indexOf(post);
+                  return (
+                    <div key={post.id} className={`w-full ${originalIndex % 2 === 0 ? "h-[470px]" : "h-[300px]"}`}>
+                      <PostCard post={post} />
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+
         </section>
+
+        {totalPages > 1 && (
+          <BlogPagination 
+            currentPage={currentPage} 
+            totalPages={totalPages} 
+          />
+        )}
       </div>
 
       {/* CTA Banner Section (Full Width, Flush to Bottom) */}

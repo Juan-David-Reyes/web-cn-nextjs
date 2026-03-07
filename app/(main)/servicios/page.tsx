@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CtaBanner } from '@/components/ui/sections/CtaBanner';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 // Generar meta tags dinámicos y optimizados para SEO On-Page
 export const metadata: Metadata = {
@@ -49,7 +50,12 @@ export default function ServicesPage() {
     <main className="min-h-screen bg-[#f5f7fa] pt-32 relative z-10 w-full mx-auto overflow-hidden">
       {/* Header aligned with max-width */}
       <div className="max-w-[1440px] mx-auto w-full px-6 pb-16">
-        <div className="text-center mb-16 max-w-3xl mx-auto mt-12">
+        <div className="text-center mb-16 max-w-3xl mx-auto mt-12 flex flex-col items-center">
+          
+          <div className="w-full flex justify-center mb-6">
+            <Breadcrumbs items={[{ label: 'Nuestros Servicios' }]} />
+          </div>
+
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-zinc-200 text-xs font-semibold text-zinc-600 uppercase tracking-widest mb-6 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#3DBF15] animate-pulse" />
             Descubre qué hacemos

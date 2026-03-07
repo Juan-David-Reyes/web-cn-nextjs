@@ -63,19 +63,36 @@ export function HeroSection({ data }: HeroProps) {
         </div>
 
         {/* Tech Stack Logos */}
-        <div className="mt-24 pt-10 flex flex-col items-center">
+        <div className="mt-24 flex flex-col items-center relative z-20">
           <p className="text-sm text-zinc-500 mb-8 tracking-wider uppercase font-medium">Revolucionando soluciones con las mejores herramientas</p>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6 opacity-80">
-            {/* Tech Bubbles */}
-            {['WordPress', 'Next.js', 'React', 'Node.js', 'Tailwind', 'TypeScript', 'Figma'].map((tech) => (
+          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8 opacity-80 max-w-4xl mx-auto px-4">
+            
+            {[
+              { name: 'Figma', icon: 'figma.svg' },
+              { name: 'HTML5', icon: 'html5.svg' },
+              { name: 'CSS3', icon: 'css3.svg' },
+              { name: 'WordPress', icon: 'wordpress.svg' },
+              { name: 'React', icon: 'react.svg' },
+              { name: 'TypeScript', icon: 'typescript.svg' },
+              { name: 'Node.js', icon: 'node-js.svg' },
+              { name: 'Google Analytics', icon: 'google-analytics.svg' }
+            ].map((tech) => (
               <div 
-                key={tech} 
-                className="w-14 h-14 md:w-16 md:h-16 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:-translate-y-2 hover:bg-white/10 transition-all duration-300 shadow-xl"
-                title={tech}
+                key={tech.name} 
+                className="group relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center hover:-translate-y-2 transition-all duration-300"
+                title={tech.name}
               >
-                <span className="text-xs font-semibold text-zinc-400">{tech.substring(0,2)}</span>
+                {/* Image using native img tag inside the Next relative structure 
+                    (Icons are usually pure SVGs under public/images) */}
+                <img 
+                  src={`/images/herramientas/${tech.icon}`} 
+                  alt={`${tech.name} logo`}
+                  className="w-full h-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 drop-shadow-md"
+                  loading="lazy"
+                />
               </div>
             ))}
+
           </div>
         </div>
       </div>
