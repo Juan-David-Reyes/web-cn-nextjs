@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
         hostname: 'pdf.ms.credential.net',
       },
       {
+        protocol: 'https',
+        hostname: '*.supabase.co',
+      },
+      {
         protocol: 'http',
         hostname: 'localhost',
         port: '3000',
