@@ -155,7 +155,7 @@ export default async function BlogPage({
           <div className="flex flex-col gap-8 md:hidden">
             {POSTS.map((post, index) => (
                <div key={post.id} className={`w-full ${index % 2 === 0 ? "h-[470px]" : "h-[300px]"}`}>
-                 <PostCard post={post} />
+                 <PostCard post={post} priority={index < 6} />
                </div>
             ))}
           </div>
@@ -168,7 +168,7 @@ export default async function BlogPage({
                   const originalIndex = POSTS.indexOf(post);
                   return (
                     <div key={post.id} className={`w-full ${originalIndex % 2 === 0 ? "h-[470px]" : "h-[300px]"}`}>
-                      <PostCard post={post} />
+                      <PostCard post={post} priority={originalIndex < 6} />
                     </div>
                   );
                 })}
@@ -184,7 +184,7 @@ export default async function BlogPage({
                   const originalIndex = POSTS.indexOf(post);
                   return (
                     <div key={post.id} className={`w-full ${originalIndex % 2 === 0 ? "h-[470px]" : "h-[300px]"}`}>
-                      <PostCard post={post} />
+                      <PostCard post={post} priority={originalIndex < 6} />
                     </div>
                   );
                 })}

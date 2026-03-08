@@ -11,7 +11,7 @@ interface Post {
   featuredImage?: any;
 }
 
-export function PostCard({ post }: { post: Post }) {
+export function PostCard({ post, priority = false }: { post: Post; priority?: boolean }) {
   // Calculte reading time roughly based on excerpt length or default to 4 min
   const readingTime = post.excerpt ? Math.max(1, Math.ceil(post.excerpt.split(' ').length / 50)) : 4;
 
@@ -28,6 +28,7 @@ export function PostCard({ post }: { post: Post }) {
               src={post.featuredImage.url.replace(/^http:\/\/localhost:300[0-9]/, '').replace(/^http:\/\/127\.0\.0\.1:300[0-9]/, '')}
               alt={post.featuredImage.alt || post.title}
               fill
+              priority={priority}
               className="object-cover opacity-80 group-hover:opacity-60 transition-opacity duration-500"
             />
           </div>
