@@ -21,6 +21,18 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
+  cors: [
+    'https://codigonativo1.com',
+    'https://codigonativo.com',
+    'http://localhost:3000',
+    process.env.NEXT_PUBLIC_SERVER_URL || '',
+  ].filter(Boolean),
+  csrf: [
+    'https://codigonativo1.com',
+    'https://codigonativo.com',
+    'http://localhost:3000',
+    process.env.NEXT_PUBLIC_SERVER_URL || '',
+  ].filter(Boolean),
   sharp,
   admin: {
     user: Users.slug,
