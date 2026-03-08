@@ -3,7 +3,6 @@ import { lexicalEditor, FixedToolbarFeature, HeadingFeature } from '@payloadcms/
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
-import sharp from 'sharp'
 import { s3Storage } from '@payloadcms/storage-s3'
 import { Media } from './src/collections/Media.ts'
 import { HomePage } from './src/globals/HomePage.ts'
@@ -29,7 +28,6 @@ export default buildConfig({
     'http://localhost:3000',
     process.env.NEXT_PUBLIC_SERVER_URL || '',
   ].filter(Boolean),
-  sharp,
   admin: {
     user: Users.slug,
   },
