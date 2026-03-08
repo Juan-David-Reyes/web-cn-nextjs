@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import path from 'path'
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -7,7 +8,7 @@ export const Media: CollectionConfig = {
   },
   upload: {
     // Media files will be stored in public/media directory by default
-    staticDir: 'public/media',
+    staticDir: path.resolve(process.cwd(), 'public/media'),
     adminThumbnail: 'thumbnail',
     formatOptions: {
       format: 'webp',
