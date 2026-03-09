@@ -11,17 +11,17 @@ export function Navbar() {
     <>
       {/* Background layer: Normal blending, captures the page behind it */}
       <div 
-        className="fixed top-0 md:top-4 left-0 right-0 mx-auto w-full max-w-[1440px] h-16 z-40 backdrop-blur-md border border-zinc-800/50 rounded-none md:rounded-[100px] pointer-events-none transition-all duration-300"
-        style={{ backgroundColor: '#0f172af2' }}
+        className="fixed top-0 md:top-4 left-0 right-0 mx-auto w-full max-w-[900px] h-14 z-40 border border-zinc-800/50 rounded-none md:rounded-[100px] pointer-events-none transition-all duration-300"
+        style={{ backgroundColor: '#040f27' }}
       />
       
       {/* Content layer: Difference blending removed since background is now dark solid */}
-      <nav className="fixed top-0 md:top-4 left-0 right-0 mx-auto w-full max-w-[1440px] h-16 z-50 transition-all duration-300">
-        <div className="mx-auto px-6 h-full flex items-center justify-between">
+      <nav className="fixed top-0 md:top-4 left-0 right-0 mx-auto w-full max-w-[900px] h-14 z-50 transition-all duration-300">
+        <div className="mx-auto pl-6 pr-4 h-full flex items-center justify-between">
           {/* Brand Logo */}
           <div className="flex-shrink-0 text-white">
             <Link href="/">
-              <div className="w-[160px] h-[40px] relative hover:saturate-150 transition-all duration-300">
+              <div className="w-[120px] h-[40px] relative hover:saturate-150 transition-all duration-300">
                 <Image
                   src="/images/logoDarkMode.svg"
                   alt="Código Nativo"
@@ -42,12 +42,19 @@ export function Navbar() {
               Inicio
             </Link>
 
+            <Link 
+              href="/nosotros" 
+              className="text-sm font-medium hover:text-white/70 transition-colors duration-200 text-white"
+            >
+              Nosotros
+            </Link>
+
             {/* Servicios Mega Menu Wrapper */}
             <div className="relative group/menu h-full flex items-center">
               {/* Trigger */}
               <Link 
                 href="/servicios" 
-                className="text-sm font-medium hover:text-white/70 transition-colors duration-200 py-6 text-white"
+                className="text-sm font-medium hover:text-white/70 transition-colors duration-200 py-2 text-white"
               >
                 Servicios
               </Link>
@@ -143,12 +150,6 @@ export function Navbar() {
             </div>
 
             <Link 
-              href="/nosotros" 
-              className="text-sm font-medium hover:text-white/70 transition-colors duration-200 text-white"
-            >
-              Nosotros
-            </Link>
-            <Link 
               href="/blog" 
               className="text-sm font-medium hover:text-white/70 transition-colors duration-200 text-white"
             >
@@ -158,12 +159,14 @@ export function Navbar() {
           
           {/* Action Button */}
           <div className="hidden md:flex items-center">
-            <Link 
-              href="/contacto" 
+            <a 
+              href="https://calendly.com/codigonativo" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full font-bold transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]"
             >
-              Contacto
-            </Link>
+              Agendar Cita
+            </a>
           </div>
           
           {/* Mobile Menu Button  */}
@@ -203,18 +206,18 @@ export function Navbar() {
             Inicio
           </Link>
           <Link 
-            href="/servicios" 
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="border-b border-white/10 pb-4 hover:text-[#00ff8c] transition-colors"
-          >
-            Servicios
-          </Link>
-          <Link 
             href="/nosotros" 
             onClick={() => setIsMobileMenuOpen(false)}
             className="border-b border-white/10 pb-4 hover:text-[#00ff8c] transition-colors"
           >
             Nosotros
+          </Link>
+          <Link 
+            href="/servicios" 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="border-b border-white/10 pb-4 hover:text-[#00ff8c] transition-colors"
+          >
+            Servicios
           </Link>
           <Link 
             href="/blog" 
@@ -223,13 +226,15 @@ export function Navbar() {
           >
             Blog
           </Link>
-          <Link 
-            href="/contacto" 
+          <a 
+            href="https://calendly.com/codigonativo" 
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setIsMobileMenuOpen(false)}
             className="mt-4 text-center text-sm text-black bg-white hover:bg-neutral-200 px-6 py-3 rounded-full font-bold transition-all duration-300"
           >
-            Contacto
-          </Link>
+            Agendar Cita
+          </a>
         </div>
       </div>
     </>

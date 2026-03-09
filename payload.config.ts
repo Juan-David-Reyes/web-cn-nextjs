@@ -10,6 +10,7 @@ import { Users } from './src/collections/Users.ts'
 import { Testimonials } from './src/collections/Testimonials.ts'
 import { Posts } from './src/collections/Posts.ts'
 import { PrivacyPolicy } from './src/globals/PrivacyPolicy.ts'
+import { PrivacyPolicyExtended } from './src/globals/PrivacyPolicyExtended.ts'
 import { TermsAndConditions } from './src/globals/TermsAndConditions.ts'
 import { CookiesPolicy } from './src/globals/CookiesPolicy.ts'
 import { es } from '@payloadcms/translations/languages/es'
@@ -32,7 +33,7 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [Users, Media, Testimonials, Posts],
-  globals: [HomePage, PrivacyPolicy, TermsAndConditions, CookiesPolicy],
+  globals: [HomePage, PrivacyPolicy, PrivacyPolicyExtended, TermsAndConditions, CookiesPolicy],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
       ...defaultFeatures,
