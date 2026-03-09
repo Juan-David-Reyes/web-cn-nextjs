@@ -2,21 +2,74 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+
+const SERVICES_LINKS = [
+  {
+    title: "Diseño y desarrollo web",
+    desc: "Sitios modernos y optimizados para CRO.",
+    href: "/servicios/diseno-web",
+    icon: "/images/icon-services/web-design.svg"
+  },
+  {
+    title: "Mantenimiento Web",
+    desc: "Seguridad y actualizaciones constantes.",
+    href: "/servicios/mantenimiento-wordpress",
+    icon: "/images/icon-services/mantenimiento-web.svg"
+  },
+  {
+    title: "CRO & Optimización",
+    desc: "Velocidad y rendimiento técnico superior.",
+    href: "/servicios/cro-optimizacion",
+    icon: "/images/icon-services/optimizacion-web.svg"
+  },
+  {
+    title: "Auditorías SEO/UX",
+    desc: "Diagnóstico completo de tu sitio web.",
+    href: "/servicios/auditorias",
+    icon: "/images/icon-services/auditorias.svg"
+  },
+  {
+    title: "Product design",
+    desc: "Experiencias intuitivas centradas en el usuario.",
+    href: "/servicios/product-design",
+    icon: "/images/icon-services/diseno-ux-ui.svg"
+  }
+];
+
+const MAIN_LINKS = [
+  { title: "Inicio", href: "/" },
+  { title: "Nosotros", href: "/nosotros" },
+  { title: "Servicios", href: "/servicios" },
+  { title: "Blog", href: "/blog" }
+];
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsServicesOpen(false);
+      }
+    }
+
+    if (isServicesOpen) {
+      document.addEventListener("mousedown", handleClickOutside, { passive: true });
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isServicesOpen]);
 
   return (
     <>
-      {/* Background layer: Normal blending, captures the page behind it */}
-      <div 
-        className="fixed top-0 md:top-4 left-0 right-0 mx-auto w-full max-w-[900px] h-14 z-40 border border-zinc-800/50 rounded-none md:rounded-[100px] pointer-events-none transition-all duration-300"
-        style={{ backgroundColor: '#040f27' }}
-      />
-      
-      {/* Content layer: Difference blending removed since background is now dark solid */}
-      <nav className="fixed top-0 md:top-4 left-0 right-0 mx-auto w-full max-w-[900px] h-14 z-50 transition-all duration-300">
+      <nav className="fixed top-0 md:top-4 left-0 right-0 mx-auto w-full max-w-[900px] h-14 z-50 border border-zinc-800/50 rounded-none md:rounded-[100px] bg-[#040f27] transition-all duration-300">
         <div className="mx-auto pl-6 pr-4 h-full flex items-center justify-between">
           {/* Brand Logo */}
           <div className="flex-shrink-0 text-white">
@@ -50,97 +103,68 @@ export function Navbar() {
             </Link>
 
             {/* Servicios Mega Menu Wrapper */}
-            <div className="relative group/menu h-full flex items-center">
+            <div className="group/menu h-full flex items-center" ref={menuRef}>
               {/* Trigger */}
-              <Link 
-                href="/servicios" 
-                className="text-sm font-medium hover:text-white/70 transition-colors duration-200 py-2 text-white"
+              <button 
+                onClick={() => setIsServicesOpen(!isServicesOpen)}
+                aria-expanded={isServicesOpen}
+                aria-controls="services-dropdown"
+                className="flex items-center gap-1 text-sm font-medium hover:text-white/70 transition-colors duration-200 py-2 text-white cursor-pointer"
               >
                 Servicios
-              </Link>
+                <svg 
+                  className={`w-4 h-4 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
 
-              <div className="absolute top-[64px] left-1/2 -translate-x-1/2 w-[900px] opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible translate-y-2 group-hover/menu:translate-y-0 transition-all duration-300 ease-out z-[60]">
+              {/* Mega Menu Dropdown */}
+              <div 
+                id="services-dropdown"
+                className={`absolute top-full left-0 w-full pt-2 transition-all duration-300 ease-out z-[60] ${
+                  isServicesOpen 
+                    ? 'opacity-100 visible translate-y-0' 
+                    : 'opacity-0 invisible translate-y-2'
+                }`}
+              >
                 {/* Solid Glassmorphism Board */}
                 <div 
-                  className="bg-[#0f172a]/95 backdrop-blur-3xl border border-white/10 rounded-2xl p-6 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col gap-2"
+                  className="bg-[#040f27] backdrop-blur-3xl border border-white/10 rounded-2xl p-6 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col gap-2"
                 >
                   
-                  <div className="grid grid-cols-3 gap-x-6 gap-y-4">
-                    {/* Item 1 */}
-                    <Link href="/servicios/diseno-web" className="group/item p-3 flex items-start gap-4 rounded-xl hover:bg-white/5 transition-all duration-300">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover/item:border-[#00ff8c]/50 group-hover/item:bg-[#00ff8c]/10 transition-all duration-300 shadow-sm">
-                        <svg className="w-6 h-6 text-zinc-300 group-hover/item:text-[#00ff8c] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-semibold text-white group-hover/item:text-[#00ff8c] transition-colors mb-1">Diseño y desarrollo web</h4>
-                        <p className="text-xs text-zinc-400 leading-relaxed font-normal">Sitios modernos y optimizados para conversión.</p>
-                      </div>
-                    </Link>
-
-                    {/* Item 2 */}
-                    <Link href="/servicios/mantenimiento-wordpress" className="group/item p-3 flex items-start gap-4 rounded-xl hover:bg-white/5 transition-all duration-300">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover/item:border-[#00ff8c]/50 group-hover/item:bg-[#00ff8c]/10 transition-all duration-300 shadow-sm">
-                        <svg className="w-6 h-6 text-zinc-300 group-hover/item:text-[#00ff8c] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-semibold text-white group-hover/item:text-[#00ff8c] transition-colors mb-1">Mantenimiento WP</h4>
-                        <p className="text-xs text-zinc-400 leading-relaxed font-normal">Seguridad y actualizaciones constantes.</p>
-                      </div>
-                    </Link>
-
-                    {/* Item 3 */}
-                    <Link href="/servicios/cro-optimizacion" className="group/item p-3 flex items-start gap-4 rounded-xl hover:bg-white/5 transition-all duration-300">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover/item:border-[#00ff8c]/50 group-hover/item:bg-[#00ff8c]/10 transition-all duration-300 shadow-sm">
-                        <svg className="w-6 h-6 text-zinc-300 group-hover/item:text-[#00ff8c] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-semibold text-white group-hover/item:text-[#00ff8c] transition-colors mb-1">CRO & Optimización</h4>
-                        <p className="text-xs text-zinc-400 leading-relaxed font-normal">Velocidad y rendimiento técnico superior.</p>
-                      </div>
-                    </Link>
-
-                    {/* Item 4 */}
-                    <Link href="/servicios/auditorias" className="group/item p-3 flex items-start gap-4 rounded-xl hover:bg-white/5 transition-all duration-300">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover/item:border-[#00ff8c]/50 group-hover/item:bg-[#00ff8c]/10 transition-all duration-300 shadow-sm">
-                        <svg className="w-6 h-6 text-zinc-300 group-hover/item:text-[#00ff8c] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-semibold text-white group-hover/item:text-[#00ff8c] transition-colors mb-1">Auditorías SEO/UX</h4>
-                        <p className="text-xs text-zinc-400 leading-relaxed font-normal">Diagnóstico completo de tu sitio web.</p>
-                      </div>
-                    </Link>
-
-                    {/* Item 5 */}
-                    <Link href="/servicios/product-design" className="group/item p-3 flex items-start gap-4 rounded-xl hover:bg-white/5 transition-all duration-300 col-span-1">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover/item:border-[#00ff8c]/50 group-hover/item:bg-[#00ff8c]/10 transition-all duration-300 shadow-sm">
-                        <svg className="w-6 h-6 text-zinc-300 group-hover/item:text-[#00ff8c] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-semibold text-white group-hover/item:text-[#00ff8c] transition-colors mb-1">Product design</h4>
-                        <p className="text-xs text-zinc-400 leading-relaxed font-normal">Experiencias intuitivas centradas en el usuario.</p>
-                      </div>
-                    </Link>
+                  <div className="grid grid-cols-3 gap-y-4" style={{ columnGap: 'calc(var(--spacing) * 2)' }}>
+                    {SERVICES_LINKS.map((link, index) => (
+                      <Link 
+                        key={link.href} 
+                        href={link.href} 
+                        onClick={() => setIsServicesOpen(false)} 
+                        className={`group/item p-3 flex items-start gap-4 rounded-xl hover:bg-white/5 transition-all duration-300 ${index === 4 ? 'col-span-1' : ''}`}
+                      >
+                        <div className="flex-shrink-0 w-[54px] h-[54px] rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover/item:border-[#00ff8c]/50 group-hover/item:bg-[#00ff8c]/10 transition-all duration-300 shadow-sm relative overflow-hidden">
+                          <Image src={link.icon} alt={link.title} fill className="object-contain p-2" />
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-semibold text-white group-hover/item:text-[#00ff8c] transition-colors mb-1">{link.title}</h4>
+                          <p className="text-[13px] text-zinc-400 leading-relaxed font-normal">{link.desc}</p>
+                        </div>
+                      </Link>
+                    ))}
                   </div>
 
                   {/* Footer link */}
                   <div className="mt-4 pt-4 border-t border-white/10 text-center">
                     <Link 
                       href="/servicios" 
+                      onClick={() => setIsServicesOpen(false)}
                       className="inline-flex items-center gap-2 text-sm font-medium text-zinc-300 hover:text-white transition-colors group/all"
                     >
                       Ver todos los servicios
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover/all:translate-x-1 transition-transform">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover/all:translate-x-1 transition-transform" aria-hidden="true">
                         <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
                       </svg>
                     </Link>
@@ -176,13 +200,14 @@ export function Navbar() {
               className="hover:text-white/70 p-2 transition-colors duration-200" 
               aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               {isMobileMenuOpen ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
               )}
@@ -193,39 +218,22 @@ export function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div 
+        id="mobile-menu"
         className={`fixed inset-0 z-40 bg-[#0f172a] backdrop-blur-lg pt-24 px-6 transition-all duration-300 md:hidden flex flex-col ${
           isMobileMenuOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"
         }`}
       >
         <div className="flex flex-col gap-6 text-lg font-medium text-white">
-          <Link 
-            href="/" 
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="border-b border-white/10 pb-4 hover:text-[#00ff8c] transition-colors"
-          >
-            Inicio
-          </Link>
-          <Link 
-            href="/nosotros" 
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="border-b border-white/10 pb-4 hover:text-[#00ff8c] transition-colors"
-          >
-            Nosotros
-          </Link>
-          <Link 
-            href="/servicios" 
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="border-b border-white/10 pb-4 hover:text-[#00ff8c] transition-colors"
-          >
-            Servicios
-          </Link>
-          <Link 
-            href="/blog" 
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="border-b border-white/10 pb-4 hover:text-[#00ff8c] transition-colors"
-          >
-            Blog
-          </Link>
+          {MAIN_LINKS.map((link) => (
+            <Link 
+              key={link.href}
+              href={link.href} 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="border-b border-white/10 pb-4 hover:text-[#00ff8c] transition-colors"
+            >
+              {link.title}
+            </Link>
+          ))}
           <a 
             href="https://calendly.com/codigonativo" 
             target="_blank"
