@@ -38,16 +38,23 @@ export async function generateMetadata({ params }: PageParams) {
 
   return {
     title: meta.title || `${post.title} | Código Nativo`,
-    description: meta.description || post.excerpt,
+    description: meta.description || 'Artículo técnico por Código Nativo.',
     openGraph: {
       title: meta.title || `${post.title} | Código Nativo`,
-      description: meta.description || post.excerpt,
+      description: meta.description || 'Artículo técnico por Código Nativo.',
       images: meta.image && typeof meta.image === 'object' && meta.image.url ? [
         {
           url: meta.image.url,
           width: 1200,
           height: 630,
           alt: meta.image.alt || meta.title || post.title,
+        }
+      ] : post.featuredImage && typeof post.featuredImage === 'object' && post.featuredImage.url ? [
+        {
+          url: post.featuredImage.url,
+          width: 1200,
+          height: 630,
+          alt: post.featuredImage.alt || post.title,
         }
       ] : [],
     },
@@ -136,12 +143,6 @@ export default async function BlogPostPage({ params }: PageParams) {
           <h1 className="text-4xl md:text-5xl lg:text-[55px] font-bold text-zinc-900 mb-6 tracking-tight leading-tight">
             {post.title}
           </h1>
-          
-          {post.excerpt && (
-            <p className="text-xl text-zinc-600 font-light leading-relaxed max-w-2xl mx-auto">
-              {post.excerpt}
-            </p>
-          )}
         </header>
 
         {/* Featured Image */}

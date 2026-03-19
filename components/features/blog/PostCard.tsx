@@ -6,14 +6,13 @@ interface Post {
   category?: string | null;
   publishedDate?: string | null;
   title: string;
-  excerpt?: string | null;
   slug: string;
   featuredImage?: any;
 }
 
 export function PostCard({ post, priority = false }: { post: Post; priority?: boolean }) {
-  // Calculte reading time roughly based on excerpt length or default to 4 min
-  const readingTime = post.excerpt ? Math.max(1, Math.ceil(post.excerpt.split(' ').length / 50)) : 4;
+  // Default reading time as excerpt is no longer used
+  const readingTime = 4;
 
   return (
     <Link 

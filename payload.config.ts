@@ -31,6 +31,22 @@ export default buildConfig({
   ].filter(Boolean),
   admin: {
     user: Users.slug,
+    meta: {
+      titleSuffix: '- Código Nativo',
+      icons: [
+        {
+          url: '/images/favicon/favicon.ico',
+          rel: 'icon',
+        },
+      ],
+      openGraph: {
+        images: [
+          {
+            url: '/images/favicon/apple-touch-icon.png',
+          },
+        ],
+      },
+    },
   },
   collections: [Users, Media, Testimonials, Posts],
   globals: [HomePage, PrivacyPolicy, PrivacyPolicyExtended, TermsAndConditions, CookiesPolicy],
@@ -45,8 +61,10 @@ export default buildConfig({
     seoPlugin({
       collections: ['posts'],
       uploadsCollection: 'media',
+      tabbedUI: true,
       generateTitle: ({ doc }) => `Código Nativo | ${doc.title}`,
-      generateDescription: ({ doc }) => doc.excerpt || 'Artículo técnico sobre desarrollo de software, diseño web, o tendencias digitales por Código Nativo.',
+      generateDescription: ({ doc }) => 'Artículo técnico sobre desarrollo de software, diseño web, o tendencias digitales por Código Nativo.',
+      generateImage: ({ doc }) => doc.featuredImage,
     }),
     s3Storage({
       collections: {

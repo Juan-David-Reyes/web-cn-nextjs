@@ -42,7 +42,6 @@ export default async function BlogPage({
     slug: doc.slug,
     category: doc.category,
     publishedDate: doc.publishedDate,
-    excerpt: doc.excerpt,
     featuredImage: doc.featuredImage,
   }));
 

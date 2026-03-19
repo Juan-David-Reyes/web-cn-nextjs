@@ -7,56 +7,60 @@ export const Posts: CollectionConfig = {
   },
   fields: [
     {
-      name: 'title',
-      type: 'text',
-      required: true,
-      label: 'Título',
-    },
-    {
-      name: 'slug',
-      type: 'text',
-      required: true,
-      unique: true,
-      admin: {
-        position: 'sidebar',
-      },
-    },
-    {
-      name: 'featuredImage',
-      type: 'upload',
-      relationTo: 'media',
-      label: 'Imagen Destacada',
-      admin: {
-        position: 'sidebar',
-      },
-    },
-    {
-      name: 'content',
-      type: 'richText',
-      label: 'Contenido',
-      admin: {
-        description: '✨ Redacta o pega el contenido de tu artículo aquí.',
-      }
-    },
-
-    {
-      name: 'excerpt',
-      type: 'textarea',
-      label: 'Resumen (Excerpt)',
-      admin: {
-        position: 'sidebar',
-      },
-    },
-    {
-      name: 'publishedDate',
-      type: 'date',
-      label: 'Fecha de publicación original',
-      admin: {
-        position: 'sidebar',
-        date: {
-          pickerAppearance: 'dayAndTime',
+      type: 'tabs',
+      tabs: [
+        {
+          label: 'Post',
+          fields: [
+            {
+              name: 'title',
+              type: 'text',
+              required: true,
+              label: 'Título',
+            },
+            {
+              name: 'slug',
+              type: 'text',
+              required: true,
+              unique: true,
+            },
+            {
+              name: 'featuredImage',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Imagen Destacada',
+            },
+            {
+              name: 'category',
+              type: 'text',
+              label: 'Categoría',
+            },
+            {
+              name: 'publishedDate',
+              type: 'date',
+              label: 'Fecha de publicación original',
+              admin: {
+                date: {
+                  pickerAppearance: 'dayAndTime',
+                },
+              },
+            },
+          ],
         },
-      },
+        {
+          label: 'Contenido',
+          fields: [
+            {
+              name: 'content',
+              type: 'richText',
+              label: false,
+              admin: {
+                description: '✨ Redacta o pega el contenido de tu artículo aquí.',
+              }
+            },
+          ],
+        },
+      ],
     },
     {
       name: 'status',
@@ -68,14 +72,6 @@ export const Posts: CollectionConfig = {
         { label: 'Borrador', value: 'draft' },
         { label: 'Oculto', value: 'hidden' },
       ],
-      admin: {
-        position: 'sidebar',
-      },
-    },
-    {
-      name: 'category',
-      type: 'text',
-      label: 'Categoría',
       admin: {
         position: 'sidebar',
       },
