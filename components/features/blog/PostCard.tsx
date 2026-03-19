@@ -28,6 +28,7 @@ export function PostCard({ post, priority = false }: { post: Post; priority?: bo
               src={post.featuredImage.url.replace(/^http:\/\/localhost:300[0-9]/, '').replace(/^http:\/\/127\.0\.0\.1:300[0-9]/, '')}
               alt={post.featuredImage.alt || post.title}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               priority={priority}
               className="object-cover opacity-80 group-hover:opacity-60 transition-opacity duration-500"
             />

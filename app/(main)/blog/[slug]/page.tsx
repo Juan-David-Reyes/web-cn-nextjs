@@ -151,6 +151,7 @@ export default async function BlogPostPage({ params }: PageParams) {
               src={post.featuredImage.url.replace(/^http:\/\/localhost:300[0-9]/, '').replace(/^http:\/\/127\.0\.0\.1:300[0-9]/, '')}
               alt={post.featuredImage.alt || post.title}
               fill
+              sizes="(max-width: 1024px) 100vw, 800px"
               className="object-cover"
               priority
             />
