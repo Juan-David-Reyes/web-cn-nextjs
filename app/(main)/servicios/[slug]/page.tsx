@@ -68,10 +68,10 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         <CtaBanner 
           title={
             <>
-              ¿Listo para dar el siguiente paso con <span className="text-[#3DBF15]">{service.title}</span>?
+              {service.cta.titlePrefix} <span className="font-[family-name:var(--font-playfair)] font-[450] italic tracking-[-0.02em] text-[#f1f5f9]">{service.cta.titleHighlight}</span>
             </>
           }
-          description="Escríbenos hoy y descubramos cómo podemos ayudarte a escalar tu negocio a través de la tecnología y el diseño estratégico."
+          description={service.cta.description}
           buttonText="Agendar asesoría gratis"
         />
       </div>

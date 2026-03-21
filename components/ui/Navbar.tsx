@@ -6,27 +6,27 @@ import { useState, useRef, useEffect } from "react";
 
 const SERVICES_LINKS = [
   {
-    title: "Desarrollo Web",
-    desc: "Sitios modernos de alto rendimiento.",
-    href: "/servicios/desarrollo-web",
+    title: "Diseño y desarrollo web",
+    desc: "Sitios modernos optimizados.",
+    href: "/servicios/diseno-web",
     icon: "/images/icon-services/web-design.svg"
   },
   {
-    title: "SEO Técnico",
-    desc: "Auditorías y optimización LCP/CLS.",
-    href: "/servicios/seo-tecnico",
+    title: "CRO y Optimización",
+    desc: "Rendimiento técnico superior.",
+    href: "/servicios/cro-optimizacion",
     icon: "/images/icon-services/optimizacion-web.svg"
   },
   {
-    title: "Mantenimiento Web",
-    desc: "Seguridad y evolución continua.",
-    href: "/servicios/mantenimiento-web",
-    icon: "/images/icon-services/mantenimiento-web.svg"
+    title: "Auditorías SEO/UX",
+    desc: "Diagnósticos profundos.",
+    href: "/servicios/auditorias",
+    icon: "/images/icon-services/auditorias.svg"
   },
   {
-    title: "Diseño UX/UI",
-    desc: "Sistemas centrados en la usabilidad.",
-    href: "/servicios/diseno-ux-ui",
+    title: "Product design",
+    desc: "Experiencias UX intuitivas.",
+    href: "/servicios/product-design",
     icon: "/images/icon-services/diseno-ux-ui.svg"
   }
 ];
