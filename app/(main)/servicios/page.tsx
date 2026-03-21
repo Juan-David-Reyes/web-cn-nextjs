@@ -14,36 +14,7 @@ export const metadata: Metadata = {
   }
 };
 
-const SERVICES_DATA = [
-  {
-    id: 1,
-    title: 'Desarrollo Web de Alto Rendimiento',
-    description: 'Creamos sitios web a medida usando tecnologías modernas como Next.js y React. Nos enfocamos en la velocidad de carga (Core Web Vitals), escalabilidad y una experiencia de usuario (UX) insuperable, garantizando un código limpio y seguro.',
-    link: '/contacto',
-    image: '/img/services-web-dev.jpg'
-  },
-  {
-    id: 2,
-    title: 'SEO Técnico y Análisis de Rendimiento',
-    description: 'Optimizamos la estructura interna de tu sitio para dominar los motores de búsqueda. Realizamos auditorías profundas, optimización de LCP/CLS y configuración de metadatos dinámicos para que tu negocio gane visibilidad real.',
-    link: '/contacto',
-    image: '/img/services-seo.jpg'
-  },
-  {
-    id: 3,
-    title: 'Mantenimiento y Evolución Continua',
-    description: 'No hacemos sitios para dejarlos abandonados. Ofrecemos actualizaciones de seguridad constantes, monitoreo de uptime, respaldos automatizados y mejoras iterativas para que tu plataforma nunca se quede atrás.',
-    link: '/contacto',
-    image: '/img/services-maintenance.jpg'
-  },
-  {
-    id: 4,
-    title: 'Diseño UX/UI y Sistemas de Diseño',
-    description: 'Diseñamos interfaces centradas en la conversión. Construimos Design Systems robustos que mantienen coherencia visual en todos tus productos digitales, aplicando principios de accesibilidad y psicología de color.',
-    link: '/contacto',
-    image: '/img/services-design.jpg'
-  }
-];
+import { SERVICES_DATA } from '@/lib/data/services';
 
 export default function ServicesPage() {
   return (
@@ -87,12 +58,12 @@ export default function ServicesPage() {
                     {service.title}
                   </h2>
                   <p className="text-lg text-zinc-600 leading-relaxed font-light">
-                    {service.description}
+                    {service.shortDescription}
                   </p>
                   
                   <div className={`flex justify-center ${isReverse ? 'lg:justify-end lg:w-full' : 'lg:justify-start'}`}>
                     <Link 
-                      href={service.link}
+                      href={`/servicios/${service.slug}`}
                       className="inline-flex items-center gap-3 bg-zinc-900 text-white rounded-[16px] px-8 py-4 text-base font-semibold transition-all duration-300 hover:bg-[#3DBF15] hover:shadow-[0_8px_16px_-6px_rgba(61,191,21,0.4)]"
                     >
                       <span>Ver más detalles</span>

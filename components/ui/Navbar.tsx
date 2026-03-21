@@ -6,33 +6,27 @@ import { useState, useRef, useEffect } from "react";
 
 const SERVICES_LINKS = [
   {
-    title: "Diseño y desarrollo web",
-    desc: "Sitios modernos y optimizados para CRO.",
-    href: "/servicios/diseno-web",
+    title: "Desarrollo Web",
+    desc: "Sitios modernos de alto rendimiento.",
+    href: "/servicios/desarrollo-web",
     icon: "/images/icon-services/web-design.svg"
   },
   {
-    title: "Mantenimiento Web",
-    desc: "Seguridad y actualizaciones constantes.",
-    href: "/servicios/mantenimiento-wordpress",
-    icon: "/images/icon-services/mantenimiento-web.svg"
-  },
-  {
-    title: "CRO & Optimización",
-    desc: "Velocidad y rendimiento técnico superior.",
-    href: "/servicios/cro-optimizacion",
+    title: "SEO Técnico",
+    desc: "Auditorías y optimización LCP/CLS.",
+    href: "/servicios/seo-tecnico",
     icon: "/images/icon-services/optimizacion-web.svg"
   },
   {
-    title: "Auditorías SEO/UX",
-    desc: "Diagnóstico completo de tu sitio web.",
-    href: "/servicios/auditorias",
-    icon: "/images/icon-services/auditorias.svg"
+    title: "Mantenimiento Web",
+    desc: "Seguridad y evolución continua.",
+    href: "/servicios/mantenimiento-web",
+    icon: "/images/icon-services/mantenimiento-web.svg"
   },
   {
-    title: "Product design",
-    desc: "Experiencias intuitivas centradas en el usuario.",
-    href: "/servicios/product-design",
+    title: "Diseño UX/UI",
+    desc: "Sistemas centrados en la usabilidad.",
+    href: "/servicios/diseno-ux-ui",
     icon: "/images/icon-services/diseno-ux-ui.svg"
   }
 ];
@@ -137,13 +131,13 @@ export function Navbar() {
                   className="bg-[#040f27] backdrop-blur-3xl border border-white/10 rounded-2xl p-6 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col gap-2"
                 >
                   
-                  <div className="grid grid-cols-3 gap-y-4" style={{ columnGap: 'calc(var(--spacing) * 2)' }}>
-                    {SERVICES_LINKS.map((link, index) => (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4" style={{ columnGap: 'calc(var(--spacing) * 2)' }}>
+                    {SERVICES_LINKS.map((link) => (
                       <Link 
                         key={link.href} 
                         href={link.href} 
                         onClick={() => setIsServicesOpen(false)} 
-                        className={`group/item p-3 flex items-start gap-4 rounded-xl hover:bg-white/5 transition-all duration-300 ${index === 4 ? 'col-span-1' : ''}`}
+                        className="group/item p-3 flex items-start gap-4 rounded-xl hover:bg-white/5 transition-all duration-300"
                       >
                         <div className="flex-shrink-0 w-[54px] h-[54px] rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover/item:border-[#00ff8c]/50 group-hover/item:bg-[#00ff8c]/10 transition-all duration-300 shadow-sm relative overflow-hidden">
                           <Image src={link.icon} alt={link.title} fill className="object-contain p-2" />
