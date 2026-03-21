@@ -19,7 +19,7 @@ export default async function BlogPage({
   const resolvedSearchParams = await searchParams;
   const pageParam = typeof resolvedSearchParams.page === 'string' ? resolvedSearchParams.page : '1';
   const currentPage = parseInt(pageParam, 10) || 1;
-  const limit = 18;
+  const limit = 12;
 
   const payload = await getPayload({ config: configPromise });
   const postsData = await payload.find({
