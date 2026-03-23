@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { CalendarPopupBtn } from "@/components/features/calendar/CalendarPopupBtn";
 
 const SERVICES_LINKS = [
   {
@@ -177,14 +178,11 @@ export function Navbar() {
           
           {/* Action Button */}
           <div className="hidden md:flex items-center">
-            <a 
-              href="https://calendly.com/codigonativo" 
-              target="_blank"
-              rel="noopener noreferrer"
+            <CalendarPopupBtn 
               className="text-sm text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full font-bold transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]"
             >
               Agendar Cita
-            </a>
+            </CalendarPopupBtn>
           </div>
           
           {/* Mobile Menu Button  */}
@@ -228,15 +226,12 @@ export function Navbar() {
               {link.title}
             </Link>
           ))}
-          <a 
-            href="https://calendly.com/codigonativo" 
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setIsMobileMenuOpen(false)}
+          <CalendarPopupBtn 
+            onOpen={() => setIsMobileMenuOpen(false)}
             className="mt-4 text-center text-sm text-black bg-white hover:bg-neutral-200 px-6 py-3 rounded-full font-bold transition-all duration-300"
           >
             Agendar Cita
-          </a>
+          </CalendarPopupBtn>
         </div>
       </div>
     </>

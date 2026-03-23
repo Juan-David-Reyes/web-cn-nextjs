@@ -68,7 +68,9 @@ export function ServicesBento({ data }: ServicesBentoProps) {
   const displayServices = data && data.length > 0 ? data : fallbackServices;
 
   return (
-    <section className="relative w-full py-24 px-4 overflow-hidden bg-[#0f172a]">
+    <section 
+      className="relative w-full py-24 px-4 overflow-hidden bg-[#0f172a] border-[16px] border-white rounded-[48px] my-10 max-w-[98%] mx-auto"
+    >
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-indigo-600/10 rounded-full blur-[150px] -z-10 mix-blend-screen pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-purple-600/10 rounded-full blur-[120px] -z-10 mix-blend-screen pointer-events-none" />

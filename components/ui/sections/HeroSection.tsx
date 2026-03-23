@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { CalendarPopupBtn } from "@/components/features/calendar/CalendarPopupBtn";
 
 interface HeroProps {
   data?: {
@@ -17,6 +18,13 @@ export function HeroSection({ data }: HeroProps) {
 
   return (
     <section className="relative w-full min-h-[90vh] flex flex-col justify-center pt-32 pb-20 overflow-hidden">
+      {/* Bottom White Gradient Blend */}
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white to-transparent z-0 pointer-events-none" />
+
+      {/* Background Glow Effects */}
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-purple-600/30 rounded-full blur-[120px] z-0 mix-blend-screen pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-[30rem] h-[30rem] bg-indigo-600/20 rounded-full blur-[150px] z-0 mix-blend-screen pointer-events-none" />
+
       {/* Background Image */}
       <Image
         src="/images/bg_herosection.webp"
@@ -25,13 +33,6 @@ export function HeroSection({ data }: HeroProps) {
         priority
         className="object-cover object-left absolute inset-0 z-0 pointer-events-none"
       />
-
-      {/* Background Glow Effects */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-purple-600/30 rounded-full blur-[120px] z-0 mix-blend-screen pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-[30rem] h-[30rem] bg-indigo-600/20 rounded-full blur-[150px] z-0 mix-blend-screen pointer-events-none" />
-      
-      {/* Grid Pattern overlay */}
-      <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-5 z-0 pointer-events-none" />
 
       <div className="relative z-10 w-full px-6 md:px-12 lg:px-[120px] text-left flex flex-col items-start">
         
@@ -59,20 +60,12 @@ export function HeroSection({ data }: HeroProps) {
             href="https://wa.me/573126357309?text=Hola,%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto" 
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 rounded-full border border-[#0f172a] bg-transparent hover:bg-[#0f172a]/5 transition-all duration-300 text-[#0f172a] font-medium"
+            className="group flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-3 rounded-full border border-[#0f172a] bg-transparent hover:bg-[#0f172a]/5 transition-all duration-300 text-[#0f172a] font-medium"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="w-6 h-6 text-[#0f172a] transition-colors"><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-1.08L45,214l10.91-32.74a8,8,0,0,0-1.08-6.54A88,88,0,1,1,128,216Z"></path></svg>
             Hablemos
           </Link>
-          <Link 
-            href="https://calendly.com/" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 rounded-full bg-[#0f172a] hover:bg-[#1e293b] transition-all duration-300 text-white font-medium shadow-lg shadow-[#0f172a]/20"
-          >
-            Agenda una auditoría
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"></path></svg>
-          </Link>
+          <CalendarPopupBtn />
         </div>
 
         {/* Tech Stack Logos */}

@@ -35,6 +35,7 @@ export function TestimonialsClient({ testimonials }: { testimonials: Testimonial
           width={300} 
           height={400} 
           className="object-contain"
+          style={{ width: 'auto', height: 'auto' }}
           priority
         />
       </div>
@@ -45,6 +46,7 @@ export function TestimonialsClient({ testimonials }: { testimonials: Testimonial
           width={300} 
           height={400} 
           className="object-contain"
+          style={{ width: 'auto', height: 'auto' }}
           priority
         />
       </div>
