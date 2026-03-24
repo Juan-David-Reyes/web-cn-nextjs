@@ -132,7 +132,6 @@ export function Footer() {
                   <li><Link href="/nosotros" className="text-[#64748b] hover:underline underline-offset-4 transition-all dark:text-neutral-400">Nosotros</Link></li>
                   <li><Link href="/blog" className="text-[#64748b] hover:underline underline-offset-4 transition-all dark:text-neutral-400">Blog</Link></li>
                   <li><Link href="/servicios" className="text-[#64748b] hover:underline underline-offset-4 transition-all dark:text-neutral-400">Servicios</Link></li>
-                  <li><Link href="/servicios/auditoria-web" className="text-[#64748b] hover:underline underline-offset-4 transition-all dark:text-neutral-400">Auditorías gratis</Link></li>
                 </ul>
               </div>
             </div>
@@ -151,9 +150,9 @@ export function Footer() {
               <div className={`grid transition-all duration-300 ease-in-out md:!grid-rows-[1fr] ${openMenu === 'services' ? 'grid-rows-[1fr] opacity-100 mb-4' : 'grid-rows-[0fr] opacity-0 md:opacity-100 md:mb-0'}`}>
                 <ul className="flex flex-col gap-2 text-[14px] overflow-hidden md:pb-0">
                   <li><Link href="/servicios/diseno-web" className="text-[#64748b] hover:underline underline-offset-4 transition-all dark:text-neutral-400">Diseño y desarrollo Web</Link></li>
-                  <li><Link href="/servicios/optimizacion-web" className="text-[#64748b] hover:underline underline-offset-4 transition-all dark:text-neutral-400">CRO & Optimización</Link></li>
-                  <li><Link href="/servicios/diseno-ux-ui" className="text-[#64748b] hover:underline underline-offset-4 transition-all dark:text-neutral-400">Product Design UX/UI</Link></li>
-                  <li><Link href="/servicios/mantenimiento-web" className="text-[#64748b] hover:underline underline-offset-4 transition-all dark:text-neutral-400">Mantenimiento web</Link></li>
+                  <li><Link href="/servicios/cro-optimizacion" className="text-[#64748b] hover:underline underline-offset-4 transition-all dark:text-neutral-400">CRO & Optimización</Link></li>
+                  <li><Link href="/servicios/product-design" className="text-[#64748b] hover:underline underline-offset-4 transition-all dark:text-neutral-400">Product Design UX/UI</Link></li>
+                  <li><Link href="/servicios/auditorias" className="text-[#64748b] hover:underline underline-offset-4 transition-all dark:text-neutral-400">Auditoría SEO/UX</Link></li>
                 </ul>
               </div>
             </div>

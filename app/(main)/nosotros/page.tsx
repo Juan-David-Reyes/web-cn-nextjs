@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 import { TeamGrid } from "@/components/features/nosotros/TeamGrid";
-import { TestimonialsSection } from "@/components/features/nosotros/TestimonialsSection";
+import { Testimonials } from "@/components/ui/sections/Testimonials";
+import { CtaBanner } from "@/components/ui/sections/CtaBanner";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 export const metadata: Metadata = {
@@ -118,34 +119,20 @@ export default function NosotrosPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 bg-zinc-100 dark:bg-zinc-900/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-16">Lo que nuestros clientes dicen de nuestra agencia</h2>
-          <TestimonialsSection />
-        </div>
-      </section>
+      <Testimonials />
 
       {/* Final CTA */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[#3dbf15]/10 dark:bg-[#3dbf15]/5"></div>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">
-            Tu sitio web es clave para tu negocio. <span className="text-[#3dbf15]">Cuídalo</span>
-          </h2>
-          <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl mx-auto">
-            Evita problemas técnicos, pérdida de ventas y riesgos de seguridad. Nosotros nos encargamos del mantenimiento de tu sitio mientras tú te enfocas en crecer tu negocio.
-          </p>
-          <Link 
-            href="/contacto" 
-            className="inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-full text-white bg-[#3dbf15] hover:bg-[#2fa30e] transition-all duration-300 shadow-lg shadow-[#3dbf15]/25 hover:shadow-[#3dbf15]/40 hover:-translate-y-1"
-          >
-            Solicitar información
-            <svg className="ml-2 -mr-1 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </Link>
-        </div>
-      </section>
+      <div className="relative z-20 w-full overflow-hidden">
+        <CtaBanner 
+          title={
+            <>
+              Tu sitio web es clave para tu negocio. <span className="font-[family-name:var(--font-playfair)] font-[450] italic tracking-[-0.02em] text-[#f1f5f9]">Cuídalo</span>
+            </>
+          }
+          description="Evita problemas técnicos, pérdida de ventas y riesgos de seguridad. Nosotros nos encargamos del mantenimiento de tu sitio mientras tú te enfocas en crecer tu negocio."
+          buttonText="Solicitar información"
+        />
+      </div>
 
     </main>
   );

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { PostCard } from '@/components/features/blog/PostCard';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { CtaBanner } from '@/components/ui/sections/CtaBanner';
@@ -19,12 +20,14 @@ export default async function BlogPage({
   const resolvedSearchParams = await searchParams;
   const pageParam = typeof resolvedSearchParams.page === 'string' ? resolvedSearchParams.page : '1';
   const currentPage = parseInt(pageParam, 10) || 1;
+  const categoryParam = typeof resolvedSearchParams.category === 'string' ? resolvedSearchParams.category : undefined;
   const limit = 12;
 
   const payload = await getPayload({ config: configPromise });
   const postsData = await payload.find({
     collection: 'posts',
     where: {
+      ...(categoryParam ? { category: { equals: categoryParam } } : {}),
       status: {
         equals: 'publish',
       },
@@ -72,11 +75,11 @@ export default async function BlogPage({
 
         {/* Categories Filter */}
         <div className="flex flex-wrap items-center justify-center gap-3 mb-16 px-4">
-          <button className="bg-slate-700 text-white rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:shadow-[0_11px_16px_-10px_#d4afff]">
+          <Link href="/blog" scroll={false} className={`rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 hover:shadow-[0_11px_16px_-10px_#d4afff] ${!categoryParam ? "bg-slate-700 text-white" : "bg-white text-slate-700"}`}>
             Ver todos
-          </button>
+          </Link>
           
-          <button className="flex items-center gap-2 bg-white text-slate-700 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:shadow-[0_11px_16px_-10px_#d4afff]">
+          <Link href="?category=Dise%C3%B1o%20Web" scroll={false} className={`flex items-center gap-2 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 hover:shadow-[0_11px_16px_-10px_#d4afff] ${categoryParam === 'Diseño Web' ? "bg-slate-700 text-white" : "bg-white text-slate-700"}`}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="w-4 h-4 flex-shrink-0">
               <defs>
                 <linearGradient id="SVGpFOXGdpp" x1="62.102%" x2="108.197%" y1="0%" y2="37.864%"><stop offset="0%" stopColor="#4285eb"></stop><stop offset="100%" stopColor="#2ec7ff"></stop></linearGradient>
@@ -92,9 +95,9 @@ export default async function BlogPage({
               </g>
             </svg>
             Diseño Web
-          </button>
+          </Link>
           
-          <button className="flex items-center gap-2 bg-white text-slate-700 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:shadow-[0_11px_16px_-10px_#d4afff]">
+          <Link href="?category=Emprendimiento" scroll={false} className={`flex items-center gap-2 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 hover:shadow-[0_11px_16px_-10px_#d4afff] ${categoryParam === 'Emprendimiento' ? "bg-slate-700 text-white" : "bg-white text-slate-700"}`}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" className="w-4 h-4 flex-shrink-0">
               <g fill="none">
                 <path fill="#fff" d="M5.5 3.312a3.25 3.25 0 0 0-1.436 3.9c.12.335.48.503.824.412c1.737-.46 3.505-1.705 4.58-2.675c.284-.257.343-.687.09-.975A3.25 3.25 0 0 0 5.5 3.312"></path>
@@ -104,9 +107,9 @@ export default async function BlogPage({
               </g>
             </svg>
             Emprendimiento
-          </button>
+          </Link>
           
-          <button className="flex items-center gap-2 bg-white text-slate-700 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:shadow-[0_11px_16px_-10px_#d4afff]">
+          <Link href="?category=Marketing%20Digital" scroll={false} className={`flex items-center gap-2 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 hover:shadow-[0_11px_16px_-10px_#d4afff] ${categoryParam === 'Marketing Digital' ? "bg-slate-700 text-white" : "bg-white text-slate-700"}`}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="w-4 h-4 flex-shrink-0">
               <defs>
                 <linearGradient id="SVGCmOW1cKl" x1="0%" x2="99.999%" y1="50%" y2="50%">
@@ -124,17 +127,17 @@ export default async function BlogPage({
               <path fill="#34a853" d="M37.5 173.3c12.5-12.5 32.7-12.5 45.2 0s12.5 32.8 0 45.3s-32.7 12.5-45.2 0s-12.5-32.8 0-45.3"></path>
             </svg>
             Marketing Digital
-          </button>
+          </Link>
           
-          <button className="flex items-center gap-2 bg-white text-slate-700 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:shadow-[0_11px_16px_-10px_#d4afff]">
+          <Link href="?category=SEO" scroll={false} className={`flex items-center gap-2 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 hover:shadow-[0_11px_16px_-10px_#d4afff] ${categoryParam === 'SEO' ? "bg-slate-700 text-white" : "bg-white text-slate-700"}`}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 284" className="w-4 h-4 flex-shrink-0">
               <path fill="#f9ab00" d="M256.003 247.933a35.224 35.224 0 0 1-39.376 35.161c-18.044-2.67-31.266-18.371-30.826-36.606V36.845C185.365 18.591 198.62 2.881 216.687.24a35.22 35.22 0 0 1 39.316 35.16z"></path>
               <path fill="#e37400" d="M35.101 213.193c19.386 0 35.101 15.716 35.101 35.101c0 19.386-15.715 35.101-35.101 35.101S0 267.68 0 248.295s15.715-35.102 35.101-35.102m92.358-106.387c-19.477 1.068-34.59 17.406-34.137 36.908v94.285c0 25.588 11.259 41.122 27.755 44.433a35.16 35.16 0 0 0 42.146-34.56V142.089a35.22 35.22 0 0 0-35.764-35.282"></path>
             </svg>
             SEO
-          </button>
+          </Link>
           
-          <button className="flex items-center gap-2 bg-white text-slate-700 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 cursor-pointer hover:shadow-[0_11px_16px_-10px_#d4afff]">
+          <Link href="?category=Tecnolog%C3%ADa" scroll={false} className={`flex items-center gap-2 rounded-[16px] px-5 py-3 text-sm font-medium transition-all duration-500 hover:shadow-[0_11px_16px_-10px_#d4afff] ${categoryParam === 'Tecnología' ? "bg-slate-700 text-white" : "bg-white text-slate-700"}`}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" className="w-4 h-4 flex-shrink-0">
               <g fill="none">
                 <path fill="#d7e0ff" d="M10.5 2.5h-7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1"></path>
@@ -144,7 +147,7 @@ export default async function BlogPage({
               </g>
             </svg>
             Tecnología
-          </button>
+          </Link>
         </div>
 
         {/* Grid of Posts */}
@@ -154,7 +157,7 @@ export default async function BlogPage({
           <div className="flex flex-col gap-8 md:hidden">
             {POSTS.map((post, index) => (
                <div key={post.id} className={`w-full ${index % 2 === 0 ? "h-[470px]" : "h-[300px]"}`}>
-                 <PostCard post={post} priority={index < 6} />
+                 <PostCard post={post} priority={false} />
                </div>
             ))}
           </div>
@@ -167,7 +170,7 @@ export default async function BlogPage({
                   const originalIndex = POSTS.indexOf(post);
                   return (
                     <div key={post.id} className={`w-full ${originalIndex % 2 === 0 ? "h-[470px]" : "h-[300px]"}`}>
-                      <PostCard post={post} priority={originalIndex < 6} />
+                      <PostCard post={post} priority={false} />
                     </div>
                   );
                 })}
@@ -183,7 +186,7 @@ export default async function BlogPage({
                   const originalIndex = POSTS.indexOf(post);
                   return (
                     <div key={post.id} className={`w-full ${originalIndex % 2 === 0 ? "h-[470px]" : "h-[300px]"}`}>
-                      <PostCard post={post} priority={originalIndex < 6} />
+                      <PostCard post={post} priority={false} />
                     </div>
                   );
                 })}

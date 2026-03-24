@@ -39,7 +39,7 @@ export function PostCard({ post, priority = false }: { post: Post; priority?: bo
               alt="Código Nativo Placeholder"
               width={120}
               height={40}
-              className="opacity-10 grayscale brightness-0"
+              className="opacity-10 grayscale brightness-0 w-auto h-auto"
             />
           </div>
         )}
