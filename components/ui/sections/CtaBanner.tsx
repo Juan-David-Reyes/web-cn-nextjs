@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { CalendarPopupBtn } from '@/components/features/calendar/CalendarPopupBtn'
 
 interface CtaBannerProps {
   title?: React.ReactNode;
@@ -40,12 +41,20 @@ export function CtaBanner({
           {description || "Agenda una consultoría gratuita y descubramos cómo podemos ayudarte a destacar en el mundo digital."}
         </p>
 
-        <Link 
-          href={buttonLink}
-          className="inline-flex items-center justify-center px-8 h-[45px] bg-[#00ff8c] rounded-[8px] text-[#1e293b] font-semibold transition-all duration-300 ease-in-out hover:opacity-90 hover:scale-105 shadow-[0_0_15px_rgba(0,255,140,0.3)] hover:shadow-[0_0_25px_rgba(0,255,140,0.5)]"
-        >
-          {buttonText}
-        </Link>
+        {buttonLink === "/contacto" ? (
+          <CalendarPopupBtn 
+            className="inline-flex items-center justify-center px-8 h-[45px] bg-[#00ff8c] rounded-[8px] text-[#1e293b] font-semibold transition-all duration-300 ease-in-out hover:opacity-90 hover:scale-105 shadow-[0_0_15px_rgba(0,255,140,0.3)] hover:shadow-[0_0_25px_rgba(0,255,140,0.5)] cursor-pointer"
+          >
+            {buttonText}
+          </CalendarPopupBtn>
+        ) : (
+          <Link 
+            href={buttonLink}
+            className="inline-flex items-center justify-center px-8 h-[45px] bg-[#00ff8c] rounded-[8px] text-[#1e293b] font-semibold transition-all duration-300 ease-in-out hover:opacity-90 hover:scale-105 shadow-[0_0_15px_rgba(0,255,140,0.3)] hover:shadow-[0_0_25px_rgba(0,255,140,0.5)]"
+          >
+            {buttonText}
+          </Link>
+        )}
       </div>
     </section>
   )
