@@ -88,13 +88,11 @@ export function HeroSection({ data }: HeroProps) {
                 className="group relative w-10 h-10 flex items-center justify-center hover:-translate-y-2 transition-all duration-300"
                 title={tech.name}
               >
-                {/* Image using native img tag inside the Next relative structure 
-                    (Icons are usually pure SVGs under public/images) */}
-                <img 
+                <Image 
                   src={`/images/herramientas/${tech.icon}`} 
                   alt={`${tech.name} logo`}
-                  className="w-full h-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 drop-shadow-md"
-                  loading="lazy"
+                  fill
+                  className="object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 drop-shadow-md"
                 />
               </div>
             ))}

@@ -1,5 +1,6 @@
-import Link from 'next/link'
-import { CalendarPopupBtn } from '@/components/features/calendar/CalendarPopupBtn'
+import Link from 'next/link';
+import Image from 'next/image';
+import { CalendarPopupBtn } from '@/components/features/calendar/CalendarPopupBtn';
 
 interface CtaBannerProps {
   title?: React.ReactNode;
@@ -17,8 +18,8 @@ export function CtaBanner({
   return (
     <section className="relative w-full py-[140px] px-4 bg-[#0f172a] rounded-b-[24px] overflow-hidden">
       {/* Decorative SVG Circles */}
-      <img src="/images/circle.svg" alt="" aria-hidden="true" className="absolute bottom-0 -left-[5%] w-full max-w-[350px] h-full object-contain pointer-events-none" />
-      <img src="/images/circle.svg" alt="" aria-hidden="true" className="absolute top-0 -right-[5%] w-full max-w-[350px] h-full object-contain pointer-events-none rotate-180" />
+      <Image src="/images/circle.svg" alt="" aria-hidden="true" fill priority={false} className="absolute bottom-0 -left-[5%] w-full max-w-[350px] object-contain pointer-events-none opacity-50" />
+      <Image src="/images/circle.svg" alt="" aria-hidden="true" fill priority={false} className="absolute top-0 -right-[5%] w-full max-w-[350px] object-contain pointer-events-none rotate-180 opacity-50" />
 
 
 
