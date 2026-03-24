@@ -6,59 +6,81 @@ import { useEffect, useRef, useState } from 'react';
 
 export function Footer() {
   const footerRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const [footerHeight, setFooterHeight] = useState(0);
-  const [offset, setOffset] = useState(200);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
-  const [isDesktop, setIsDesktop] = useState(true);
 
   const toggleMenu = (menu: string) => {
     setOpenMenu(openMenu === menu ? null : menu);
   };
 
   useEffect(() => {
-    // 0. Detect screen size
-    const checkScreen = () => setIsDesktop(window.innerWidth >= 1024);
-    checkScreen();
-    window.addEventListener('resize', checkScreen);
+    let ticking = false;
+    let isDesktop = window.innerWidth >= 1024;
+    let cachedDocHeight = 0;
+    let cachedWinHeight = 0;
+    let cachedFooterHeight = 0;
 
-    // 1. Measure footer height dynamically
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        setFooterHeight(entry.contentRect.height);
+    const updateDimensions = () => {
+      isDesktop = window.innerWidth >= 1024;
+      cachedWinHeight = window.innerHeight;
+      cachedDocHeight = document.documentElement.scrollHeight;
+      
+      if (footerRef.current) {
+        cachedFooterHeight = footerRef.current.offsetHeight;
+        // Solo actualizamos React state si cambia, para el spacer inicial
+        setFooterHeight((prev) => Math.abs(prev - cachedFooterHeight) > 10 ? cachedFooterHeight : prev);
       }
+
+      if (!isDesktop && contentRef.current) {
+        contentRef.current.style.transform = 'none';
+      }
+    };
+
+    updateDimensions();
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateDimensions();
     });
 
     if (footerRef.current) {
       resizeObserver.observe(footerRef.current);
     }
+    resizeObserver.observe(document.body);
 
-    // 2. Parallax scroll effect
     const handleScroll = () => {
-      if (!footerRef.current) return;
+      if (!contentRef.current || !isDesktop) return;
       
       const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      
-      const distanceToBottom = documentHeight - (scrollY + windowHeight);
-      const currentFooterHeight = footerRef.current.offsetHeight;
+      const distanceToBottom = cachedDocHeight - (scrollY + cachedWinHeight);
       
       let newOffset = 200;
-      if (distanceToBottom < currentFooterHeight) {
-        const progress = 1 - (distanceToBottom / currentFooterHeight);
+      if (distanceToBottom < cachedFooterHeight) {
+        const progress = 1 - (distanceToBottom / cachedFooterHeight);
         newOffset = 200 * (1 - Math.min(1, Math.max(0, progress)));
       }
       
-      setOffset(newOffset);
+      contentRef.current.style.transform = `translate3d(0, ${newOffset}px, 0)`;
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('resize', updateDimensions, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
     handleScroll();
 
     return () => {
-      window.removeEventListener('resize', checkScreen);
+      window.removeEventListener('resize', updateDimensions);
+      window.removeEventListener('scroll', onScroll);
       resizeObserver.disconnect();
-      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -72,8 +94,9 @@ export function Footer() {
         className="relative lg:fixed bottom-0 left-0 w-full min-h-[460px] flex flex-col bg-white pt-16 pb-4 text-neutral-600 dark:bg-neutral-950 dark:border-neutral-900/50 dark:text-neutral-300 z-0"
       >
         <div 
-          className="container mx-auto px-4 max-w-[1440px] will-change-transform ease-out flex-1 flex flex-col justify-between"
-          style={{ transform: isDesktop ? `translateY(${offset}px)` : 'none' }}
+          ref={contentRef}
+          className="container mx-auto px-4 max-w-[1440px] will-change-transform transform-gpu flex-1 flex flex-col justify-between"
+          style={{ transform: 'none' }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 mb-8 md:mb-16">
           
