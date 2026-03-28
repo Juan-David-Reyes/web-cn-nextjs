@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 import { TeamGrid } from "@/components/features/nosotros/TeamGrid";
+import { BrandsSlider } from "@/components/features/nosotros/BrandsSlider";
 import { Testimonials } from "@/components/ui/sections/Testimonials";
 import { CtaBanner } from "@/components/ui/sections/CtaBanner";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -17,38 +18,43 @@ export default function NosotrosPage() {
       {/* Background Effects */}
       <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-50"></div>
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
-        <div className="text-center max-w-4xl mx-auto space-y-8 flex flex-col items-center">
-          
-          <div className="w-full flex justify-center mb-2">
-            <Breadcrumbs items={[{ label: 'Sobre Nosotros' }]} />
-          </div>
+      {/* Banner Image */}
+      <div className="w-full relative h-[50vh] max-h-[400px] bg-zinc-200 dark:bg-zinc-800">
+        <Image 
+          src="/images/fondo-nosotros.webp" 
+          alt="Sobre Nosotros: Equipo Código Nativo"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#3dbf15]/10 text-[#3dbf15] border border-[#3dbf15]/20 font-medium text-sm mb-4 animate-fade-in-up">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#3dbf15] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#3dbf15]"></span>
-            </span>
-            Sobre Nosotros
-          </div>
-          
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance">
-            Realizamos estrategias, diseño y desarrollo para crear{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3dbf15] to-emerald-400">
-              productos de valor
-            </span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 font-medium max-w-2xl mx-auto">
-            Cambiando la forma en que la gente piensa sobre UX/UI.
-          </p>
+      {/* Hero Content */}
+      <div className="w-full bg-[#FFFFFF] dark:bg-[#0a0a0a] rounded-t-[48px] -mt-12 relative z-10">
+        <section className="relative pt-12 pb-16 lg:pb-24 px-4 sm:px-6 lg:px-8 w-full">
+          <div className="w-full flex flex-col">
+            
+            <div className="w-full flex justify-start mb-12 lg:mb-16">
+              <Breadcrumbs items={[{ label: 'Sobre Nosotros' }]} />
+            </div>
 
-          <p className="text-lg text-zinc-500 dark:text-zinc-500 max-w-3xl mx-auto leading-relaxed">
-            ¿Quieres más visibilidad para tu marca? ¿Más ventas? ¿Mejores clientes? ¿Más reputación de marca? Conseguimos resultados para que tu negocio genere más ventas usando nuestro Sistema de Marketing Nativo.
-          </p>
-        </div>
-      </section>
+            <div className="space-y-6 flex flex-col items-center text-center w-full max-w-[1200px] mx-auto">
+              <span className="text-[14px] uppercase tracking-[4px] leading-[160%] inline-block font-normal text-[#334155] dark:text-zinc-400">
+                SOBRE NOSOTROS
+              </span>
+              
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#0f172a] dark:text-zinc-100 leading-tight text-balance">
+                Realizamos <span className="font-[family-name:var(--font-playfair)] font-[450] italic tracking-[-0.02em] font-normal">estrategias, diseño y desarrollo</span> para crear productos de valor
+              </h1>
+
+              <p className="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl mt-2 mx-auto">
+                ¿Quieres más visibilidad para tu marca? ¿Más ventas? ¿Mejores clientes? ¿Más reputación de marca? Conseguimos resultados para que tu negocio genere más ventas usando nuestro Sistema de Marketing Nativo.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
 
       {/* Services Grid Section */}
       <section className="py-24 bg-white dark:bg-zinc-900/50 border-y border-zinc-200 dark:border-zinc-800">
@@ -107,16 +113,22 @@ export default function NosotrosPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-24">
+      <section className="py-24 w-full bg-[#FFFFFF] dark:bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Nuestro equipo</h2>
-            <div className="w-20 h-1 bg-[#3dbf15] mx-auto rounded-full mb-6"></div>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">Conoce a las mentes detrás de Código Nativo.</p>
+            <span className="text-[14px] uppercase tracking-[4px] leading-[160%] mb-[16px] inline-block font-normal text-[#334155] dark:text-zinc-400">
+              TEAM
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-[#0f172a] dark:text-zinc-100 mb-6">
+              Nuestro equipo
+            </h2>
           </div>
           <TeamGrid />
         </div>
       </section>
+
+      {/* Brands Slider Section */}
+      <BrandsSlider />
 
       {/* Testimonials */}
       <Testimonials />
