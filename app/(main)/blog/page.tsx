@@ -49,7 +49,7 @@ export default async function BlogPage({
   }));
 
   return (
-    <main className="min-h-screen bg-[#f5f7fa] pt-32 relative z-10 w-full mx-auto overflow-hidden">
+    <main className="min-h-screen bg-[#f5f7fa] pt-32 relative z-10 w-full mx-auto">
       {/* Container aligned with max-width */}
       <div className="max-w-[1440px] mx-auto w-full px-6 pb-24">
         {/* Header Section */}
@@ -152,48 +152,13 @@ export default async function BlogPage({
 
         {/* Grid of Posts */}
         <section aria-label="Artículos del blog" className="pb-24">
-          
-          {/* Mobile Grid (1 column) */}
-          <div className="flex flex-col gap-8 md:hidden">
-            {POSTS.map((post, index) => (
-               <div key={post.id} className={`w-full ${index % 2 === 0 ? "h-[470px]" : "h-[300px]"}`}>
-                 <PostCard post={post} priority={index < 3} />
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+            {POSTS.map((post: any, index: number) => (
+               <div key={post.id} className={`break-inside-avoid w-full ${index % 2 === 0 ? "h-[470px]" : "h-[300px]"}`}>
+                 <PostCard post={post} priority={index < 6} />
                </div>
             ))}
           </div>
-
-          {/* Tablet Grid (2 columns) */}
-          <div className="hidden md:grid lg:hidden grid-cols-2 gap-8 items-start">
-            {[0, 1].map((colIndex: number) => (
-              <div key={colIndex} className="flex flex-col gap-8">
-                {POSTS.filter((_: any, i: number) => i % 2 === colIndex).map((post: any) => {
-                  const originalIndex = POSTS.indexOf(post);
-                  return (
-                    <div key={post.id} className={`w-full ${originalIndex % 2 === 0 ? "h-[470px]" : "h-[300px]"}`}>
-                      <PostCard post={post} priority={originalIndex < 4} />
-                    </div>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
-
-          {/* Desktop Grid (3 columns) */}
-          <div className="hidden lg:grid grid-cols-3 gap-8 items-start">
-            {[0, 1, 2].map((colIndex: number) => (
-              <div key={colIndex} className="flex flex-col gap-8">
-                {POSTS.filter((_: any, i: number) => i % 3 === colIndex).map((post: any) => {
-                  const originalIndex = POSTS.indexOf(post);
-                  return (
-                    <div key={post.id} className={`w-full ${originalIndex % 2 === 0 ? "h-[470px]" : "h-[300px]"}`}>
-                      <PostCard post={post} priority={originalIndex < 6} />
-                    </div>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
-
         </section>
 
         {totalPages > 1 && (
