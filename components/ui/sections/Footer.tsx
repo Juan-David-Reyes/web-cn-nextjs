@@ -17,9 +17,9 @@ export function Footer() {
         className="relative w-full flex flex-col bg-white pt-16 pb-4 text-neutral-600 dark:bg-neutral-950 dark:border-neutral-900/50 dark:text-neutral-300 z-10"
       >
         <div 
-          className="container mx-auto px-4 max-w-[1440px] flex-1 flex flex-col justify-between"
+          className="container mx-auto px-4 max-w-[1280px] flex-1 flex flex-col justify-between"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 mb-8 md:mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 mb-10">
           
           {/* Brand & Info Column */}
           <div className="lg:col-span-5 flex flex-col gap-6">
@@ -36,7 +36,7 @@ export function Footer() {
               En <strong className="text-neutral-900 font-semibold dark:text-white">Código Nativo</strong> creamos experiencias digitales inolvidables para tus usuarios, con un enfoque en la usabilidad, el diseño intuitivo y la optimización del rendimiento.
             </p>
 
-            <div className="mt-4 flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <h4 className="text-neutral-900 font-semibold mb-3 dark:text-white ">Certificados en:</h4>
               <a 
                 href="https://www.credential.net/6e48a1a4-101e-4b2e-a9e9-475150e8f2ec" 
@@ -122,7 +122,7 @@ export function Footer() {
                     <span className="text-neutral-800 font-semibold">WhatsApp:</span>
                     <a href="https://wa.me/573126357309" className="text-[#64748b] hover:underline underline-offset-4 transition-all dark:text-neutral-300">(+57) 312 6357309</a>
                   </li>
-                  <li className="flex gap-1">
+                  <li className="flex flex-col gap-1 items-start text-left">
                     <span className="text-neutral-800 font-semibold">Ubicación:</span>
                     <address className="not-italic text-[#64748b] dark:text-neutral-300">Calle 66C # 60 - 65,<br/>Bogotá D.C., Colombia.</address>
                   </li>
@@ -138,7 +138,7 @@ export function Footer() {
         </div>
 
         {/* Copyright Bar */}
-        <div className="pt-4 border-t border-neutral-200 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-500 dark:border-neutral-900/50">
+        <div className="pt-4 border-t border-neutral-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-500 dark:border-neutral-900/50">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
             <p><strong className="text-neutral-900 font-medium dark:text-neutral-400">© 2026 Código Nativo</strong>. Todos los derechos reservados.</p>
             <span className="hidden sm:inline text-neutral-300 dark:text-neutral-800">|</span>

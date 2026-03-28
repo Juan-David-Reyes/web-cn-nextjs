@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 interface CalendarPopupBtnProps {
   className?: string;
@@ -10,6 +11,11 @@ interface CalendarPopupBtnProps {
 
 export function CalendarPopupBtn({ className, children, onOpen }: CalendarPopupBtnProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Prevent scrolling on body when modal is open
   useEffect(() => {
@@ -46,7 +52,7 @@ export function CalendarPopupBtn({ className, children, onOpen }: CalendarPopupB
       </button>
 
       {/* Custom Modal with Google Calendar iframe inside */}
-      {isOpen && (
+      {mounted && isOpen && createPortal(
         <div 
           className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200"
           onClick={(e) => {
@@ -81,7 +87,8 @@ export function CalendarPopupBtn({ className, children, onOpen }: CalendarPopupB
               />
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

@@ -12,6 +12,23 @@ export const metadata: Metadata = {
   description: 'Artículos y Novedades sobre Diseño Web, SEO y Marketing Digital.',
 };
 
+const getMasonryHeight = (index: number) => {
+  const isTall = [
+    true, false, true, false, 
+    false, true, false, true, 
+    true, false, true, false
+  ][index % 12];
+  return isTall ? "h-[470px]" : "h-[300px]";
+};
+
+const getBreakClass = (total: number, index: number) => {
+  if (total === 4) {
+    if (index === 1) return "md:break-after-column lg:break-after-column";
+    if (index === 2) return "lg:break-after-column";
+  }
+  return "";
+};
+
 export default async function BlogPage({ 
   searchParams 
 }: { 
@@ -154,7 +171,7 @@ export default async function BlogPage({
         <section aria-label="Artículos del blog" className="pb-24">
           <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
             {POSTS.map((post: any, index: number) => (
-               <div key={post.id} className={`break-inside-avoid w-full ${index % 2 === 0 ? "h-[470px]" : "h-[300px]"}`}>
+               <div key={post.id} className={`break-inside-avoid w-full ${getMasonryHeight(index)} ${getBreakClass(POSTS.length, index)}`}>
                  <PostCard post={post} priority={index < 6} />
                </div>
             ))}
