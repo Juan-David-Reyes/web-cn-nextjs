@@ -18,16 +18,18 @@ export default function NosotrosPage() {
       {/* Background Effects */}
       <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-50"></div>
 
-      {/* Banner Image */}
-      <div className="w-full relative h-[50vh] max-h-[400px] bg-zinc-200 dark:bg-zinc-800">
-        <Image 
-          src="/images/fondo-nosotros.webp" 
-          alt="Sobre Nosotros: Equipo Código Nativo"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+      {/* Banner Image - Parallax */}
+      <div className="w-full relative h-[480px] bg-zinc-200 dark:bg-zinc-800 [clip-path:inset(0)]">
+        <div className="fixed inset-x-0 top-0 h-[480px]">
+          <Image 
+            src="/images/fondo-nosotros.webp" 
+            alt="Sobre Nosotros: Equipo Código Nativo"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
       </div>
 
       {/* Hero Content */}
@@ -57,7 +59,7 @@ export default function NosotrosPage() {
       </div>
 
       {/* Services Grid Section */}
-      <section className="py-24 bg-white dark:bg-zinc-900/50 border-y border-zinc-200 dark:border-zinc-800">
+      <section className="relative w-[calc(100%-32px)] mx-auto py-24 bg-white dark:bg-zinc-900/50 rounded-[24px] border border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Agencia digital con tecnología y diseño</h2>

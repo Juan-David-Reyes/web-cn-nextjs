@@ -66,7 +66,7 @@ export default async function BlogPage({
   }));
 
   return (
-    <main className="min-h-screen bg-[#f5f7fa] pt-32 relative z-10 w-full mx-auto">
+    <main className="min-h-screen pt-32 relative z-10 w-full mx-auto">
       {/* Container aligned with max-width */}
       <div className="max-w-[1440px] mx-auto w-full px-6 pb-24">
         {/* Header Section */}

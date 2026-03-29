@@ -18,7 +18,7 @@ import { SERVICES_DATA } from '@/lib/data/services';
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-[#f5f7fa] pt-32 relative z-10 w-full mx-auto overflow-hidden">
+    <main className="min-h-screen pt-32 relative z-10 w-full mx-auto overflow-hidden">
       {/* Header aligned with max-width */}
       <div className="max-w-[1440px] mx-auto w-full px-6 pb-16">
         <div className="text-center mb-16 max-w-3xl mx-auto mt-12 flex flex-col items-center">

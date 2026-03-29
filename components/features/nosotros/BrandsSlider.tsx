@@ -1,15 +1,19 @@
 'use client'
 
+import Image from 'next/image';
+
 export function BrandsSlider() {
-  // Ajusta las rutas a las tuyas cuando subas las imágenes reales.
   const logos = [
-    { name: 'Logo 1', file: 'logo1' },
-    { name: 'Logo 2', file: 'logo2' },
-    { name: 'Logo 3', file: 'logo3' },
-    { name: 'Logo 4', file: 'logo4' },
-    { name: 'Logo 5', file: 'logo5' },
-    { name: 'Logo 6', file: 'logo6' },
-    { name: 'Logo 7', file: 'logo7' },
+    { name: 'Advance Derma', file: 'advace-derma.png' },
+    { name: 'Apsap', file: 'apsap.png' },
+    { name: 'BB Maya', file: 'bbmaya.png' },
+    { name: 'CC Solutions', file: 'ccsolutions.png' },
+    { name: 'Daniel Psy', file: 'danielpsy.png' },
+    { name: 'Mielato', file: 'mielato.png' },
+    { name: 'Nacion Podcast', file: 'nacionpodcast.png' },
+    { name: 'Paola Akl', file: 'paolaakl.png' },
+    { name: 'Paz desde el Vientre', file: 'pazdesdeelvientre.png' },
+    { name: 'Seon Me', file: 'seonme.png' },
   ];
 
   return (
@@ -26,21 +30,24 @@ export function BrandsSlider() {
       <div className="relative w-full overflow-hidden max-w-[1200px] mx-auto [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
         <div 
           className="flex w-max animate-[scroll_45s_linear_infinite] hover:[animation-play-state:paused] pl-12 sm:pl-20 md:pl-24" 
-          style={{ gap: 'calc(var(--spacing) * 6)' }}
+          style={{ gap: 'calc(var(--spacing) * 10)' }}
         >
           
           {/* Renderizamos el array 3 veces para garantizar un bucle continuo sin cortes visuales */}
           {[...logos, ...logos, ...logos].map((logo, index) => (
             <div 
               key={index} 
-              className="w-[140px] h-[60px] flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+              className="w-[140px] h-[60px] flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
             >
-              <div className="w-full h-full flex items-center justify-center font-bold text-xl text-zinc-400 border border-dashed border-zinc-300 dark:border-zinc-700/50 rounded-xl">
-                {/* 
-                  AQUÍ DEBES REEMPLAZAR EL DIV DEL PLACEHOLDER POR LA ETIQUETA IMAGE REAL CUANDO LAS TENGAS:
-                  <Image src={\`/images/logos/\${logo.file}.webp\`} alt={logo.name} width={140} height={60} className="object-contain" />
-                */}
-                {logo.name}
+              <div className="w-full h-full flex items-center justify-center p-2 relative">
+                <Image 
+                  src={`/images/logos-clientes/${logo.file}`} 
+                  alt={logo.name} 
+                  fill
+                  sizes="140px"
+                  className="object-contain" 
+                  unoptimized
+                />
               </div>
             </div>
           ))}

@@ -5,7 +5,6 @@ import { ServiceHero } from '@/components/features/services/ServiceHero';
 import { ServiceFeatures } from '@/components/features/services/ServiceFeatures';
 import { ServiceFaq } from '@/components/features/services/ServiceFaq';
 import { CtaBanner } from '@/components/ui/sections/CtaBanner';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>;
@@ -48,15 +47,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
   return (
     <main className="min-h-screen bg-white relative z-10 w-full mx-auto overflow-hidden">
-      
-      {/* Global Breadcrumb */}
-      <div className="absolute top-[100px] md:top-[120px] left-0 right-0 z-20 flex justify-center w-full">
-        <Breadcrumbs items={[
-          { label: 'Servicios', href: '/servicios' },
-          { label: service.title }
-        ]} />
-      </div>
-
       <ServiceHero hero={service.hero} />
       
       <ServiceFeatures features={service.features} />

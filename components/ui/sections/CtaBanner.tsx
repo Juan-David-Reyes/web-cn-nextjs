@@ -16,22 +16,22 @@ export function CtaBanner({
   buttonLink = "/contacto" 
 }: CtaBannerProps) {
   return (
-    <section className="relative w-full py-[140px] px-4 bg-[#0f172a] rounded-b-[24px] overflow-hidden">
+    <section className="relative w-[calc(100%-32px)] mx-auto py-[140px] px-4 bg-[#0f172a] rounded-[24px] overflow-hidden">
       {/* Decorative SVG Circles */}
-      <Image src="/images/circle.svg" alt="" aria-hidden="true" fill priority={false} className="absolute bottom-0 -left-[5%] w-full max-w-[350px] object-contain pointer-events-none opacity-50" />
-      <Image src="/images/circle.svg" alt="" aria-hidden="true" width={350} height={350} priority={false} className="absolute top-0 -right-[5%] w-full max-w-[350px] object-contain pointer-events-none rotate-180 opacity-50" />
+      <Image src="/images/circle.svg" alt="" aria-hidden="true" fill priority={false} className="absolute bottom-0 -left-[5%] w-full h-auto max-w-[350px] object-contain pointer-events-none opacity-50" />
+      <Image src="/images/circle.svg" alt="" aria-hidden="true" width={350} height={350} priority={false} className="absolute top-0 -right-[5%] w-full h-auto max-w-[350px] object-contain pointer-events-none rotate-180 opacity-50" />
 
 
 
       <div className="w-full max-w-[860px] mx-auto px-4 relative z-10 text-center">
         {title ? (
-          <h2 className="text-[clamp(2.625rem,2.1rem+1.6vw,3.75rem)] leading-[1.1] tracking-[-0.02em] font-bold text-[#f1f5f9] mb-6">
+          <h2 className="text-[clamp(2.625rem,2.1rem+1.6vw,3.75rem)] leading-[1.1] tracking-[-0.02em] font-bold !text-slate-100 mb-6">
             {title}
           </h2>
         ) : (
-          <h2 className="text-[clamp(2.625rem,2.1rem+1.6vw,3.75rem)] leading-[1.1] tracking-[-0.02em] font-bold text-[#f1f5f9] mb-6">
+          <h2 className="text-[clamp(2.625rem,2.1rem+1.6vw,3.75rem)] leading-[1.1] tracking-[-0.02em] font-bold !text-slate-100 mb-6">
             ¿Listo para llevar tu negocio al{" "}
-            <span className="font-[family-name:var(--font-playfair)] font-[450] italic tracking-[-0.02em] text-[#f1f5f9]">
+            <span className="font-[family-name:var(--font-playfair)] font-[450] italic tracking-[-0.02em] !text-slate-100">
               siguiente nivel
             </span>
             ?

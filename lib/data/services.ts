@@ -23,6 +23,7 @@ export interface ServiceData {
     primaryButton: { text: string; link: string };
     secondaryButton?: { text: string; link: string };
     image: string;
+    tools?: { name: string; icon: string }[];
   };
   features: ServiceFeature[];
   faqs: ServiceFAQ[];
@@ -46,7 +47,13 @@ export const SERVICES_DATA: ServiceData[] = [
       description: 'Valida tus ideas más rápido con sitios web construidos con React y Next.js. Evita el abandono de usuarios con un rendimiento de clase mundial y estética premium.',
       primaryButton: { text: 'Cotizar proyecto', link: '/contacto' },
       secondaryButton: { text: 'Ver más', link: '#features' },
-      image: '/img/services-web-hero.jpg'
+      image: '/img/services-web-hero.jpg',
+      tools: [
+        { name: 'Next.js 15 & React', icon: '/images/icons/nextjs.svg' },
+        { name: 'Arquitecturas Headless', icon: '/images/icons/headless.svg' },
+        { name: 'Integración CMS Avanzada', icon: '/images/icons/cms.svg' },
+        { name: 'Rendimiento Extremo (LCP < 1s)', icon: '/images/icons/performance.svg' }
+      ]
     },
     features: [
       {
@@ -85,7 +92,13 @@ export const SERVICES_DATA: ServiceData[] = [
       title: 'Convierte Más con el Mismo Tráfico',
       description: 'Optimizamos la velocidad de carga (Core Web Vitals) y redefinimos flujos para reducir el abandono de carritos y maximizar conversiones.',
       primaryButton: { text: 'Solicitar auditoría', link: '/contacto' },
-      image: '/img/services-cro-hero.jpg'
+      image: '/img/services-cro-hero.jpg',
+      tools: [
+        { name: 'A/B Testing Avanzado', icon: '/images/icons/ab-testing.svg' },
+        { name: 'Optimización de Checkout', icon: '/images/icons/checkout.svg' },
+        { name: 'Mapas de calor (Heatmaps)', icon: '/images/icons/heatmaps.svg' },
+        { name: 'Reducción de abandono', icon: '/images/icons/abandonment.svg' }
+      ]
     },
     features: [
       {
@@ -124,7 +137,13 @@ export const SERVICES_DATA: ServiceData[] = [
       title: 'Encontramos lo que te Frena en Google',
       description: 'Tu sitio tiene problemas invisibles para ti pero críticos para el robot de Google. Hacemos la auditoría más exhaustiva que verás jamás.',
       primaryButton: { text: 'Quiero un diagnóstico', link: '/contacto' },
-      image: '/img/services-audit-hero.jpg'
+      image: '/img/services-audit-hero.jpg',
+      tools: [
+        { name: 'Auditoría Técnica Profunda', icon: '/images/icons/seo-audit.svg' },
+        { name: 'Revisión de Core Web Vitals', icon: '/images/icons/cwv.svg' },
+        { name: 'Arquitectura de Información', icon: '/images/icons/architecture.svg' },
+        { name: 'Estrategia de Indexabilidad', icon: '/images/icons/index.svg' }
+      ]
     },
     features: [
       {
@@ -163,7 +182,14 @@ export const SERVICES_DATA: ServiceData[] = [
       title: 'Interacciones que Conectan',
       description: 'Investigación integral de UX (como en Maze) para crear estructuras, prototipos y diseños finales que se sienten orgánicos y vivos.',
       primaryButton: { text: 'Discutir un proyecto', link: '/contacto' },
-      image: '/img/services-design-hero.jpg'
+      image: '/img/services-design-hero.jpg',
+      tools: [
+        { name: 'Mejoras e iteración de la experiencia de usuario', icon: '/images/icons/ux.svg' },
+        { name: 'Auditoría de diseño', icon: '/images/icons/design-audit.svg' },
+        { name: 'Prototipado y validación de conceptos', icon: '/images/icons/prototype.svg' },
+        { name: 'Creación de sistemas de diseño', icon: '/images/icons/design-system.svg' },
+        { name: 'Iteraciones continuas', icon: '/images/icons/iteration.svg' }
+      ]
     },
     features: [
       {

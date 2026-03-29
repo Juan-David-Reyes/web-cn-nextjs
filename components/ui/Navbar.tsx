@@ -144,7 +144,7 @@ export function Navbar() {
                           <Image src={link.icon} alt={link.title} fill className="object-contain p-2" />
                         </div>
                         <div>
-                          <h4 className="text-sm font-semibold text-white group-hover/item:text-[#00ff8c] transition-colors mb-1">{link.title}</h4>
+                          <h4 className="text-sm font-semibold !text-white group-hover/item:!text-[#00ff8c] transition-colors mb-1">{link.title}</h4>
                           <p className="text-[13px] text-zinc-400 leading-relaxed font-normal">{link.desc}</p>
                         </div>
                       </Link>

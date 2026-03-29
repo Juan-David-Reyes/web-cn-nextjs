@@ -114,7 +114,7 @@ export default async function BlogPostPage({ params }: PageParams) {
   }
 
   return (
-    <main className="min-h-screen bg-[#f5f7fa] pt-32 relative z-10 w-full mx-auto">
+    <main className="min-h-screen pt-32 relative z-10 w-full mx-auto">
       
       <div className="max-w-[1000px] mx-auto w-full px-6 pb-24 flex flex-col lg:flex-row gap-8 lg:gap-12 relative lg:items-start lg:min-h-screen">
         
