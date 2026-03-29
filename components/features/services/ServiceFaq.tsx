@@ -20,8 +20,8 @@ export function ServiceFaq({ faqs }: ServiceFaqProps) {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-[#f5f7fa] relative">
-      <div className="max-w-[800px] mx-auto w-full px-6">
+    <section className="py-24 md:py-32 bg-[#FFF] relative">
+      <div className="max-w-[860px] mx-auto w-full px-6">
         
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-[#334155] tracking-tight mb-6">
@@ -42,7 +42,7 @@ export function ServiceFaq({ faqs }: ServiceFaqProps) {
               >
                 <button 
                   onClick={() => toggle(index)}
-                  className="w-full flex items-center justify-between cursor-pointer px-4 py-6 md:px-8 text-lg font-medium text-[#334155] transition-colors focus:outline-none"
+                  className="w-full flex items-center justify-between cursor-pointer py-6 text-lg font-medium text-[#334155] transition-colors focus:outline-none"
                 >
                   <span className="text-left">{faq.question}</span>
                   <span className={`ml-4 md:ml-6 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
@@ -55,7 +55,7 @@ export function ServiceFaq({ faqs }: ServiceFaqProps) {
                   className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                 >
                   <div className="overflow-hidden">
-                    <div className="px-4 pb-6 md:px-8 md:pb-8 pt-0 text-zinc-600 font-light leading-relaxed">
+                    <div className="pb-6 md:pb-8 pt-0 text-zinc-600 font-light leading-relaxed">
                       {faq.answer}
                     </div>
                   </div>

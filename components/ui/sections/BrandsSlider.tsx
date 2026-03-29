@@ -17,9 +17,9 @@ export function BrandsSlider() {
   ];
 
   return (
-    <div className="w-full bg-[#FFFFFF] dark:bg-[#0a0a0a] py-24 pb-32 overflow-hidden border-t border-zinc-200 dark:border-zinc-800">
+    <section className="w-full bg-[#FFF] py-24 pb-32 overflow-hidden border-t border-zinc-200 dark:border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
-        <h2 className="text-3xl md:text-5xl font-extrabold text-[#0f172a] dark:text-zinc-100">
+        <h2 className="text-3xl md:text-5xl font-extrabold text-[#0f172a]">
           Quienes nos han confiado{' '}
           <span className="font-[family-name:var(--font-playfair)] font-[450] italic tracking-[-0.02em] font-normal">
             sus proyectos
@@ -65,6 +65,6 @@ export function BrandsSlider() {
           }
         }
       `}</style>
-    </div>
+    </section>
   );
 }

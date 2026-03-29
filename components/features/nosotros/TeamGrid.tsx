@@ -25,11 +25,11 @@ export function TeamGrid() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-[1050px] mx-auto">
       {team.map((member, idx) => (
-        <div key={idx} className="group flex flex-col p-8 rounded-[40px] bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 text-left">
+        <div key={idx} className="group flex flex-col p-8 rounded-[40px] bg-white border border-zinc-200 text-left hover:border-zinc-300 transition-colors">
           
           <div className="relative w-full aspect-[4/3] md:aspect-square max-h-[350px] mb-8">
             {/* Contenedor de Imagen */}
-            <div className="relative h-full w-full rounded-3xl overflow-hidden bg-zinc-200 dark:bg-zinc-800 transition-all duration-300">
+            <div className="relative h-full w-full rounded-3xl overflow-hidden bg-zinc-200 transition-all duration-300">
               <Image 
                 src={member.image} 
                 alt={member.name} 
@@ -47,10 +47,10 @@ export function TeamGrid() {
             </a>
           </div>
           <p className="text-[0.8rem] md:text-sm uppercase tracking-wider font-semibold text-[#3dbf15] mb-4">{member.role}</p>
-          <div className="mb-5 italic text-zinc-700 dark:text-zinc-300 font-medium text-balance">
+          <div className="mb-5 italic text-zinc-700 font-medium text-balance">
             "{member.quote}"
           </div>
-          <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm">
+          <p className="text-zinc-600 leading-relaxed text-sm">
             {member.description}
           </p>
         </div>

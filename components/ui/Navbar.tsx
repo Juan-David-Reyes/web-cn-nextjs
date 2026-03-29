@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { CalendarPopupBtn } from "@/components/features/calendar/CalendarPopupBtn";
 
 const SERVICES_LINKS = [
@@ -42,6 +43,7 @@ const MAIN_LINKS = [
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -85,14 +87,16 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-8 h-full">
             <Link 
               href="/" 
-              className="text-sm font-medium hover:text-white/70 transition-colors duration-200 text-white"
+              className={`font-medium transition-colors duration-200 hover:text-[#f5f7fa] ${pathname === '/' ? 'text-[#f5f7fa]' : 'text-[#94a3b8]'}`}
+              style={{ fontSize: '13px' }}
             >
               Inicio
             </Link>
 
             <Link 
               href="/nosotros" 
-              className="text-sm font-medium hover:text-white/70 transition-colors duration-200 text-white"
+              className={`font-medium transition-colors duration-200 hover:text-[#f5f7fa] ${pathname === '/nosotros' ? 'text-[#f5f7fa]' : 'text-[#94a3b8]'}`}
+              style={{ fontSize: '13px' }}
             >
               Nosotros
             </Link>
@@ -104,7 +108,8 @@ export function Navbar() {
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
                 aria-expanded={isServicesOpen}
                 aria-controls="services-dropdown"
-                className="flex items-center gap-1 text-sm font-medium hover:text-white/70 transition-colors duration-200 py-2 text-white cursor-pointer"
+                className={`flex items-center gap-1 font-medium transition-colors duration-200 py-2 hover:text-[#f5f7fa] cursor-pointer ${pathname.startsWith('/servicios') ? 'text-[#f5f7fa]' : 'text-[#94a3b8]'}`}
+                style={{ fontSize: '13px' }}
               >
                 Servicios
                 <svg 
@@ -170,7 +175,8 @@ export function Navbar() {
 
             <Link 
               href="/blog" 
-              className="text-sm font-medium hover:text-white/70 transition-colors duration-200 text-white"
+              className={`font-medium transition-colors duration-200 hover:text-[#f5f7fa] ${pathname.startsWith('/blog') ? 'text-[#f5f7fa]' : 'text-[#94a3b8]'}`}
+              style={{ fontSize: '13px' }}
             >
               Blog
             </Link>
@@ -179,7 +185,7 @@ export function Navbar() {
           {/* Action Button */}
           <div className="hidden md:flex items-center">
             <CalendarPopupBtn 
-              className="text-sm text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full font-bold transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]"
+              className="text-white text-[13px] font-medium px-6 py-2.5 rounded-full transition-all duration-300 hover:bg-white/10 cursor-pointer bg-transparent border border-white/[0.27] shadow-none"
             >
               Agendar Cita
             </CalendarPopupBtn>
