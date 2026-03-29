@@ -82,8 +82,8 @@ export default async function BlogPage({
             Novedades y guías
           </div>
           
-          <h1 className="text-4xl md:text-[65px] font-bold text-zinc-900 mb-6 tracking-tight leading-tight">
-            Blog y <span className="text-[#3DBF15]">Recursos</span>
+          <h1 className="text-4xl md:text-[65px] font-bold text-[#0F1826] mb-6 tracking-tight leading-tight">
+            Blog y <span className="font-[family-name:var(--font-playfair)] font-[450] italic tracking-[-0.02em]">Recursos</span>
           </h1>
           <p className="text-lg md:text-xl text-zinc-600 font-light leading-relaxed">
             Descubre artículos, estrategias y las últimas tendencias sobre Desarrollo Web, Mantenimiento WP, Emprendimiento y SEO Técnico.
@@ -168,14 +168,15 @@ export default async function BlogPage({
         </div>
 
         {/* Grid of Posts */}
-        <section aria-label="Artículos del blog" className="pb-24">
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-            {POSTS.map((post: any, index: number) => (
-               <div key={post.id} className={`break-inside-avoid w-full ${getMasonryHeight(index)} ${getBreakClass(POSTS.length, index)}`}>
-                 <PostCard post={post} priority={index < 6} />
-               </div>
-            ))}
-          </div>
+        <section aria-label="Artículos del blog" className="pb-24 columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+          {POSTS.map((post: any, index: number) => (
+             <PostCard
+               key={post.id}
+               post={post}
+               priority={index < 6}
+               className={`break-inside-avoid w-full ${getMasonryHeight(index)} ${getBreakClass(POSTS.length, index)}`}
+             />
+          ))}
         </section>
 
         {totalPages > 1 && (
