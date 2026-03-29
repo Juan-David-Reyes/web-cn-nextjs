@@ -5,10 +5,7 @@ export interface ServiceFeature {
   image: string;
 }
 
-export interface ServiceFAQ {
-  question: string;
-  answer: string;
-}
+
 
 export interface ServiceData {
   id: number;
@@ -26,7 +23,6 @@ export interface ServiceData {
     tools?: { name: string; icon: string }[];
   };
   features: ServiceFeature[];
-  faqs: ServiceFAQ[];
   cta: {
     titlePrefix: string;
     titleHighlight: string;
@@ -69,12 +65,7 @@ export const SERVICES_DATA: ServiceData[] = [
         image: '/img/services-web-f2.jpg'
       }
     ],
-    faqs: [
-      {
-        question: '¿Qué framework utilizan para el desarrollo?',
-        answer: 'Utilizamos Next.js (el entorno de React más poderoso del mundo) junto a TailwindCSS para asegurar rapidez absoluta.'
-      }
-    ],
+
     cta: {
       titlePrefix: 'Lleva tu presencia digital al ',
       titleHighlight: 'siguiente nivel',
@@ -114,12 +105,7 @@ export const SERVICES_DATA: ServiceData[] = [
         image: '/img/services-cro-f2.jpg'
       }
     ],
-    faqs: [
-      {
-        question: '¿Cómo garantizan que la optimización funcione?',
-        answer: 'Todo se mide con Google Analytics y Lighthouse. Entregamos reportes precisos que demuestran la mejora técnica y la tasa de rebote mitigada.'
-      }
-    ],
+
     cta: {
       titlePrefix: 'Deja de perder ventas por ',
       titleHighlight: 'fricción técnica',
@@ -159,12 +145,7 @@ export const SERVICES_DATA: ServiceData[] = [
         image: '/img/services-audit-f2.jpg'
       }
     ],
-    faqs: [
-      {
-        question: '¿Qué entregan exactamente?',
-        answer: 'Un documento consolidado priorizando los problemas de P0 a P3, además de una sesión estratégica para definir cómo solucionar cada hallazgo metodológicamente.'
-      }
-    ],
+
     cta: {
       titlePrefix: 'Descubre el verdadero estado de tu ',
       titleHighlight: 'posicionamiento SEO',
@@ -205,12 +186,7 @@ export const SERVICES_DATA: ServiceData[] = [
         image: '/img/services-design-f2.jpg'
       }
     ],
-    faqs: [
-      {
-        question: '¿Pueden diseñar en paralelo al desarrollo?',
-        answer: 'Sí. Aplicamos un marco ágil que nos permite iterar prototipos de UX mientras establecemos la base de React en código.'
-      }
-    ],
+
     cta: {
       titlePrefix: 'Construye un producto que tus usuarios ',
       titleHighlight: 'amen usar',

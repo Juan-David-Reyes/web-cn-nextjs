@@ -5,6 +5,8 @@ import { ServiceHero } from '@/components/features/services/ServiceHero';
 import { ServiceFeatures } from '@/components/features/services/ServiceFeatures';
 import { ServiceFaq } from '@/components/features/services/ServiceFaq';
 import { CtaBanner } from '@/components/ui/sections/CtaBanner';
+import { getPayload } from 'payload';
+import configPromise from '@/payload.config';
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>;
@@ -45,13 +47,29 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
     notFound();
   }
 
+  const payload = await getPayload({ config: configPromise });
+  const payloadFaqsResult = await payload.find({
+    collection: 'service-faqs',
+    where: {
+      serviceSlug: {
+        equals: resolvedParams.slug,
+      },
+    },
+    limit: 100,
+  });
+
+  const payloadFaqs = payloadFaqsResult.docs.map(doc => ({
+    question: String(doc.question),
+    answer: String(doc.answer),
+  }));
+
   return (
     <main className="min-h-screen bg-white relative z-10 w-full mx-auto overflow-hidden">
       <ServiceHero hero={service.hero} />
       
       <ServiceFeatures features={service.features} />
 
-      <ServiceFaq faqs={service.faqs} />
+      {payloadFaqs.length > 0 && <ServiceFaq faqs={payloadFaqs} />}
 
       {/* CTA Banner Section (Full Width, Flush to Bottom) */}
       <div className="relative z-20 w-full overflow-hidden">

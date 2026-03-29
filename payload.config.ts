@@ -12,6 +12,7 @@ import { Posts } from './src/collections/Posts.ts'
 import { PrivacyPolicy } from './src/globals/PrivacyPolicy.ts'
 import { PrivacyPolicyExtended } from './src/globals/PrivacyPolicyExtended.ts'
 import { TermsAndConditions } from './src/globals/TermsAndConditions.ts'
+import { ServiceFaqs } from './src/collections/ServiceFaqs.ts'
 import { CookiesPolicy } from './src/globals/CookiesPolicy.ts'
 import { es } from '@payloadcms/translations/languages/es'
 
@@ -48,7 +49,7 @@ export default buildConfig({
       },
     },
   },
-  collections: [Users, Media, Testimonials, Posts],
+  collections: [Users, Media, Testimonials, Posts, ServiceFaqs],
   globals: [HomePage, PrivacyPolicy, PrivacyPolicyExtended, TermsAndConditions, CookiesPolicy],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [

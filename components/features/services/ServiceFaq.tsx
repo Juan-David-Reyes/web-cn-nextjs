@@ -1,10 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { type ServiceData } from '@/lib/data/services';
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
 
 interface ServiceFaqProps {
-  faqs: ServiceData['faqs'];
+  faqs: FaqItem[];
 }
 
 export function ServiceFaq({ faqs }: ServiceFaqProps) {
