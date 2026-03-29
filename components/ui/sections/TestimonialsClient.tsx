@@ -26,7 +26,7 @@ export function TestimonialsClient({ testimonials }: { testimonials: Testimonial
   }
 
   return (
-    <section className="relative w-full py-[120px] px-4 bg-[#FFF] overflow-hidden">
+    <section className="relative w-full py-[120px] px-4 !bg-[#FFFFFF] overflow-hidden">
       {/* Decorative Images */}
       <div className="absolute top-[8%] left-0 hidden lg:block opacity-80 pointer-events-none">
         <Image 
