@@ -32,6 +32,8 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   };
 }
 
+export const revalidate = 60; // Regenerate page every 60 seconds
+
 // Generate static params so the dynamic pages are generated at build time
 export function generateStaticParams() {
   return SERVICES_DATA.map((service) => ({
