@@ -66,8 +66,8 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 md:top-4 left-0 right-0 mx-auto w-full max-w-[900px] h-14 z-50 border border-zinc-800/50 rounded-none md:rounded-[100px] bg-[#040f27] transition-all duration-300">
-        <div className="mx-auto pl-6 pr-4 h-full flex items-center justify-between">
+      <nav className="fixed top-0 md:top-4 left-0 right-0 mx-auto w-full max-w-[900px] h-14 z-50 border border-zinc-800/50 rounded-none md:rounded-[100px] bg-[var(--neutral-900)] transition-all duration-300">
+        <div className="mx-auto pl-6 pr-2 h-full flex items-center justify-between">
           {/* Brand Logo */}
           <div className="flex-shrink-0 text-white">
             <Link href="/">
@@ -134,7 +134,7 @@ export function Navbar() {
               >
                 {/* Solid Glassmorphism Board */}
                 <div 
-                  className="bg-[#040f27] backdrop-blur-3xl border border-white/10 rounded-2xl p-6 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col gap-2"
+                  className="bg-[var(--neutral-900)] backdrop-blur-3xl border border-white/10 rounded-2xl p-6 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col gap-2"
                 >
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4" style={{ columnGap: 'calc(var(--spacing) * 2)' }}>
@@ -187,7 +187,7 @@ export function Navbar() {
             <CalendarPopupBtn 
               className="text-white text-[13px] font-medium px-6 py-2.5 rounded-full transition-all duration-300 hover:bg-white/10 cursor-pointer bg-transparent border border-white/[0.27] shadow-none"
             >
-              Agendar Cita
+              Agendar cita
             </CalendarPopupBtn>
           </div>
           
