@@ -38,7 +38,7 @@ export default async function CookiesPolicyPage() {
 
         {/* Header */}
         <header className="mb-12 border-b border-zinc-200 dark:border-zinc-800 pb-8">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-balance">
+          <h1 className="font-bold tracking-tight text-balance">
             {data.title || 'Política de Cookies'}
           </h1>
           <div className="w-20 h-1 bg-[#3dbf15] rounded-full mt-6"></div>

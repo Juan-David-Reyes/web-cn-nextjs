@@ -57,7 +57,7 @@ export function TestimonialsClient({ testimonials }: { testimonials: Testimonial
           <span className="text-[14px] uppercase tracking-[4px] leading-[160%] mb-[16px] inline-block font-normal text-[#334155]">
             Testimonios
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-[#0f172a] mb-6">
+          <h2 className="font-extrabold text-[#0f172a] mb-6">
             Lo que nuestros clientes dicen de{" "}
             <span style={{ fontFamily: '"Playfair Display", serif', fontWeight: 450, fontStyle: 'italic' }}>
               nuestra agencia

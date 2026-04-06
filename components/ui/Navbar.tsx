@@ -9,27 +9,35 @@ import { CalendarPopupBtn } from "@/components/features/calendar/CalendarPopupBt
 const SERVICES_LINKS = [
   {
     title: "Diseño y desarrollo web",
-    desc: "Sitios modernos optimizados.",
+    desc: "Sitios modernos y rápidos, optimizados para convertir.",
     href: "/servicios/diseno-web",
-    icon: "/images/icon-services/web-design.svg"
+    icon: "/images/icon-services/web-design.svg",
+    preview: "/images/icon-services/web-design.svg",
+    tag: "Web Dev"
   },
   {
     title: "CRO y Optimización",
-    desc: "Rendimiento técnico superior.",
+    desc: "Mejora tu rendimiento técnico y tasas de conversión.",
     href: "/servicios/cro-optimizacion",
-    icon: "/images/icon-services/optimizacion-web.svg"
+    icon: "/images/icon-services/optimizacion-web.svg",
+    preview: "/images/icon-services/optimizacion-web.svg",
+    tag: "Performance"
   },
   {
     title: "Auditorías SEO/UX",
-    desc: "Diagnósticos profundos.",
+    desc: "Diagnósticos profundos para detectar oportunidades.",
     href: "/servicios/auditorias",
-    icon: "/images/icon-services/auditorias.svg"
+    icon: "/images/icon-services/auditorias.svg",
+    preview: "/images/icon-services/auditorias.svg",
+    tag: "SEO & UX"
   },
   {
     title: "Product design",
-    desc: "Experiencias UX intuitivas.",
+    desc: "Experiencias UX/UI intuitivas centradas en el usuario.",
     href: "/servicios/product-design",
-    icon: "/images/icon-services/diseno-ux-ui.svg"
+    icon: "/images/icon-services/diseno-ux-ui.svg",
+    preview: "/images/icon-services/diseno-ux-ui.svg",
+    tag: "Design"
   }
 ];
 
@@ -43,6 +51,7 @@ const MAIN_LINKS = [
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [hoveredService, setHoveredService] = useState(0);
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -88,7 +97,7 @@ export function Navbar() {
             <Link 
               href="/" 
               className={`font-medium transition-colors duration-200 hover:text-[#f5f7fa] ${pathname === '/' ? 'text-[#f5f7fa]' : 'text-[#94a3b8]'}`}
-              style={{ fontSize: '13px' }}
+              style={{ fontSize: '14px' }}
             >
               Inicio
             </Link>
@@ -96,7 +105,7 @@ export function Navbar() {
             <Link 
               href="/nosotros" 
               className={`font-medium transition-colors duration-200 hover:text-[#f5f7fa] ${pathname === '/nosotros' ? 'text-[#f5f7fa]' : 'text-[#94a3b8]'}`}
-              style={{ fontSize: '13px' }}
+              style={{ fontSize: '14px' }}
             >
               Nosotros
             </Link>
@@ -109,7 +118,7 @@ export function Navbar() {
                 aria-expanded={isServicesOpen}
                 aria-controls="services-dropdown"
                 className={`flex items-center gap-1 font-medium transition-colors duration-200 py-2 hover:text-[#f5f7fa] cursor-pointer ${pathname.startsWith('/servicios') ? 'text-[#f5f7fa]' : 'text-[#94a3b8]'}`}
-                style={{ fontSize: '13px' }}
+                style={{ fontSize: '14px' }}
               >
                 Servicios
                 <svg 
@@ -132,42 +141,94 @@ export function Navbar() {
                     : 'opacity-0 invisible translate-y-2'
                 }`}
               >
-                {/* Solid Glassmorphism Board */}
+                {/* Split Panel Mega Menu */}
                 <div 
-                  className="bg-[var(--neutral-900)] backdrop-blur-3xl border border-white/10 rounded-2xl p-6 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col gap-2"
+                  className="bg-[var(--neutral-900)] backdrop-blur-3xl border border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] overflow-hidden"
+                  style={{ display: 'grid', gridTemplateColumns: '1fr 220px' }}
                 >
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4" style={{ columnGap: 'calc(var(--spacing) * 2)' }}>
-                    {SERVICES_LINKS.map((link) => (
+                  {/* Left: Service list */}
+                  <div className="p-5 flex flex-col gap-1 border-r border-white/[0.07]">
+                    {SERVICES_LINKS.map((link, index) => (
                       <Link 
                         key={link.href} 
                         href={link.href} 
-                        onClick={() => setIsServicesOpen(false)} 
-                        className="group/item p-3 flex items-start gap-4 rounded-xl hover:bg-white/5 transition-all duration-300"
+                        onClick={() => setIsServicesOpen(false)}
+                        onMouseEnter={() => setHoveredService(index)}
+                        className={`group/item px-4 py-3 flex items-center gap-4 rounded-xl transition-all duration-200 ${
+                          hoveredService === index ? 'bg-white/[0.06]' : 'hover:bg-white/[0.04]'
+                        }`}
                       >
-                        <div className="flex-shrink-0 w-[54px] h-[54px] rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover/item:border-[#00ff8c]/50 group-hover/item:bg-[#00ff8c]/10 transition-all duration-300 shadow-sm relative overflow-hidden">
+                        {/* Icon */}
+                        <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200 relative overflow-hidden border ${
+                          hoveredService === index 
+                            ? 'bg-[#00ff8c]/10 border-[#00ff8c]/40' 
+                            : 'bg-white/5 border-white/10'
+                        }`}>
                           <Image src={link.icon} alt={link.title} fill className="object-contain p-2" />
                         </div>
-                        <div>
-                          <h4 className="text-sm font-semibold !text-white group-hover/item:!text-[#00ff8c] transition-colors mb-1">{link.title}</h4>
-                          <p className="text-[13px] text-zinc-400 leading-relaxed font-normal">{link.desc}</p>
+                        {/* Text */}
+                        <div className="flex-1 min-w-0">
+                          <h4 className={`text-[14px] font-semibold transition-colors duration-200 ${
+                            hoveredService === index ? '!text-[#00ff8c]' : '!text-white'
+                          }`}>{link.title}</h4>
+                          <p className="text-[13px] text-zinc-500 leading-snug mt-0.5 font-normal">{link.desc}</p>
                         </div>
+                        {/* Arrow */}
+                        <svg 
+                          className={`flex-shrink-0 w-4 h-4 transition-all duration-200 ${
+                            hoveredService === index ? 'text-[#00ff8c] translate-x-0 opacity-100' : 'text-zinc-600 -translate-x-1 opacity-0'
+                          }`} 
+                          fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 18l6-6-6-6" />
+                        </svg>
                       </Link>
                     ))}
+
+                    {/* Footer link */}
+                    <div className="mt-2 pt-3 border-t border-white/[0.07]">
+                      <Link 
+                        href="/servicios" 
+                        onClick={() => setIsServicesOpen(false)}
+                        className="inline-flex items-center gap-2 text-[13px] font-medium text-zinc-500 hover:text-white transition-colors group/all px-4 w-full justify-center"
+                      >
+                        Ver todos los servicios
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover/all:translate-x-1 transition-transform" aria-hidden="true">
+                          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                        </svg>
+                      </Link>
+                    </div>
                   </div>
 
-                  {/* Footer link */}
-                  <div className="mt-4 pt-4 border-t border-white/10 text-center">
-                    <Link 
-                      href="/servicios" 
-                      onClick={() => setIsServicesOpen(false)}
-                      className="inline-flex items-center gap-2 text-sm font-medium text-zinc-300 hover:text-white transition-colors group/all"
-                    >
-                      Ver todos los servicios
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover/all:translate-x-1 transition-transform" aria-hidden="true">
-                        <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-                      </svg>
-                    </Link>
+                  {/* Right: Service preview image */}
+                  <div className="relative flex flex-col items-center justify-center p-6 bg-white/[0.02]">
+                    {SERVICES_LINKS.map((link, index) => (
+                      <div
+                        key={link.href}
+                        className="absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-300"
+                        style={{
+                          opacity: hoveredService === index ? 1 : 0,
+                          transform: hoveredService === index ? 'scale(1) translateY(0)' : 'scale(0.96) translateY(6px)',
+                          pointerEvents: 'none'
+                        }}
+                        aria-hidden={hoveredService !== index}
+                      >
+                        {/* Glow blob */}
+                        <div 
+                          className="absolute inset-0 rounded-r-2xl"
+                          style={{ background: 'radial-gradient(ellipse at center, rgba(0,255,140,0.07) 0%, transparent 70%)' }}
+                        />
+                        {/* Icon large */}
+                        <div className="relative w-24 h-24 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shadow-xl mb-4">
+                          <Image src={link.icon} alt={link.title} fill className="object-contain p-4" />
+                        </div>
+                        {/* Tag chip */}
+                        <span className="text-[10px] font-semibold tracking-widest uppercase text-[#00ff8c]/70 bg-[#00ff8c]/10 border border-[#00ff8c]/20 px-3 py-1 rounded-full mb-2">
+                          {link.tag}
+                        </span>
+                        <p className="text-[11px] text-zinc-500 text-center leading-relaxed">{link.desc}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -187,7 +248,7 @@ export function Navbar() {
             <CalendarPopupBtn 
               className="text-white text-[13px] font-medium px-6 py-2.5 rounded-full transition-all duration-300 hover:bg-white/10 cursor-pointer bg-transparent border border-white/[0.27] shadow-none"
             >
-              Agendar cita
+              Consultoría
             </CalendarPopupBtn>
           </div>
           

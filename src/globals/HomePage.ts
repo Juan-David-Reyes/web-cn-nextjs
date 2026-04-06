@@ -11,25 +11,33 @@ export const HomePage: GlobalConfig = {
       type: 'group',
       fields: [
         {
+          name: 'preTitle',
+          type: 'text',
+          defaultValue: 'TÚ PONES LA VISIÓN, NOSOTROS EL CÓDIGO',
+          admin: {
+            description: 'Texto del badge superior (se muestra en mayúsculas sobre el título)',
+          },
+        },
+        {
           name: 'title',
           type: 'text',
           required: true,
-          defaultValue: 'Excelencia Digital',
+          defaultValue: 'Activos digitales que impulsan tu próximo',
         },
         {
           name: 'highlight',
           type: 'text',
           required: true,
-          defaultValue: 'Tu Negocio',
+          defaultValue: 'nivel de crecimiento',
           admin: {
-            description: 'The italic gradient text part of the heading',
+            description: 'Texto en itálica (fuente Playfair) que aparece junto al título',
           },
         },
         {
           name: 'description',
           type: 'textarea',
           required: true,
-          defaultValue: 'Transformamos tu visión en soluciones de software de alto impacto. Creamos experiencias únicas, rápidas y escalables con tecnologías de vanguardia.',
+          defaultValue: 'Combinamos desarrollo de producto, diseño UX/UI de alta conversión y estrategia digital para transformar empresas en líderes de su sector.',
         },
       ],
     },

@@ -4,6 +4,7 @@ import { CalendarPopupBtn } from "@/components/features/calendar/CalendarPopupBt
 
 interface HeroProps {
   data?: {
+    preTitle?: string;
     title?: string;
     highlight?: string;
     description?: string;
@@ -11,13 +12,14 @@ interface HeroProps {
 }
 
 export function HeroSection({ data }: HeroProps) {
-  const titleText = data?.title || "Excelencia Digital";
-  const highlightText = data?.highlight || "Tu Negocio";
+  const preTitleText = data?.preTitle || "TÚ PONES LA VISIÓN, NOSOTROS EL CÓDIGO";
+  const titleText = data?.title || "Activos digitales que impulsan tu próximo";
+  const highlightText = data?.highlight || "nivel de crecimiento";
   const descriptionText = data?.description || 
-    "Transformamos tu visión en soluciones de software de alto impacto. Creamos experiencias únicas, rápidas y escalables con tecnologías de vanguardia.";
+    "Combinamos desarrollo de producto, diseño UX/UI de alta conversión y estrategia digital para transformar empresas en líderes de su sector.";
 
   return (
-    <section className="relative w-full min-h-[90vh] flex flex-col justify-center pt-32 pb-20 overflow-hidden">
+    <section className="relative w-full min-h-[90vh] flex flex-col justify-center pt-40 pb-20 overflow-hidden">
       {/* Bottom White Gradient Blend */}
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white to-transparent z-0 pointer-events-none" />
 
@@ -34,19 +36,15 @@ export function HeroSection({ data }: HeroProps) {
         className="object-cover object-left absolute inset-0 z-0 pointer-events-none"
       />
 
-      <div className="relative z-10 w-full px-6 md:px-12 lg:px-[120px] text-left flex flex-col items-start">
+      <div className="relative z-10 w-full px-6 md:px-12 lg:px-[120px] text-left flex flex-col items-start max-w-[900px]">
         
         {/* Top Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0f172a]/5 border border-[#0f172a]/10 backdrop-blur-md mb-8 shadow-lg shadow-purple-900/20">
-          <span className="w-2 h-2 rounded-full bg-purple-600 animate-pulse" />
-          <span className="text-sm font-medium text-[#0f172a]">Innovación continua</span>
-        </div>
+        <span className="text-[14px] uppercase tracking-[4px] leading-[160%] mb-[16px] inline-block font-normal text-[#334155]">{preTitleText}</span>
 
         {/* Main Headline */}
-        <h1 className="text-5xl md:text-[65px] lg:text-[80px] font-bold tracking-tight text-[#0f172a] mb-6 leading-[1.1]">
-          {titleText} <br className="hidden md:block" />
-          para <span className="font-serif italic font-medium text-[#0f172a]">{highlightText}</span>
-          <span className="text-purple-600">.</span>
+        <h1 className="font-bold tracking-tight text-[#0f172a] mb-6 leading-[1.1]">
+          {titleText}{' '}
+          <span className="font-serif italic font-medium text-[#0f172a]">{highlightText}</span>
         </h1>
         
         {/* Subtitle */}

@@ -107,7 +107,7 @@
 --surface-sub: var(--neutral-100);
 
 --surface-action: var(--primary-500);
---surface-action-hover: var(--primary-700);
+--surface-action-hover: var(--primary-400);
 --surface-action-sec: var(--neutral-50);
 --surface-action-hover-sec: var(--neutral-100);
 --surface-action-disable: var(--neutral-200);
@@ -149,7 +149,7 @@ body {
 
 
 
-/* Base Headings */
+/* Base Headings — font-family y color */
 h1,
 h2,
 h3,
@@ -165,6 +165,17 @@ h6 {
     color: var(--headings-dark);
   }
 }
+
+/* ── Tipografía responsive (excluye el footer) ─────────────────────────────
+   clamp(min, preferred, max)
+   El "preferred" usa vw para que escale fluidamente entre breakpoints.
+   El footer conserva sus propios tamaños definidos con clases de Tailwind.
+────────────────────────────────────────────────────────────────────────── */
+h1:not(footer *) { font-size: clamp(2.25rem, 4vw + 1rem, 4rem);       line-height: clamp(2.5rem, 4vw + 1rem, 4rem);       } /* font: 36→64px | lh: 40→64px */
+h2:not(footer *) { font-size: clamp(1.75rem, 3vw + 0.75rem, 3rem);    line-height: clamp(2rem, 3vw + 0.75rem, 3.375rem);  } /* font: 28→48px | lh: 32→54px */
+h3:not(footer *) { font-size: clamp(1.25rem, 2vw + 0.5rem, 2.25rem);  line-height: clamp(1.625rem, 2.5vw + 0.5rem, 2.75rem); } /* font: 20→36px | lh: 26→44px */
+h4:not(footer *):not(nav *) { font-size: clamp(1.1rem, 1.5vw + 0.4rem, 1.75rem); line-height: clamp(1.375rem, 1.5vw + 0.75rem, 2.25rem); } /* font: 18→28px | lh: 22→36px */
+
 
 /* Payload CMS Lexical Rich Text Styles */
 .rich-text p {
@@ -193,14 +204,14 @@ h6 {
 }
 
 .rich-text a {
-  color: var(--primary-400);
+  color: var(--primary-700);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
 
 .rich-text a:hover {
-  color: var(--primary-600);
+  color: var(--primary-800);
 }
 
 .rich-text ul {
@@ -241,4 +252,14 @@ h6 {
 .rich-text strong {
   font-weight: 600;
   color: var(--headings);
+}
+
+/* Service Hero — tools marquee */
+@keyframes toolsScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-25%); }
+}
+
+.animate-tools-scroll {
+  animation: toolsScroll 35s linear infinite;
 }

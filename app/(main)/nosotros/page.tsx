@@ -43,7 +43,7 @@ export default function NosotrosPage() {
             SOBRE NOSOTROS
           </span>
 
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#0f172a] dark:text-zinc-100 leading-tight text-balance">
+          <h1 className="font-extrabold text-[#0f172a] dark:text-zinc-100 leading-tight text-balance">
             Realizamos <span className="font-[family-name:var(--font-playfair)] font-[450] italic tracking-[-0.02em] font-normal">estrategias, diseño y desarrollo</span> para crear productos de valor
           </h1>
 
@@ -61,7 +61,7 @@ export default function NosotrosPage() {
             <span className="text-[14px] uppercase tracking-[4px] leading-[160%] mb-[16px] inline-block font-normal text-[#334155]">
               TEAM
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-[#0f172a] mb-6">
+            <h2 className="font-extrabold text-[#0f172a] mb-6">
               Nuestro equipo
             </h2>
           </div>

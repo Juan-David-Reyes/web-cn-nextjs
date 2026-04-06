@@ -29,7 +29,7 @@ export function ServiceFeatures({ features }: ServiceFeaturesProps) {
                   </div>
                 )}
                 
-                <h2 className="text-4xl md:text-5xl font-bold text-zinc-900 tracking-tight leading-[1.2]">
+                <h2 className="font-bold text-zinc-900 tracking-tight leading-[1.2]">
                   {feature.title}
                 </h2>
                 

@@ -24,7 +24,7 @@ export function ServiceFaq({ faqs }: ServiceFaqProps) {
       <div className="max-w-[860px] mx-auto w-full px-6">
         
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#334155] tracking-tight mb-6">
+          <h2 className="font-bold text-[#334155] tracking-tight mb-6">
             Preguntas Frecuentes
           </h2>
           <p className="text-lg text-zinc-600 font-light">

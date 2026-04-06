@@ -32,7 +32,7 @@ export default function ServicesPage() {
             Descubre qué hacemos
           </div>
           
-          <h1 className="text-4xl md:text-[65px] font-bold text-zinc-900 mb-6 tracking-tight leading-tight">
+          <h1 className="font-bold text-zinc-900 mb-6 tracking-tight leading-tight">
             Nuestros <span className="text-[#3DBF15]">Servicios</span>
           </h1>
           <p className="text-lg md:text-xl text-zinc-600 font-light leading-relaxed">
@@ -54,7 +54,7 @@ export default function ServicesPage() {
               >
                 {/* Text Content */}
                 <div className="flex-1 space-y-8 text-center lg:text-left">
-                  <h2 className="text-3xl lg:text-5xl font-bold text-zinc-900 tracking-tight">
+                  <h2 className="font-bold text-zinc-900 tracking-tight">
                     {service.title}
                   </h2>
                   <p className="text-lg text-zinc-600 leading-relaxed font-light">

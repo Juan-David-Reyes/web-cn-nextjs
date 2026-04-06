@@ -82,7 +82,7 @@ export default async function BlogPage({
             Novedades y guías
           </div>
           
-          <h1 className="text-4xl md:text-[65px] font-bold text-[#0F1826] mb-6 tracking-tight leading-tight">
+          <h1 className="font-bold text-[#0F1826] mb-6 tracking-tight leading-tight">
             Blog y <span className="font-[family-name:var(--font-playfair)] font-[450] italic tracking-[-0.02em]">Recursos</span>
           </h1>
           <p className="text-lg md:text-xl text-zinc-600 font-light leading-relaxed">

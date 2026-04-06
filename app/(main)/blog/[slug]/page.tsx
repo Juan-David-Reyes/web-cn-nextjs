@@ -140,7 +140,7 @@ export default async function BlogPostPage({ params }: PageParams) {
             </span>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-[55px] font-bold text-zinc-900 mb-6 tracking-tight leading-tight">
+          <h1 className="font-bold text-zinc-900 mb-6 tracking-tight leading-tight">
             {post.title}
           </h1>
         </header>
@@ -175,7 +175,7 @@ export default async function BlogPostPage({ params }: PageParams) {
       {relatedPosts.length > 0 && (
         <section className="mt-12 pt-16 pb-24 border-t border-zinc-200/60 w-full relative z-20">
           <div className="max-w-[1440px] mx-auto w-full px-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 mb-8 text-center lg:text-left">
+            <h2 className="font-bold text-zinc-900 mb-8 text-center lg:text-left">
               Te podría interesar
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
