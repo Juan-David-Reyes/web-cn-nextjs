@@ -19,7 +19,7 @@ export default async function Home() {
       <HeroSection data={homeData.hero} />
 
       {/* Sección Diagnóstico */}
-      <DiagnosticoSection />
+      <DiagnosticoSection data={homeData.diagnostico} />
 
       {/* Componente Bento Grid para Servicios */}
       <ServicesBento data={homeData.services} />
