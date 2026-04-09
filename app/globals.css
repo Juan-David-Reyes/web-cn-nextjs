@@ -263,3 +263,17 @@ h4:not(footer *):not(nav *) { font-size: clamp(1.1rem, 1.5vw + 0.4rem, 1.75rem);
 .animate-tools-scroll {
   animation: toolsScroll 35s linear infinite;
 }
+
+/* Hero Section — infinite logo marquee (duplicated list → -50%) */
+@keyframes heroMarquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+
+.animate-hero-marquee {
+  animation: heroMarquee 28s linear infinite;
+}
+
+.animate-hero-marquee:hover {
+  animation-play-state: paused;
+}

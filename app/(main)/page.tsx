@@ -1,4 +1,5 @@
 import { HeroSection } from "@/components/ui/sections/HeroSection";
+import { DiagnosticoSection } from "@/components/ui/sections/DiagnosticoSection";
 import { ServicesBento } from "@/components/ui/sections/ServicesBento";
 import { Testimonials } from "@/components/ui/sections/Testimonials";
 import { CtaBanner } from "@/components/ui/sections/CtaBanner";
@@ -16,7 +17,10 @@ export default async function Home() {
       
       {/* Nuevo Hero Section estilo Glassmorphism/Dark */}
       <HeroSection data={homeData.hero} />
-      
+
+      {/* Sección Diagnóstico */}
+      <DiagnosticoSection />
+
       {/* Componente Bento Grid para Servicios */}
       <ServicesBento data={homeData.services} />
 

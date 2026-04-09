@@ -19,7 +19,7 @@ export function HeroSection({ data }: HeroProps) {
     "Combinamos desarrollo de producto, diseño UX/UI de alta conversión y estrategia digital para transformar empresas en líderes de su sector.";
 
   return (
-    <section className="relative w-full min-h-[90vh] flex flex-col justify-center pt-40 pb-20 overflow-hidden">
+    <section className="relative w-full min-h-[100vh] flex flex-col justify-between pt-40 overflow-hidden">
       {/* Bottom White Gradient Blend */}
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white to-transparent z-0 pointer-events-none" />
 
@@ -36,7 +36,7 @@ export function HeroSection({ data }: HeroProps) {
         className="object-cover object-left absolute inset-0 z-0 pointer-events-none"
       />
 
-      <div className="relative z-10 w-full px-6 md:px-12 lg:px-[120px] text-left flex flex-col items-start max-w-[900px]">
+      <div className="relative z-10 w-full px-6 md:px-12 lg:px-[120px] text-left flex flex-col items-start max-w-[900px] pb-16">
         
         {/* Top Badge */}
         <span className="text-[14px] uppercase tracking-[4px] leading-[160%] mb-[16px] inline-block font-normal text-[#334155]">{preTitleText}</span>
@@ -53,7 +53,7 @@ export function HeroSection({ data }: HeroProps) {
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-start justify-start gap-4 mt-8 w-full">
+        <div className="flex flex-col sm:flex-row items-start justify-start gap-4 w-full">
           <Link 
             href="https://wa.me/573126357309?text=Hola,%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto" 
             target="_blank"
@@ -66,37 +66,69 @@ export function HeroSection({ data }: HeroProps) {
           <CalendarPopupBtn />
         </div>
 
-        {/* Tech Stack Logos */}
-        <div className="mt-24 flex flex-col items-start relative z-20 w-full">
-          <p className="text-sm text-[#0f172a]/70 mb-8 tracking-wider uppercase font-medium">Revolucionando soluciones con las mejores herramientas</p>
-          <div className="flex flex-wrap justify-start items-center gap-6 md:gap-8 opacity-80 max-w-4xl px-0">
-            
-            {[
-              { name: 'Figma', icon: 'figma.svg' },
-              { name: 'HTML5', icon: 'html5.svg' },
-              { name: 'CSS3', icon: 'css3.svg' },
-              { name: 'WordPress', icon: 'wordpress.svg' },
-              { name: 'React', icon: 'react.svg' },
-              { name: 'TypeScript', icon: 'typescript.svg' },
-              { name: 'Node.js', icon: 'node-js.svg' },
-              { name: 'Google Analytics', icon: 'google-analytics.svg' }
-            ].map((tech) => (
-              <div 
-                key={tech.name} 
-                className="group relative w-10 h-10 flex items-center justify-center hover:-translate-y-2 transition-all duration-300"
-                title={tech.name}
-              >
-                <Image 
-                  src={`/images/herramientas/${tech.icon}`} 
-                  alt={`${tech.name} logo`}
-                  fill
-                  className="object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 drop-shadow-md"
-                />
-              </div>
-            ))}
+      </div>
 
+      {/* Full-width Tech Stack Bar — pinned to bottom of hero */}
+      <div className="relative z-20 w-full flex flex-col sm:flex-row items-stretch gap-0 mt-auto">
+
+        {/* Label pill */}
+        <div
+          className="flex items-center px-8 py-6 shrink-0"
+          style={{
+            maxWidth: '440px',
+            backgroundColor: 'var(--neutral-900)',
+            color: 'var(--neutral-50)',
+          }}
+        >
+          <h4 className="font-semibold leading-snug" style={{ color: 'var(--headings-dark)' }}>
+            Quienes nos han confiado{' '}
+            <span className="font-serif italic font-normal">sus proyectos</span>
+          </h4>
+        </div>
+
+        {/* Logo marquee strip */}
+        <div
+          className="flex-1 overflow-hidden flex items-center"
+          style={{
+            backgroundColor: 'rgb(0 0 0 / 5%)',
+            backdropFilter: 'blur(4px)',
+            WebkitBackdropFilter: 'blur(4px)',
+            border: '1px solid rgba(245, 247, 250, 0.07)',
+          }}
+        >
+          {/* Track tripled for seamless loop */}
+          <div className="animate-hero-marquee flex items-center gap-10 py-6 w-max">
+            {[...Array(3)].flatMap((_, setIdx) =>
+              [
+                { name: 'Advance Derma', file: 'advace-derma.png' },
+                { name: 'Apsap', file: 'apsap.png' },
+                { name: 'BB Maya', file: 'bbmaya.png' },
+                { name: 'CC Solutions', file: 'ccsolutions.png' },
+                { name: 'Daniel Psy', file: 'danielpsy.png' },
+                { name: 'Mielato', file: 'mielato.png' },
+                { name: 'Nacion Podcast', file: 'nacionpodcast.png' },
+                { name: 'Paola Akl', file: 'paolaakl.png' },
+                { name: 'Paz desde el Vientre', file: 'pazdesdeelvientre.png' },
+                { name: 'Seon Me', file: 'seonme.png' },
+              ].map((logo) => (
+                <div
+                  key={`${setIdx}-${logo.name}`}
+                  className="w-[120px] h-[50px] shrink-0 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 relative"
+                >
+                  <Image
+                    src={`/images/logos-clientes/${logo.file}`}
+                    alt={logo.name}
+                    fill
+                    sizes="120px"
+                    className="object-contain"
+                    unoptimized
+                  />
+                </div>
+              ))
+            )}
           </div>
         </div>
+
       </div>
     </section>
   );
