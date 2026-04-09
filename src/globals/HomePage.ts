@@ -42,36 +42,6 @@ export const HomePage: GlobalConfig = {
       ],
     },
     {
-      name: 'services',
-      type: 'array',
-      minRows: 1,
-      maxRows: 6,
-      fields: [
-        {
-          name: 'title',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'description',
-          type: 'textarea',
-          required: true,
-        },
-        {
-          name: 'iconType',
-          type: 'select',
-          options: [
-            { label: 'Development/Code', value: 'code' },
-            { label: 'WordPress', value: 'wordpress' },
-            { label: 'Chart/Metrics', value: 'chart' },
-            { label: 'Security/Audit', value: 'security' },
-            { label: 'Design/Pen', value: 'pen' },
-          ],
-          required: true,
-        },
-      ],
-    },
-    {
       name: 'diagnostico',
       type: 'group',
       label: 'Sección Diagnóstico',
@@ -108,23 +78,6 @@ export const HomePage: GlobalConfig = {
           label: 'Cards de diagnóstico',
           minRows: 1,
           maxRows: 6,
-          defaultValue: [
-            {
-              label: 'Tiempos',
-              title: 'Baja tasa de conversión',
-              description: 'El 53% de los usuarios abandona un sitio que tarda más de 3 segundos en cargar. Una web lenta no es solo mala experiencia, es pérdida directa de ventas.',
-            },
-            {
-              label: 'Capacidad',
-              title: 'Performance deficiente',
-              description: 'Si tu visitante no entiende qué hacer en menos de 5 segundos, se va. La claridad visual y la jerarquía de contenido son la diferencia entre un lead y un rebote.',
-            },
-            {
-              label: 'Avance',
-              title: 'Tecnología obsoleta que no escala',
-              description: 'Una web sin estructura semántica, sin Core Web Vitals óptimos y sin metadatos correctos está invisible para los motores de búsqueda, sin importar qué tan bueno sea tu servicio.',
-            },
-          ],
           fields: [
             {
               name: 'label',
@@ -160,6 +113,36 @@ export const HomePage: GlobalConfig = {
               },
             },
           ],
+        },
+      ],
+    },
+    {
+      name: 'services',
+      type: 'array',
+      minRows: 1,
+      maxRows: 6,
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'description',
+          type: 'textarea',
+          required: true,
+        },
+        {
+          name: 'iconType',
+          type: 'select',
+          options: [
+            { label: 'Development/Code', value: 'code' },
+            { label: 'WordPress', value: 'wordpress' },
+            { label: 'Chart/Metrics', value: 'chart' },
+            { label: 'Security/Audit', value: 'security' },
+            { label: 'Design/Pen', value: 'pen' },
+          ],
+          required: true,
         },
       ],
     },
