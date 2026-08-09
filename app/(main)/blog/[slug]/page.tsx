@@ -140,7 +140,7 @@ export default async function BlogPostPage({ params }: PageParams) {
             </span>
           </div>
           
-          <h1 className="font-bold text-zinc-900 mb-6 tracking-tight leading-tight">
+          <h1 className="font-bold text-zinc-900 mb-6 tracking-tight leading-tight text-3xl md:text-4xl lg:text-[2.5rem]">
             {post.title}
           </h1>
         </header>
@@ -160,7 +160,7 @@ export default async function BlogPostPage({ params }: PageParams) {
         )}
 
           {/* Rich Text Content */}
-          <div className="rich-text max-w-none text-zinc-800 text-lg leading-relaxed">
+          <div className="rich-text max-w-none text-zinc-800 text-[24px] leading-[1.6]">
             {post.content && <RichText data={post.content} />}
           </div>
 
