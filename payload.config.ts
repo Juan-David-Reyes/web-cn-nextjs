@@ -17,6 +17,7 @@ import { CookiesPolicy } from './src/globals/CookiesPolicy.ts'
 import { es } from '@payloadcms/translations/languages/es'
 
 import { seoPlugin } from '@payloadcms/plugin-seo'
+import { resendAdapter } from '@payloadcms/email-resend'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -93,5 +94,10 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URI || '',
     },
+  }),
+  email: resendAdapter({
+    defaultFromAddress: process.env.DEFAULT_FROM_ADDRESS || 'onboarding@resend.dev',
+    defaultFromName: process.env.DEFAULT_FROM_NAME || 'Código Nativo',
+    apiKey: process.env.RESEND_API_KEY || '',
   }),
 })
