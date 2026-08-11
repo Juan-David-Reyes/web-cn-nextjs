@@ -6,7 +6,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Políticas de Privacidad",
-  description: "Lee nuestras políticas de privacidad y protección de datos.",
+  description: "Políticas de privacidad y protección de datos de Código Nativo.",
 };
 
 export default async function PrivacyPolicyPage() {

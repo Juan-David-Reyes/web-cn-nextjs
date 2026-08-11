@@ -25,6 +25,23 @@ const nextConfig: NextConfig = {
       }
     ],
   },
+
+  /* se debe implementar a futuro este redirect desde el payload para hacerlo más practivo y no depender de despliegues en dev */
+
+  async redirects() {
+    return [
+      {
+        source: '/agencia-de-diseno-web-bogota',
+        destination: '/servicios/diseno-web',
+        permanent: true,
+      },
+      {
+        source: '/servicios/diseno-ux-ui',
+        destination: '/servicios/product-design',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withPayload(nextConfig);
