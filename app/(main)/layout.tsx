@@ -26,13 +26,13 @@ const SITE_URL = process.env.SITE_URL || 'https://codigonativo.com';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Código Nativo | Desarrollo de Software",
+    default: "Diseño Web y Product Design UX/UI en Bogotá | Código Nativo",
     template: "%s | Código Nativo"
   },
-  description: "Código Nativo es una marca de desarrollo de software y tecnología. Soluciones modernas, escalables y orientadas al rendimiento.",
+  description: "Agencia de diseño y desarrollo web en Bogotá. Creamos sitios rápidos, UX/UI de alta conversión y auditorías SEO. Agenda tu consultoría gratis.",
   openGraph: {
-    title: "Código Nativo | Desarrollo de Software",
-    description: "Desarrollo de software y tecnología con enfoque en escalabilidad y rendimiento.",
+    title: "Diseño Web y Product Design UX/UI en Bogotá | Código Nativo",
+    description: "Agencia de diseño y desarrollo web en Bogotá. Creamos sitios rápidos, UX/UI de alta conversión y auditorías SEO. Agenda tu consultoría gratis.",
     url: SITE_URL,
     siteName: "Código Nativo",
     locale: "es_ES",
@@ -40,8 +40,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Código Nativo | Desarrollo de Software",
-    description: "Desarrollo de software y tecnología con enfoque en escalabilidad y rendimiento.",
+    title: "Diseño Web y Product Design UX/UI en Bogotá | Código Nativo",
+    description: "Agencia de diseño y desarrollo web en Bogotá. Creamos sitios rápidos, UX/UI de alta conversión y auditorías SEO. Agenda tu consultoría gratis.",
   },
   alternates: {
     canonical: SITE_URL,
