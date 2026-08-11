@@ -8,8 +8,8 @@ import { CtaBanner } from "@/components/ui/sections/CtaBanner";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Sobre Nosotros | Código Nativo",
-  description: "Conoce nuestra historia, misión y valores. Somos una agencia de marketing digital apasionada por crear experiencias web excepcionales.",
+  title: "Sobre Nosotros",
+  description: "Diseño y desarrollo web en Bogotá con foco en UX/UI y performance. Conoce el enfoque y la trayectoria detrás de Código Nativo.",
 };
 
 export default function NosotrosPage() {

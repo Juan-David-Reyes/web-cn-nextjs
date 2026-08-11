@@ -8,8 +8,8 @@ import configPromise from '@payload-config';
 import { BlogPagination } from '@/components/features/blog/BlogPagination';
 
 export const metadata: Metadata = {
-  title: 'Blog y Recursos | Código Nativo',
-  description: 'Artículos y Novedades sobre Diseño Web, SEO y Marketing Digital.',
+  title: 'Blog y Recursos',
+  description: 'Artículos sobre diseño web, UX/UI y SEO técnico. Recursos prácticos de Código Nativo para mejorar el rendimiento de tu sitio.',
 };
 
 const getMasonryHeight = (index: number) => {

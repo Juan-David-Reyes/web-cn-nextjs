@@ -37,10 +37,10 @@ export async function generateMetadata({ params }: PageParams) {
   const meta = post.meta || {};
 
   return {
-    title: meta.title || `${post.title} | Código Nativo`,
+    title: `${post.title}` || meta.title,
     description: meta.description || 'Artículo técnico por Código Nativo.',
     openGraph: {
-      title: meta.title || `${post.title} | Código Nativo`,
+      title: `${post.title}`|| meta.title,
       description: meta.description || 'Artículo técnico por Código Nativo.',
       images: meta.image && typeof meta.image === 'object' && meta.image.url ? [
         {

@@ -18,12 +18,12 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
   if (!service) {
     return {
-      title: 'Servicio no encontrado | Código Nativo',
+      title: 'Servicio no encontrado',
     };
   }
 
   return {
-    title: `${service.title} | Código Nativo`,
+    title: `${service.title}`,
     description: service.shortDescription,
     openGraph: {
       title: `${service.title} | Código Nativo`,

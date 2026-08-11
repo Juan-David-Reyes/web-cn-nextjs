@@ -5,8 +5,8 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Política de Cookies | Código Nativo",
-  description: "Lee nuestra política sobre el uso de cookies.",
+  title: "Política de Cookies",
+  description: "Política de uso de cookies en el sitio web de Código Nativo.",
 };
 
 export default async function CookiesPolicyPage() {

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Políticas de Privacidad | Código Nativo",
+  title: "Políticas de Privacidad",
   description: "Lee nuestras políticas de privacidad y protección de datos.",
 };
 

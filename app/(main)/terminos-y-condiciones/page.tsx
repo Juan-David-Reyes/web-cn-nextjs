@@ -5,8 +5,8 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Términos y Condiciones | Código Nativo",
-  description: "Lee nuestros términos y condiciones de servicio.",
+  title: "Términos y Condiciones",
+  description: "Términos y condiciones de uso del sitio y servicios de Código Nativo.",
 };
 
 export default async function TermsAndConditionsPage() {

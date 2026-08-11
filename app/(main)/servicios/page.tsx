@@ -6,11 +6,11 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 // Generar meta tags dinámicos y optimizados para SEO On-Page
 export const metadata: Metadata = {
-  title: 'Nuestros Servicios | Agencia de Desarrollo Web y SEO | Código Nativo',
-  description: 'Descubre nuestros servicios profesionales diseñados para escalar tu negocio: Desarrollo Web a Medida, SEO Técnico, y Mantenimiento Web integral.',
+  title: 'Servicios de Diseño Web y UX/UI',
+  description: 'Diseño y desarrollo web, UX/UI, CRO y auditorías SEO/UX para escalar tu negocio digital. Conoce todos los servicios de Código Nativo.',
   openGraph: {
     title: 'Nuestros Servicios | Código Nativo',
-    description: 'Soluciones digitales completas: Rendimiento extremo, SEO avanzado y diseño centrado en la usabilidad.',
+    description: 'Diseño web, UX/UI, CRO y auditorías SEO/UX para escalar tu negocio digital.',
   }
 };
 
