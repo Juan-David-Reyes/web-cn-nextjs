@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Diseño Web y Product Design UX/UI en Bogotá | Código Nativo",
-    description: "Diseño y desarrollo web en Bogotá con foco en UX/UI y performance. Sitios rápidos, escalables y pensados para convertir. Agenda tu consultoría gratis.",
+    description: "Agencia de diseño y desarrollo web en Bogotá. Creamos sitios rápidos, UX/UI de alta conversión y auditorías SEO. Agenda tu consultoría gratis.",
   },
   alternates: {
     canonical: SITE_URL,
