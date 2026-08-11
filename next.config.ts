@@ -41,7 +41,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: 'servicios/optimizacion-web',
+        source: '/servicios/optimizacion-web',
         destination: '/servicios/cro-optimizacion',
         permanent: true,
       },
