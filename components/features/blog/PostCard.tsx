@@ -66,7 +66,7 @@ export function PostCard({ post, priority = false, className = '' }: { post: Pos
             <span>{readingTime} min read</span>
           </div>
 
-          <h3 className="text-[24px] font-bold !text-[#F1F5F9] mb-6 leading-tight line-clamp-3">
+          <h3 className="!text-[18px] md:!text-[26px] font-bold !text-[#F1F5F9] mb-3 !leading-[24px] md:!leading-[34px] line-clamp-3">
             {post.title}
           </h3>
 

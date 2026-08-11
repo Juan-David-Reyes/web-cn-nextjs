@@ -160,7 +160,7 @@ export default async function BlogPostPage({ params }: PageParams) {
         )}
 
           {/* Rich Text Content */}
-          <div className="rich-text max-w-none text-zinc-800 text-[24px] leading-[1.6]">
+          <div className="rich-text max-w-none text-zinc-800 text-[16px] md:text-[18px] leading-relaxed">
             {post.content && <RichText data={post.content} />}
           </div>
 
