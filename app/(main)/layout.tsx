@@ -3,6 +3,7 @@ import { Poppins, Playfair_Display } from "next/font/google";
 import "@/app/globals.css";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/sections/Footer";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -129,6 +130,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
