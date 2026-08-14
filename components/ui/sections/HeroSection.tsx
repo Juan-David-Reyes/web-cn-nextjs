@@ -13,8 +13,8 @@ interface HeroProps {
 
 export function HeroSection({ data }: HeroProps) {
   const preTitleText = data?.preTitle;
-  const titleText = data?.title || "Diseño y desarrollo de productos digitales ";
-  const highlightText = data?.highlight || "que escalan tu negocio";
+  const titleText = data?.title;
+  const highlightText = data?.highlight;
   const descriptionText = data?.description;
 
   return (
