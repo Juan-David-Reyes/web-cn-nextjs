@@ -15,8 +15,7 @@ export function HeroSection({ data }: HeroProps) {
   const preTitleText = data?.preTitle;
   const titleText = data?.title || "Diseño y desarrollo de productos digitales ";
   const highlightText = data?.highlight || "que escalan tu negocio";
-  const descriptionText = data?.description || 
-    "Sitios rápidos, UX/UI centrado en el usuario y estrategia técnica para que tu negocio crezca sin fricciones digitales.";
+  const descriptionText = data?.description;
 
   return (
     <section className="relative w-full min-h-[100vh] flex flex-col justify-between pt-40 overflow-hidden">
