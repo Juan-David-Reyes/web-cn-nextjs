@@ -29,7 +29,7 @@ export function HeroSection({ data }: HeroProps) {
       {/* Background Image */}
       <Image
         src="/images/bg_herosection.webp"
-        alt="Hero Background"
+        alt="Diseño y desarrollo de productos digitales"
         fill
         priority
         className="object-cover object-left absolute inset-0 z-0 pointer-events-none"
