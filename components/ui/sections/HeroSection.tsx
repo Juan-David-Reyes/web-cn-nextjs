@@ -12,11 +12,11 @@ interface HeroProps {
 }
 
 export function HeroSection({ data }: HeroProps) {
-  const preTitleText = data?.preTitle || "TÚ PONES LA VISIÓN, NOSOTROS EL CÓDIGO";
-  const titleText = data?.title || "Activos digitales que impulsan tu próximo";
-  const highlightText = data?.highlight || "nivel de crecimiento";
+  const preTitleText = data?.preTitle;
+  const titleText = data?.title || "Diseño y desarrollo de productos digitales ";
+  const highlightText = data?.highlight || "que escalan tu negocio";
   const descriptionText = data?.description || 
-    "Combinamos desarrollo de producto, diseño UX/UI de alta conversión y estrategia digital para transformar empresas en líderes de su sector.";
+    "Sitios rápidos, UX/UI centrado en el usuario y estrategia técnica para que tu negocio crezca sin fricciones digitales.";
 
   return (
     <section className="relative w-full min-h-[100vh] flex flex-col justify-between pt-40 overflow-hidden">
