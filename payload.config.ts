@@ -18,6 +18,7 @@ import { es } from '@payloadcms/translations/languages/es'
 
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import { resendAdapter } from '@payloadcms/email-resend'
+import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -60,6 +61,9 @@ export default buildConfig({
     ],
   }),
   plugins: [
+    redirectsPlugin({
+      collections: ['posts'],
+    }),
     seoPlugin({
       collections: ['posts'],
       uploadsCollection: 'media',
