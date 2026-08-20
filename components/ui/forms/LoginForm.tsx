@@ -18,7 +18,7 @@ export function LoginForm() {
   return (
     <form className="space-y-6" onSubmit={onSubmit}>
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300">
+        <label htmlFor="email" className="block text-sm font-medium text-neutral-700 ">
           Correo electrónico
         </label>
         <div className="mt-1 relative rounded-md shadow-sm">
@@ -34,14 +34,14 @@ export function LoginForm() {
             type="email"
             autoComplete="email"
             required
-            className="block w-full pl-10 pr-3 py-2 border border-neutral-300 dark:border-neutral-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white transition-colors duration-200"
+            className="block w-full pl-10 pr-3 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-white text-neutral-900 transition-colors duration-200"
             placeholder="juan@empresa.com"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="password" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300">
+        <label htmlFor="password" className="block text-sm font-medium text-neutral-700 ">
           Contraseña
         </label>
         <div className="mt-1 relative rounded-md shadow-sm">
@@ -57,7 +57,7 @@ export function LoginForm() {
             type="password"
             autoComplete="current-password"
             required
-            className="block w-full pl-10 pr-3 py-2 border border-neutral-300 dark:border-neutral-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white transition-colors duration-200"
+            className="block w-full pl-10 pr-3 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-white text-neutral-900 transition-colors duration-200"
             placeholder="••••••••"
           />
         </div>
@@ -71,13 +71,13 @@ export function LoginForm() {
             type="checkbox"
             className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-neutral-300 rounded cursor-pointer"
           />
-          <label htmlFor="remember-me" className="ml-2 block text-sm text-neutral-700 dark:text-neutral-300 cursor-pointer">
+          <label htmlFor="remember-me" className="ml-2 block text-sm text-neutral-700 cursor-pointer">
             Recordarme
           </label>
         </div>
 
         <div className="text-sm">
-          <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors">
+          <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors">
             ¿Olvidaste tu contraseña?
           </a>
         </div>

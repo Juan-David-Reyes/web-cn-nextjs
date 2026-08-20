@@ -134,12 +134,7 @@
     serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--neutral-900);
-    --foreground: var(--white);
-  }
-}
+
 
 body {
   background: var(--background);
@@ -160,11 +155,7 @@ h6 {
   color: var(--headings);
 }
 
-@media (prefers-color-scheme: dark) {
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--headings-dark);
-  }
-}
+
 
 /* ── Tipografía responsive (excluye el footer) ─────────────────────────────
    clamp(min, preferred, max)

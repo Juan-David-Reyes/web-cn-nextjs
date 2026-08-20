@@ -17,7 +17,7 @@ export function BrandsSlider() {
   ];
 
   return (
-    <section className="w-full bg-[#FFF] py-24 pb-32 overflow-hidden border-t border-zinc-200 dark:border-zinc-800">
+    <section className="w-full bg-[#FFF] py-24 pb-32 overflow-hidden border-t border-zinc-200 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
         <h2 className="font-extrabold text-[#0f172a]">
           Quienes nos han confiado{' '}

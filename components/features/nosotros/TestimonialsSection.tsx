@@ -1,10 +1,10 @@
 export function TestimonialsSection() {
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="relative p-10 md:p-14 bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200 dark:border-zinc-800 shadow-xl shadow-zinc-200/50 dark:shadow-black/50 overflow-hidden group">
+      <div className="relative p-10 md:p-14 bg-white rounded-3xl border border-zinc-200 shadow-xl shadow-zinc-200/50 overflow-hidden group">
         
         {/* Decorative Quotes */}
-        <div className="absolute -top-6 -left-6 text-9xl text-zinc-100 dark:text-zinc-800 font-serif opacity-50 group-hover:scale-110 transition-transform duration-500">
+        <div className="absolute -top-6 -left-6 text-9xl text-zinc-100 font-serif opacity-50 group-hover:scale-110 transition-transform duration-500">
           &quot;
         </div>
         
@@ -17,17 +17,17 @@ export function TestimonialsSection() {
             ))}
           </div>
 
-          <p className="text-xl md:text-2xl font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed mb-10">
+          <p className="text-xl md:text-2xl font-medium text-zinc-700 leading-relaxed mb-10">
             "Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. <span className="text-[#3dbf15] font-bold">LaslesVPN always the best.</span>"
           </p>
 
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-700 dark:to-zinc-800 flex items-center justify-center font-bold text-xl text-zinc-600 dark:text-zinc-300 ring-4 ring-white dark:ring-zinc-900 shadow-md">
+            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-zinc-200 to-zinc-300 flex items-center justify-center font-bold text-xl text-zinc-600 ring-4 ring-white shadow-md">
               LV
             </div>
             <div className="text-left">
-              <h4 className="font-bold text-lg dark:text-zinc-100">LaslesVPN</h4>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">CEO, LaslesVPN</p>
+              <h4 className="font-bold text-lg ">LaslesVPN</h4>
+              <p className="text-sm text-zinc-500 ">CEO, LaslesVPN</p>
             </div>
           </div>
         </div>
