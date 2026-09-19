@@ -102,7 +102,7 @@ const getCardStyles = (colorScheme?: string) => {
   }
 };
 
-const CardTexture = ({ type, colorScheme }: { type?: string, colorScheme?: string }) => {
+const CardTexture = ({ type, colorScheme }: { type?: string | null, colorScheme?: string | null }) => {
   if (type === 'code' && colorScheme === 'information') {
     return (
       <svg 
