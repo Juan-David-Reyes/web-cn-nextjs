@@ -1,7 +1,10 @@
+import Link from "next/link";
+
 interface ServiceData {
   title?: string | null;
   description?: string | null;
   iconType?: 'code' | 'wordpress' | 'chart' | 'security' | 'pen' | null;
+  href?: string | null;
 }
 
 interface ServicesBentoProps {
@@ -13,31 +16,31 @@ const fallbackServices = [
     title: "Diseño y Desarrollo Web",
     description: "Creamos sitios web a medida, optimizados para conversiones y con diseños pixel-perfect que reflejan la identidad de tu marca.",
     iconType: 'code' as const,
-    colSpan: "lg:col-span-5",
+    href: "/servicios/diseno-desarrollo-web",
   },
   {
     title: "Mantenimiento Web WordPress",
     description: "Tu sitio siempre actualizado, seguro y rápido. Nos encargamos del soporte técnico, copias de seguridad y optimización continua.",
     iconType: 'wordpress' as const,
-    colSpan: "lg:col-span-7",
+    href: "/servicios/mantenimiento-wordpress",
   },
   {
     title: "CRO & Optimizaciones",
     description: "Mejoramos la tasa de conversión y maximizamos el rendimiento técnico (Core Web Vitals) para superar a la competencia.",
     iconType: 'chart' as const,
-    colSpan: "lg:col-span-4",
+    href: "/servicios/cro-optimizaciones",
   },
   {
     title: "Auditoría",
     description: "Analizamos tu sitio web enfocándonos en SEO técnico, rendimiento, seguridad y usabilidad profunda para detectar oportunidades.",
     iconType: 'security' as const,
-    colSpan: "lg:col-span-4",
+    href: "/servicios/auditoria-web",
   },
   {
     title: "Product Design",
     description: "Diseñamos interfaces de usuario y experiencias digitales intuitivas y enfocadas en retener al usuario final.",
     iconType: 'pen' as const,
-    colSpan: "lg:col-span-4",
+    href: "/servicios/product-design",
   }
 ];
 
@@ -58,9 +61,8 @@ const getIcon = (type?: string | null) => {
 };
 
 const getColSpan = (index: number) => {
-  // We mimic the original asymmetric grid based on array index
-  if (index === 0) return "lg:col-span-5";
-  if (index === 1) return "lg:col-span-7";
+  if (index === 0) return "lg:col-span-6";
+  if (index === 1) return "lg:col-span-6";
   return "lg:col-span-4";
 }
 
@@ -72,71 +74,73 @@ export function ServicesBento({ data }: ServicesBentoProps) {
       className="relative w-[calc(100%-32px)] mx-auto py-24 px-4 overflow-hidden bg-[#0f172a] rounded-[48px]"
     >
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-indigo-600/10 rounded-full blur-[150px] -z-10 mix-blend-screen pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-purple-600/10 rounded-full blur-[120px] -z-10 mix-blend-screen pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-indigo-600/15 rounded-full blur-[150px] -z-10 mix-blend-screen pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-purple-600/15 rounded-full blur-[120px] -z-10 mix-blend-screen pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto space-y-12 z-10">
+      <div className="mx-auto space-y-12 z-10">
         
         {/* Section Header */}
         <div className="text-center space-y-4 max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-zinc-900/50 backdrop-blur-md mb-2 text-sm font-medium text-purple-300">
-            <span className="text-white">★</span> Servicios
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-purple-500/30 bg-purple-900/20 backdrop-blur-md mb-2 text-sm font-semibold text-purple-200 shadow-[0_0_15px_rgba(168,85,247,0.15)]">
+            <span className="text-purple-400">★</span> Servicios
           </div>
-          <h2 className="font-bold text-white tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-extrabold !text-white tracking-tight leading-tight">
             Soluciones para escalar <br className="hidden md:block" />
-            <span className="text-zinc-400">tu negocio digital</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">tu negocio digital</span>
           </h2>
         </div>
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 pt-8">
           {displayServices.map((service, index) => (
-            <div 
+            <Link 
+              href={service.href || "/servicios"}
               key={index}
-              className={`group relative p-8 rounded-3xl bg-zinc-900/40 backdrop-blur-xl border border-white/5 hover:border-white/10 hover:bg-zinc-800/50 transition-all duration-500 overflow-hidden flex flex-col justify-between min-h-[300px] ${getColSpan(index)}`}
+              className={`group relative p-8 rounded-[2rem] bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-purple-500/40 hover:bg-zinc-800/80 transition-all duration-500 overflow-hidden flex flex-col justify-between min-h-[300px] shadow-lg hover:shadow-purple-900/25 hover:-translate-y-1.5 ${getColSpan(index)}`}
             >
               {/* Card Glow Effect on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               
               <div className="relative z-10">
-                <div className="w-14 h-14 rounded-2xl bg-zinc-800/50 border border-white/10 flex items-center justify-center mb-6 shadow-inner">
+                <div className="w-16 h-16 rounded-2xl bg-zinc-800/80 border border-white/10 flex items-center justify-center mb-6 shadow-inner group-hover:scale-110 group-hover:bg-purple-500/15 group-hover:border-purple-500/30 transition-all duration-500">
                   {getIcon(service.iconType)}
                 </div>
-                <h3 className="text-2xl font-semibold text-zinc-100 mb-3 group-hover:text-white transition-colors">
+                <h3 className="text-2xl font-bold !text-white mb-3 group-hover:!text-purple-300 transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-zinc-400 leading-relaxed font-light mb-8 max-w-md">
+                <p className="text-zinc-300 leading-relaxed font-normal mb-8 max-w-md group-hover:text-zinc-100 transition-colors duration-300">
                   {service.description}
                 </p>
               </div>
 
-              {/* Decorative Mockup Element Background - Only conceptual lines to mimic the reference slightly */}
-              <div className="absolute -bottom-8 -right-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none">
+              {/* Decorative Mockup Element Background */}
+              <div className="absolute -bottom-8 -right-8 opacity-5 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none text-white">
                 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="20" y="20" width="160" height="120" rx="12" stroke="white" strokeWidth="2"/>
-                  <rect x="40" y="40" width="120" height="10" rx="5" fill="white"/>
-                  <rect x="40" y="60" width="80" height="10" rx="5" fill="white"/>
-                  <rect x="40" y="80" width="100" height="10" rx="5" fill="white"/>
-                  <circle cx="160" cy="120" r="15" fill="white"/>
+                  <rect x="20" y="20" width="160" height="120" rx="12" stroke="currentColor" strokeWidth="2"/>
+                  <rect x="40" y="40" width="120" height="10" rx="5" fill="currentColor"/>
+                  <rect x="40" y="60" width="80" height="10" rx="5" fill="currentColor"/>
+                  <rect x="40" y="80" width="100" height="10" rx="5" fill="currentColor"/>
+                  <circle cx="160" cy="120" r="15" fill="currentColor"/>
                 </svg>
               </div>
 
-              <div className="relative z-10 flex items-center gap-2 text-sm font-medium text-purple-400 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                Conoce más <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" className="w-4 h-4"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"></path></svg>
+              <div className="relative z-10 flex items-center gap-2 text-sm font-semibold text-purple-400 group-hover:text-purple-300 transition-colors duration-300">
+                Conoce más 
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"></path></svg>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
         {/* Bottom CTA */}
         <div className="flex justify-center pt-8">
-          <button className="group relative px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition-all duration-300 text-white font-medium shadow-lg shadow-purple-900/30 overflow-hidden">
-            <span className="relative z-10 flex items-center gap-2">
+          <Link href="/servicios" className="group relative px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition-all duration-300 text-white font-medium shadow-lg shadow-purple-900/40 overflow-hidden">
+            <span className="relative z-10 flex items-center gap-2 font-semibold">
               Ver todos nuestros servicios 
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" className="w-4 h-4 group-hover:translate-x-1 transition-transform"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"></path></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" className="w-4 h-4 group-hover:translate-x-1.5 transition-transform"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"></path></svg>
             </span>
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-          </button>
+          </Link>
         </div>
 
       </div>
