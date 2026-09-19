@@ -238,7 +238,7 @@ export function ServicesBento({ data }: ServicesBentoProps) {
 
   return (
     <section 
-      className="relative w-[calc(100%-32px)] mx-auto pt-0 pb-24 px-4 overflow-hidden rounded-[48px]"
+      className="relative w-[calc(100%-32px)] mx-auto pt-0 pb-24 overflow-hidden rounded-[48px]"
     >
 
       <div className="mx-auto space-y-12 z-10">
@@ -248,7 +248,7 @@ export function ServicesBento({ data }: ServicesBentoProps) {
           <span className="text-[14px] uppercase tracking-[4px] leading-[160%] mb-4 inline-block font-normal text-[#334155]">Servicios</span>
           <h2 className="text-4xl md:text-5xl font-extrabold !text-[#0f172a] tracking-tight leading-tight">
             Soluciones para escalar <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">tu negocio digital</span>
+            <span className="font-serif italic font-normal">tu negocio digital</span>
           </h2>
         </div>
 
@@ -260,7 +260,7 @@ export function ServicesBento({ data }: ServicesBentoProps) {
               <Link 
                 href={service.href || "/servicios"}
                 key={index}
-                className={`group relative p-8 rounded-[24px] transition-all duration-500 overflow-hidden flex flex-col justify-between h-[500px] hover:-translate-y-1.5 ${styles.wrapper}`}
+                className={`group relative p-8 rounded-[24px] transition-all duration-500 overflow-hidden flex flex-col justify-between h-full hover:-translate-y-1.5 ${styles.wrapper}`}
               >
 
                 <CardTexture type={service.iconType} colorScheme={service.colorScheme} />

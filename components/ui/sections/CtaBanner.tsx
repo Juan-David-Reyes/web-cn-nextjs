@@ -16,7 +16,7 @@ export function CtaBanner({
   buttonLink = "/contacto" 
 }: CtaBannerProps) {
   return (
-    <section className="relative w-[calc(100%-32px)] mx-auto py-[140px] px-4 bg-[#0f172a] rounded-[24px] overflow-hidden">
+    <section className="relative w-[calc(100%-32px)] mx-auto py-[90px] px-4 bg-[#0f172a] rounded-[24px] overflow-hidden">
       {/* Decorative SVG Circles */}
       <Image src="/images/circle.svg" alt="" aria-hidden="true" fill priority={false} className="absolute bottom-0 -left-[5%] w-full h-auto max-w-[350px] object-contain pointer-events-none opacity-50" />
       <Image src="/images/circle.svg" alt="" aria-hidden="true" width={350} height={350} priority={false} className="absolute top-0 -right-[5%] w-full h-auto max-w-[350px] object-contain pointer-events-none rotate-180 opacity-50" />
